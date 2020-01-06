@@ -1,15 +1,19 @@
 # Heuristieken - All rights reserved
 
 __RAILNL__
+
 Milena van der Velde
 Philip Lankhorst
 Wouter de Boer
 
 __PROBLEEM__
+
 *Summary*
+
 De dienstregeling van de NS voor het treinverkeer in Nederland kan op vele manieren ingevuld worden. Het probleem dat hierbij komt kijken is het vinden van de meest efficiente invulling. De NS heeft een bepaalde kostenfunctie die het wilt minimaliseren terwijl alle stations in Nederland met elkaar verbonden moeten zijn binnen een bepaalde tijdsframe. 
 
 *Extended Info*
+
 - De lijnvoering: Wat zijn de trajecten waarover de treinen gedurende de dag heen en weer rijden?
 - De dienstregeling: hoe laat vertrekken de treinen van de stations over de trajecten?
 - Het materieelrooster: welk treinstel en welke wagons zijn op welk moment op welke plaats?
