@@ -38,6 +38,10 @@ class Connection:
         return f"Trein van {self.origin} naar {self.destination} van {self.time} minuten"
 
 
+
+
+
+
 """ Function for finding possible connections from given startpoint(origin) 
     while excluding the previous station """
 
