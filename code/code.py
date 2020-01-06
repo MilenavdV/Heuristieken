@@ -2,19 +2,28 @@
 pseudocode
 '''
 
-class Connections():
-    def __init__(self):
-        self.dic = {}
-        connections = open('data/ConnectiesHolland.csv')
-        self.list = connections.read().splitlines()
-        print(self.list)
-        for line in self.list:
-            p = line.split(",")
-            print(p)
-            self.dic[line[0]].append([line[1], line[2]])
-        connections.close()
-    
-if __name__ == "__main__":
-    dictionary = Connections()
-    print(dictionary.dic)
+class Trains():
+    def __init__(self,stops,total):
+        self.p = stops/total
         
+
+
+    def traject(self,number):
+        # traject van a naar b, met mogelijke tussenstops en totale tijd
+        # minimaliseren van functie K= p*10000-(T*100+Min)
+        name_traject = number
+        stops = {}
+        time = int
+
+class Connection():
+    def __init__(self):
+        
+        # open connecties bestand
+
+        # lees regels in
+
+        # loop door regel
+        self.dic[startstation] = eindstation, tijd
+
+    def __str__(self):
+        return f"trein van {startstation} naar {eindstation} van {tijd} minuten"
