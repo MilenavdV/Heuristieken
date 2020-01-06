@@ -1,11 +1,10 @@
 '''
 pseudocode
 '''
+
 Class Trains():
     def __init__(self,stops,total):
         self.p = stops/total
-        
-
 
     def traject(self,number):
         # traject van a naar b, met mogelijke tussenstops en totale tijd
