@@ -2,11 +2,9 @@
 pseudocode
 '''
 
-class Trains():
+Class Trains():
     def __init__(self,stops,total):
         self.p = stops/total
-        
-
 
     def traject(self,number):
         # traject van a naar b, met mogelijke tussenstops en totale tijd
@@ -14,8 +12,9 @@ class Trains():
         name_traject = number
         stops = {}
         time = int
+        
 
-class Connection():
+class Connections():
     def __init__(self):
         
         # open connecties bestand
