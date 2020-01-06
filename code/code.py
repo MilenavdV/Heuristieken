@@ -1,8 +1,9 @@
 '''
 pseudocode
 '''
+from readconnections import readConnections
 
-Class Trains():
+class Trains:
     def __init__(self,stops,total):
         self.p = stops/total
 
@@ -14,15 +15,17 @@ Class Trains():
         time = int
         
 
-class Connections():
-    def __init__(self):
+class Connections:
+    def __init__(self, origin, destination, time):
         
         # open connecties bestand
 
         # lees regels in
 
         # loop door regel
-        self.dic[startstation] = eindstation, tijd
+        self.origin = origin
+        self.destination = destination
+        self.time = time
 
     def __str__(self):
         return f"trein van {startstation} naar {eindstation} van {tijd} minuten"
