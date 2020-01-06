@@ -28,4 +28,13 @@ class Connections:
         self.time = time
 
     def __str__(self):
-        return f"trein van {startstation} naar {eindstation} van {tijd} minuten"
+        return f"trein van {self.origin} naar {self.destination} van {self.time} minuten"
+
+for station in readConnections():
+    destinations = readConnections()[station]
+    
+    for optie in destinations:
+        destination = optie[0]
+        time = optie[1]
+        connection = Connections(station, destination, time)
+        print(connection)
