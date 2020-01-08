@@ -18,5 +18,5 @@ def readConnections():
                 connections[row[1]] = []
             thistuple = (row[0], row[2])
             connections[row[1]].append(thistuple)
-            
+
     return(connections)
