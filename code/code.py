@@ -1,32 +1,49 @@
-'''
-pseudocode
-'''
+from readconnections import readConnections
+from classes import Traject, Connection
+import random
 
-class Trains():
-    def __init__(self,stops,total):
-        self.p = stops/total
+connections = {}
+trajecten = {}
 
-    def traject(self,number):
-        # traject van a naar b, met mogelijke tussenstops en totale tijd
-        # minimaliseren van functie K= p*10000-(T*100+Min)
-        self.name_traject = number
-        self.stops = {}
-        self.time = int
+""" Function for finding possible connections from given startpoint(origin) 
+    while excluding the previous station """
+
+def findConnections(origin, previous_station):
+    options = []
+    for i in connections:
+        if origin == connections[i].origin and connections[i].destination != previous_station:
+            options.append(i)
+   
+    return options
+
+
+def main():
+    # create Connection objects
+    for station in readConnections():
+        destinations = readConnections()[station]
         
+        for optie in destinations:
+            destination = optie[0]
+            time = optie[1]
+            connection = Connection(station, destination, int(time))
+            key = connection.origin + "-" + connection.destination
+            connections[key] = connection
 
-class Connections():
-    def __init__(self):
-        self.dic = {}
-        connections = open('data/ConnectiesHolland.csv')
-        self.list = connections.read().splitlines()
-        print(self.list)
-        for line in self.list:
-            p = line.split(",")
-            print(p)
-            self.dic[line[0]].append([line[1], line[2]])
-        connections.close()
-    
+    # create Traject departing from Den Helder
+    traject = Traject()
+    traject.addConnection(connections["Den Helder-Alkmaar"], connections["Den Helder-Alkmaar"].time)
+
+    for i in range(0,50):
+        new_origin = traject.connections[-1].destination
+        previous_station = traject.connections[-1].origin
+        options = findConnections(new_origin, previous_station)
+
+        if len(options) != 0:
+            new_connection = random.choice(options)
+       
+        traject.addConnection(connections[new_connection], connections[new_connection].time)
+    print(traject)
+
+
 if __name__ == "__main__":
-    dictionary = Connections()
-    print(dictionary.dic)
-        
+    main()
