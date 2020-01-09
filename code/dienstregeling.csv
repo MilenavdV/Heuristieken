@@ -1,0 +1,92 @@
+Traject 0:
+
+Amsterdam Sloterdijk,Amsterdam Centraal,6
+Amsterdam Centraal,Amsterdam Amstel,8
+Amsterdam Amstel,Amsterdam Zuid,10
+Amsterdam Zuid,Schiphol Airport,6
+Schiphol Airport,Leiden Centraal,15
+Leiden Centraal,Den Haag Centraal,12
+Den Haag Centraal,Gouda,18
+Gouda,Alphen a/d Rijn,19
+Alphen a/d Rijn,Leiden Centraal,14
+
+Total of 108 minutes.
+
+Traject 1:
+
+Castricum,Beverwijk,13
+Beverwijk,Zaandam,25
+Zaandam,Amsterdam Sloterdijk,6
+Amsterdam Sloterdijk,Amsterdam Zuid,16
+Amsterdam Zuid,Amsterdam Amstel,10
+Amsterdam Amstel,Amsterdam Centraal,8
+Amsterdam Centraal,Amsterdam Sloterdijk,6
+Amsterdam Sloterdijk,Zaandam,6
+Zaandam,Castricum,12
+Castricum,Alkmaar,9
+
+Total of 111 minutes.
+
+Traject 2:
+
+Alphen a/d Rijn,Gouda,19
+Gouda,Rotterdam Alexander,10
+Rotterdam Alexander,Rotterdam Centraal,8
+Rotterdam Centraal,Schiedam Centrum,5
+Schiedam Centrum,Delft,7
+Delft,Den Haag Centraal,13
+Den Haag Centraal,Leiden Centraal,12
+Leiden Centraal,Heemstede-Aerdenhout,13
+Heemstede-Aerdenhout,Haarlem,6
+Haarlem,Beverwijk,16
+
+Total of 109 minutes.
+
+Traject 3:
+
+Alphen a/d Rijn,Leiden Centraal,14
+Leiden Centraal,Den Haag Centraal,12
+Den Haag Centraal,Gouda,18
+Gouda,Rotterdam Alexander,10
+Rotterdam Alexander,Rotterdam Centraal,8
+Rotterdam Centraal,Dordrecht,17
+
+Total of 79 minutes.
+
+Traject 4:
+
+Hoorn,Zaandam,26
+Zaandam,Castricum,12
+Castricum,Alkmaar,9
+Alkmaar,Den Helder,36
+
+Total of 83 minutes.
+
+Traject 5:
+
+Amsterdam Zuid,Amsterdam Amstel,10
+Amsterdam Amstel,Amsterdam Centraal,8
+Amsterdam Centraal,Amsterdam Sloterdijk,6
+Amsterdam Sloterdijk,Haarlem,11
+Haarlem,Heemstede-Aerdenhout,6
+Heemstede-Aerdenhout,Leiden Centraal,13
+Leiden Centraal,Den Haag Centraal,12
+Den Haag Centraal,Delft,13
+Delft,Schiedam Centrum,7
+Schiedam Centrum,Rotterdam Centraal,5
+Rotterdam Centraal,Dordrecht,17
+
+Total of 108 minutes.
+
+Traject 6:
+
+Den Haag Centraal,Leiden Centraal,12
+Leiden Centraal,Heemstede-Aerdenhout,13
+Heemstede-Aerdenhout,Haarlem,6
+Haarlem,Beverwijk,16
+Beverwijk,Zaandam,25
+Zaandam,Hoorn,26
+
+Total of 98 minutes.
+
+Total score of 8802.0

@@ -22,8 +22,6 @@ class Traject:
         print("")
         return f"Totale reistijd van {self.time} minuten"
 
-    
-
 class Connection:
     def __init__(self, origin, destination, time):
         self.origin = origin
