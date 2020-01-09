@@ -1,7 +1,6 @@
 from readconnections import readConnections
 from classes import Traject, Connection
 import random
-import csv
 
 connections = {}
 connectionslist = []
@@ -67,20 +66,41 @@ def main():
     while True:
         connections_used = []
         total_minutes = 0
-        for i in range(0, 7):
+
+        traject = Traject()
+
+        traject.addConnection(connections["Den Helder-Alkmaar"], connections["Den Helder-Alkmaar"].time)
+        for j in range(0,30):
+            new_origin = traject.connections[-1].destination
+            previous_station = traject.connections[-1].origin
+
+            if fastestConnection(new_origin, previous_station) != None:
+                new_connection = fastestConnection(new_origin, previous_station)
+                traject.addConnection(connections[new_connection], connections[new_connection].time)
+               
+        trajecten[i] = traject
+        total_minutes += traject.time
+
+        for k in traject.connections:
+            if k.print() not in connections_used and changeDirection(k.print()) not in connections_used:
+                connections_used.append(k.print())
+        
+        print(traject)
+
+        for i in range(0, 19):
             
             traject = Traject()
         
             start = random.choice(connectionslist)
             traject.addConnection(connections[start], connections[start].time)
+           
 
-            for j in range(0,30):
+            for j in range(0, 10):
                 new_origin = traject.connections[-1].destination
                 previous_station = traject.connections[-1].origin
-                options = findConnections(new_origin, previous_station)
 
-                if len(options) != 0:
-                    new_connection = random.choice(options)
+                if fastestConnection(new_origin, previous_station) != None:
+                    new_connection = fastestConnection(new_origin, previous_station)
                     traject.addConnection(connections[new_connection], connections[new_connection].time)
                
             trajecten[i] = traject
@@ -96,25 +116,13 @@ def main():
             print(f"{len(connections_used)} connections used so far.")
             print(p)
 
-            if p == 1.00:
+            if p == 1.0:
                 print(trajecten)
-                print(f"{i + 1} treinen gebruikt")
+                print(i + 1)
                 print(p)
-                score = formula(p, i + 1, total_minutes)
                 print(formula(p, i + 1, total_minutes))
-                if score > 8800:
-                    with open('dienstregeling.txt', mode="w") as file:
-                        for traject in trajecten:
-                            file.write("Traject " + str(traject) + ":")
-                            file.write("\n")
-                            for connectie in trajecten[traject].connections:
-                                file.write(connectie.origin - connectie.destination, connectie.time )
-                            
-                        #     writer.writerow(["Total of " + str(trajecten[traject].time) + " minutes."])
-                        #     writer.writerow([])
-                        # writer.writerow(["Total score of " + str(score)])
-                        
+                if formula(p, i + 1, total_minutes) > 8000:
                     return True
-    
+
 if __name__ == "__main__":
     main()
