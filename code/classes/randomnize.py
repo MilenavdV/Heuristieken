@@ -1,6 +1,7 @@
 from readconnections import readConnections
 from classes import Traject, Connection
 import random
+import csv
 
 connections = {}
 connectionslist = []
@@ -17,6 +18,25 @@ def findConnections(origin, previous_station):
             options.append(i)
     return options
 
+def fastestConnection(origin, previous_station):
+    options = []
+    time_of_options = []
+    for i in connections:
+        if origin == connections[i].origin and connections[i].destination != previous_station:
+            options.append(i)
+            time_of_options.append(connections[i].time)
+    try:
+        shortest_time = min(time_of_options)
+        count = 0
+        
+        for j in time_of_options:
+            if j == shortest_time:
+                position = count
+                return options[position]
+            count += 1
+    except:
+        return None
+    
 def changeDirection(verbinding):
     newB = str(verbinding)[:str(verbinding).find("-")]
     newA = str(verbinding)[str(verbinding).find("-") + 1:]
@@ -76,16 +96,25 @@ def main():
             print(f"{len(connections_used)} connections used so far.")
             print(p)
 
-            if p == 1.0:
+            if p == 1.00:
                 print(trajecten)
-                print(i + 1)
+                print(f"{i + 1} treinen gebruikt")
                 print(p)
-                print(connections_used)
+                score = formula(p, i + 1, total_minutes)
                 print(formula(p, i + 1, total_minutes))
-                if formula(p, i + 1, total_minutes) > 9050:
+                if score > 8800:
+                    with open('dienstregeling.txt', mode="w") as file:
+                        for traject in trajecten:
+                            file.write("Traject " + str(traject) + ":")
+                            file.write("\n")
+                            for connectie in trajecten[traject].connections:
+                                file.write(connectie.origin - connectie.destination, connectie.time )
+                            
+                        #     writer.writerow(["Total of " + str(trajecten[traject].time) + " minutes."])
+                        #     writer.writerow([])
+                        # writer.writerow(["Total score of " + str(score)])
+                        
                     return True
-        
     
-
 if __name__ == "__main__":
     main()

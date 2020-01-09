@@ -1,49 +1,21 @@
-import json
+from bokeh.plotting import figure, show, output_file, gmap
+from bokeh.tile_providers import get_provider, Vendors
+from bokeh.io import output_file, show
+from bokeh.models import ColumnDataSource, GMapOptions
 
-from bokeh.io import show
-from bokeh.models import GeoJSONDataSource
-from bokeh.plotting import figure
+output_file("tile.html")
 
+tile_provider = get_provider(Vendors.CARTODBPOSITRON)
 
-def visualise(graph, geo_file):
-    """
-    Visualisation code that uses bokeh and geometry data from a JSON file
-    to represent a coloured graph.
-    """
+# range bounds supplied in web mercator coordinates
+p = figure(x_range=(-2000000, 6000000), y_range=(-1000000, 7000000),
+           x_axis_type="mercator", y_axis_type="mercator")
+p.add_tile(tile_provider)
 
-    with open(geo_file, 'r') as geo_file:
-        data = json.load(geo_file)
+source = ColumnDataSource(
+    data=dict(lat=[ 30.29,  30.20,  30.29],
+              lon=[-97.70, -97.74, -97.78])
+)
 
-    # Dict comprehension that creates a dictionary with a lowercase name for the
-    # node if it has at least one neighbour
-    states = {node.name.lower(): node for node in graph.nodes.values() if len(node.neighbours) != 0}
-
-    # Take the features of the states that have at least one neighbour
-    for i in range(len(data['features'])):
-        data['features'] = [feature for feature in data['features'] if
-                            feature['properties']['NAME'].lower().replace(' ', '') in states]
-
-    # Get the colour of the states from the corresponding nodes
-    for feature in data['features']:
-        feature['properties']['colour'] = states[
-            feature['properties']['NAME'].lower().replace(' ', '')].get_value().colour.get_web()
-        feature['properties']['cost'] = states[
-            feature['properties']['NAME'].lower().replace(' ', '')].get_value().value
-        feature['properties']['transmitter'] = states[
-            feature['properties']['NAME'].lower().replace(' ', '')].get_value().name
-
-    geo_source = GeoJSONDataSource(geojson=json.dumps(data))
-
-    # Set the bokeh tooltips
-    TOOLTIPS = [
-        ("(x,y)", "($x, $y)"),
-        ("State", "@NAME"),
-        ("Transmitter", "@transmitter"),
-        ("Cost", "@cost")
-    ]
-
-    p = figure(background_fill_color="lightgrey", tooltips=TOOLTIPS)
-    p.sizing_mode = 'scale_height'
-    p.patches(xs='xs', ys='ys', fill_color='colour', line_color='black', line_width=0.2, source=geo_source)
-
-    show(p)
+p.circle(x="lon", y="lat", size=15, fill_color="blue", fill_alpha=0.8, source=source)
+show(p)
