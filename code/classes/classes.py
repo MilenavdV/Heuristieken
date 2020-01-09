@@ -12,6 +12,7 @@ class Traject:
             self.connections.append(connection)
             self.time += time
             self.stops.append(connection.origin)
+        return self.stops
     
     def __str__(self):
         print("")

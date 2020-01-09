@@ -103,23 +103,18 @@ def main():
                 score = formula(p, i + 1, total_minutes)
                 print(formula(p, i + 1, total_minutes))
                 if score > 8800:
-                    with open('dienstregeling.csv', mode="w") as file:
-                        writer = csv.writer(file)
+                    with open('dienstregeling.txt', mode="w") as file:
                         for traject in trajecten:
-                            writer.writerow(["Traject " + str(traject) + ":"])
-                            writer.writerow([])
+                            file.write("Traject " + str(traject) + ":")
+                            file.write("\n")
                             for connectie in trajecten[traject].connections:
-                                writer.writerow((connectie.origin, connectie.destination, connectie.time ))
-                            writer.writerow([])
-                            writer.writerow(["Total of " + str(trajecten[traject].time) + " minutes."])
-                            writer.writerow([])
-                        writer.writerow(["Total score of " + str(score)])
+                                file.write(connectie.origin - connectie.destination, connectie.time )
+                            
+                        #     writer.writerow(["Total of " + str(trajecten[traject].time) + " minutes."])
+                        #     writer.writerow([])
+                        # writer.writerow(["Total score of " + str(score)])
                         
                     return True
     
 if __name__ == "__main__":
     main()
-
-
-
-   
