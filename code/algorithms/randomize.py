@@ -1,14 +1,12 @@
-from code.algorithms.readconnections import readConnections
-from code.classes.traject import Traject
-from code.classes.connection import Connection
+from .readconnections import readConnections
+from ..classes.connection import Connection
+from ..classes.traject import Traject
 import random
 import csv
 import os
 
 connections = {}
 connectionslist = []
-
-
 
 """ Function for finding possible connections from given startpoint(origin) 
     while excluding the previous station """
