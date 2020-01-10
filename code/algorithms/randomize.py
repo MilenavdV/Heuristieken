@@ -1,14 +1,12 @@
-from code.algorithms.readconnections import readConnections
-from code.classes.traject import Traject
-from code.classes.connection import Connection
+from .readconnections import readConnections
+from ..classes.connection import Connection
+from ..classes.traject import Traject
 import random
 import csv
 import os
 
 connections = {}
 connectionslist = []
-
-
 
 """ Function for finding possible connections from given startpoint(origin) 
     while excluding the previous station """
@@ -19,6 +17,22 @@ def findConnections(origin, previous_station):
         if origin == connections[i].origin and connections[i].destination != previous_station:
             options.append(i)
     return options
+
+def usefulConnections(origin, options, connections_used, traject_time, timeframe):
+    useful_options = []
+    origin = origin
+    for i in options:
+        destinations_options = findConnections(connections[i].destination, origin)
+        if i not in connections_used and changeDirection(i) not in connections_used and connections[i].time + traject_time < timeframe:
+            useful_options.append(i)
+        for j in destinations_options:
+            destinations_destinations_options = findConnections(connections[j].destination, origin)
+            if j not in connections_used and changeDirection(j) not in connections_used and connections[i].time + connections[j].time + traject_time < timeframe:
+                useful_options.append(i)
+            for k in destinations_destinations_options:
+                if k not in connections_used and changeDirection(k) not in connections_used and connections[i].time + connections[j].time + connections[k].time + traject_time < timeframe:
+                    useful_options.append(i)
+    return useful_options
 
 def fastestConnection(origin, previous_station):
     options = []
@@ -46,9 +60,7 @@ def changeDirection(verbinding):
     return bToA
 
 def formula(p, t, minutes):
-    score = p*10000 - (t*100 + minutes)
-    print(p, t, minutes)
-    
+    score = p*10000 - (t*100 + minutes)    
     return score
 
 def randomnize(file):
@@ -83,9 +95,10 @@ def randomnize(file):
                 new_origin = traject.connections[-1].destination
                 previous_station = traject.connections[-1].origin
                 options = findConnections(new_origin, previous_station)
-
-                if len(options) != 0 :
-                    new_connection = random.choice(options)
+                useful_options = usefulConnections(new_origin, options, connections_used, traject.time, traject.timeframe)
+                
+                if len(useful_options) != 0 :
+                    new_connection = random.choice(useful_options)
                     traject.addConnection(connections[new_connection], connections[new_connection].time)
                
             trajecten[i] = traject
@@ -104,11 +117,13 @@ def randomnize(file):
             if p == 1.00:
                 print(trajecten)
                 print(f"{i + 1} treinen gebruikt")
+                print(len(connectionslist), connectionslist)
+                print(len(connections_used), connections_used)
                 print(p)
                 score = formula(p, i + 1, total_minutes)
                 print(formula(p, i + 1, total_minutes))
 
-                if score > 9000:
+                if score > 9172:
                     os.remove('dienstregeling.txt')
                     with open('dienstregeling.txt', mode="w") as file:
                         for traject in trajecten:
@@ -120,6 +135,5 @@ def randomnize(file):
                             file.write(("Total time of " + str(trajecten[traject].time) + " minutes." + "\n"))
                             file.write("\n")
                         file.write(("Total score of: " + str(score) + "\n"))
-                    
                     
                     return True

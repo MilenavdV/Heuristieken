@@ -14,11 +14,11 @@ Amsterdam Zuid,Schiphol Airport,6
 Amsterdam Zuid,Amsterdam Sloterdijk,16
 Apeldoorn,Amersfoort,24
 Apeldoorn,Zutphen,20
-Arnhem Centraal,Ede-Wageningen,10
+Arnhem Centraal,Ede Wageningen,10
 Arnhem Centraal,Dieren,12
 Assen,Zwolle,40
 Beverwijk,Castricum,13
-Breda,Etten-Leur,7
+Breda,Etten Leur,7
 Breda,Dordrecht,18
 Castricum,Alkmaar,9
 Delft,Den Haag Laan v NOI,12
@@ -36,13 +36,13 @@ Deventer,Zutphen,12
 Dordrecht,Rotterdam Centraal,17
 Dordrecht,Rotterdam Blaak,14
 Eindhoven,Helmond,9
-Eindhoven,s-Hertogenbosch,18
+Eindhoven,s Hertogenbosch,18
 Eindhoven,Tilburg,21
-Etten-Leur,Roosendaal,11
+Etten Leur,Roosendaal,11
 Gouda,Alphen a/d Rijn,19
 Groningen,Assen,17
 Haarlem,Beverwijk,16
-Heemstede-Aerdenhout,Haarlem,6
+Heemstede Aerdenhout,Haarlem,6
 Heerenveen,Steenwijk,14
 Helmond,Venlo,30
 Hengelo,Enschede,7
@@ -51,7 +51,7 @@ Leeuwarden,Heerenveen,16
 Leeuwarden,Groningen,35
 Leiden Centraal,Schiphol Airport,15
 Leiden Centraal,Alphen a/d Rijn,14
-Leiden Centraal,Heemstede-Aerdenhout,13
+Leiden Centraal,Heemstede Aerdenhout,13
 Maastricht,Sittard,15
 Nijmegen,Arnhem Centraal,12
 Oss,Nijmegen,16
@@ -71,12 +71,12 @@ Tilburg,Breda,13
 Utrecht Centraal,Amsterdam Centraal,27
 Utrecht Centraal,Amsterdam Amstel,19
 Utrecht Centraal,Hilversum,15
-Utrecht Centraal,Ede-Wageningen,24
+Utrecht Centraal,Ede Wageningen,24
 Utrecht Centraal,Amersfoort,14
 Utrecht Centraal,Gouda,18
 Utrecht Centraal,Alphen a/d Rijn,28
 Utrecht Centraal,Schiphol Airport,33
-Utrecht Centraal,s-Hertogenbosch,27
+Utrecht Centraal,s Hertogenbosch,27
 Weert,Eindhoven,17
 Zaandam,Hoorn,26
 Zaandam,Castricum,12
@@ -85,5 +85,5 @@ Zutphen,Dieren,8
 Zwolle,Amersfoort,35
 Zwolle,Deventer,24
 Zwolle,Almelo,42
-s-Hertogenbosch,Oss,11
-s-Hertogenbosch,Tilburg,15
+s Hertogenbosch,Oss,11
+s Hertogenbosch,Tilburg,15
