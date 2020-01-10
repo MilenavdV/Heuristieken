@@ -1,0 +1,68 @@
+Traject 1:
+Alkmaar-Hoorn 24
+Hoorn-Zaandam 26
+Zaandam-Beverwijk 25
+Beverwijk-Haarlem 16
+Haarlem-Heemstede-Aerdenhout 6
+Heemstede-Aerdenhout-Leiden Centraal 13
+
+Total time of: 110 minutes.
+
+Traject 2:
+Amsterdam Sloterdijk-Amsterdam Centraal 6
+Amsterdam Centraal-Amsterdam Amstel 8
+Amsterdam Amstel-Amsterdam Zuid 10
+Amsterdam Zuid-Amsterdam Sloterdijk 16
+Amsterdam Sloterdijk-Amsterdam Centraal 6
+Amsterdam Centraal-Amsterdam Amstel 8
+Amsterdam Amstel-Amsterdam Zuid 10
+Amsterdam Zuid-Amsterdam Sloterdijk 16
+Amsterdam Sloterdijk-Zaandam 6
+Zaandam-Castricum 12
+Castricum-Alkmaar 9
+
+Total time of: 107 minutes.
+
+Traject 3:
+Beverwijk-Castricum 13
+Castricum-Alkmaar 9
+Alkmaar-Den Helder 36
+
+Total time of: 58 minutes.
+
+Traject 4:
+Amsterdam Amstel-Amsterdam Centraal 8
+Amsterdam Centraal-Amsterdam Sloterdijk 6
+Amsterdam Sloterdijk-Amsterdam Zuid 16
+Amsterdam Zuid-Schiphol Airport 6
+Schiphol Airport-Leiden Centraal 15
+Leiden Centraal-Alphen a/d Rijn 14
+Alphen a/d Rijn-Gouda 19
+Gouda-Rotterdam Alexander 10
+Rotterdam Alexander-Rotterdam Centraal 8
+Rotterdam Centraal-Dordrecht 17
+
+Total time of: 119 minutes.
+
+Traject 5:
+Schiedam Centrum-Delft 7
+Delft-Den Haag Centraal 13
+Den Haag Centraal-Gouda 18
+Gouda-Alphen a/d Rijn 19
+Alphen a/d Rijn-Leiden Centraal 14
+Leiden Centraal-Heemstede-Aerdenhout 13
+Heemstede-Aerdenhout-Haarlem 6
+Haarlem-Amsterdam Sloterdijk 11
+Amsterdam Sloterdijk-Amsterdam Zuid 16
+
+Total time of: 117 minutes.
+
+Traject 6:
+Den Haag Centraal-Delft 13
+Delft-Schiedam Centrum 7
+Schiedam Centrum-Rotterdam Centraal 5
+Rotterdam Centraal-Dordrecht 17
+
+Total time of: 42 minutes.
+
+Total score of: 8847.0

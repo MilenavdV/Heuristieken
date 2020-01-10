@@ -1,12 +1,13 @@
-from readconnections import readConnections
-from classes import Traject, Connection
+from .readconnections import readConnections
+from ..classes.classes import Traject, Connection
 import random
 import csv
+import os
 
 connections = {}
 connectionslist = []
 
-trajecten = {}
+
 
 """ Function for finding possible connections from given startpoint(origin) 
     while excluding the previous station """
@@ -43,14 +44,16 @@ def changeDirection(verbinding):
     bToA = newA + "-" + newB
     return bToA
 
-def formula(p, t, min):
-    score = p*10000 - (t*100 + min)
+def formula(p, t, minutes):
+    score = p*10000 - (t*100 + minutes)
+    print(p, t, minutes)
+    
     return score
 
-def main():
+def randomnize(file):
     # create Connection objects
-    for station in readConnections():
-        destinations = readConnections()[station]
+    for station in readConnections(file):
+        destinations = readConnections(file)[station]
         
         for optie in destinations:
             destination = optie[0]
@@ -65,6 +68,7 @@ def main():
     total = len(connectionslist) / 2
     
     while True:
+        trajecten = {}
         connections_used = []
         total_minutes = 0
         for i in range(0, 7):
@@ -74,12 +78,12 @@ def main():
             start = random.choice(connectionslist)
             traject.addConnection(connections[start], connections[start].time)
 
-            for j in range(0,30):
+            for j in range(0,20):
                 new_origin = traject.connections[-1].destination
                 previous_station = traject.connections[-1].origin
                 options = findConnections(new_origin, previous_station)
 
-                if len(options) != 0:
+                if len(options) != 0 :
                     new_connection = random.choice(options)
                     traject.addConnection(connections[new_connection], connections[new_connection].time)
                
@@ -102,19 +106,19 @@ def main():
                 print(p)
                 score = formula(p, i + 1, total_minutes)
                 print(formula(p, i + 1, total_minutes))
-                if score > 8800:
+
+                if score > 9000:
+                    os.remove('dienstregeling.txt')
                     with open('dienstregeling.txt', mode="w") as file:
                         for traject in trajecten:
-                            file.write("Traject " + str(traject) + ":")
+                            file.write("Traject " + str(traject + 1) + ":")
                             file.write("\n")
                             for connectie in trajecten[traject].connections:
-                                file.write(connectie.origin - connectie.destination, connectie.time )
-                            
-                        #     writer.writerow(["Total of " + str(trajecten[traject].time) + " minutes."])
-                        #     writer.writerow([])
-                        # writer.writerow(["Total score of " + str(score)])
-                        
+                                file.write((connectie.origin + "-" + connectie.destination + " " + str(connectie.time) + "\n"))
+                            file.write("\n")
+                            file.write(("Total time of " + str(trajecten[traject].time) + " minutes." + "\n"))
+                            file.write("\n")
+                        file.write(("Total score of: " + str(score) + "\n"))
+                    
+                    
                     return True
-    
-if __name__ == "__main__":
-    main()

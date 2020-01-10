@@ -1,9 +1,9 @@
 import csv
 
-def readConnections():
+def readConnections(file):
     connections = {}
 
-    with open('data/ConnectiesHolland.csv', mode='r') as csv_file:
+    with open(file, mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         
         for row in csv_reader:
