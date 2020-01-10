@@ -1,5 +1,6 @@
-from .readconnections import readConnections
-from ..classes.classes import Traject, Connection
+from code.algorithms.readconnections import readConnections
+from code.classes.traject import Traject
+from code.classes.connection import Connection
 import random
 import csv
 import os
