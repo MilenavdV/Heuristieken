@@ -1,22 +1,45 @@
 import csv
+from ..classes.connection import Connection
 
 def readConnections(file):
-    connections = {}
+    stations = {}
 
     with open(file, mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         
         for row in csv_reader:
             # van a naar b
-            if row[0] not in connections:
-                connections[row[0]] = []
+            if row[0] not in stations:
+                stations[row[0]] = []
             thistuple = (row[1], row[2])
-            connections[row[0]].append(thistuple)
+            stations[row[0]].append(thistuple)
 
             # van b naar a 
-            if row[1] not in connections:
-                connections[row[1]] = []
+            if row[1] not in stations:
+                stations[row[1]] = []
             thistuple = (row[0], row[2])
-            connections[row[1]].append(thistuple)
+            stations[row[1]].append(thistuple)
 
-    return(connections)
+    # create Connection objects
+    connections = {}
+    for station in stations:
+        # find all connections from station
+        destinations = stations[station]
+
+        for option in destinations:
+            destination = option[0]
+            time = option[1]
+            # create Connection object
+            connection = Connection(station, destination, int(time))
+            key = connection.origin + "-" + connection.destination
+            # add Connection to dictionary
+            connections[key] = connection
+    
+    # initialise list
+    connectionslist = []
+    
+    for i in connections:
+        # create list of all connections
+        connectionslist.append(i)
+
+    return connections, connectionslist
