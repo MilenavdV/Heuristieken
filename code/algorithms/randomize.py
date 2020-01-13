@@ -1,6 +1,6 @@
-from .readconnections import readConnections
-from ..classes.connection import Connection
-from ..classes.traject import Traject
+from code.algorithms.readconnections import readConnections
+from code.classes.traject import Traject
+from code.classes.connection import Connection
 import random
 import csv
 import os
@@ -125,15 +125,15 @@ def randomnize(file):
 
                 if score > 9172:
                     os.remove('dienstregeling.txt')
-                    with open('dienstregeling.txt', mode="w") as file:
+                    with open('dienstregeling.csv', mode="w") as file:
                         for traject in trajecten:
-                            file.write("Traject " + str(traject + 1) + ":")
+                            file.write(str(traject + 1))
                             file.write("\n")
                             for connectie in trajecten[traject].connections:
                                 file.write((connectie.origin + "-" + connectie.destination + " " + str(connectie.time) + "\n"))
-                            file.write("\n")
-                            file.write(("Total time of " + str(trajecten[traject].time) + " minutes." + "\n"))
-                            file.write("\n")
-                        file.write(("Total score of: " + str(score) + "\n"))
+                        #     file.write("\n")
+                        #     file.write(("Total time of " + str(trajecten[traject].time) + " minutes." + "\n"))
+                        #     file.write("\n")
+                        # file.write(("Total score of: " + str(score) + "\n"))
                     
                     return True
