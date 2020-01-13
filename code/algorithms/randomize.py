@@ -63,28 +63,16 @@ def formula(p, t, minutes):
     score = p*10000 - (t*100 + minutes)    
     return score
 
-def randomize(file):
-    # create Connection objects
-    for station in readConnections(file):
-        destinations = readConnections(file)[station]
-        
-        for optie in destinations:
-            destination = optie[0]
-            time = optie[1]
-            connection = Connection(station, destination, int(time))
-            key = connection.origin + "-" + connection.destination
-            connections[key] = connection
-    
-    for i in connections:
-        connectionslist.append(i)
-
-    total = len(connectionslist) / 2
+def randomize(cdict, clist, trains):
+    connections = cdict
+    connectionslist = clist
+    total = len(clist) / 2
     
     while True:
         trajecten = {}
         connections_used = []
         total_minutes = 0
-        for i in range(0, 7):
+        for i in range(0, trains):
             
             traject = Traject()
         
@@ -136,4 +124,4 @@ def randomize(file):
                             file.write("\n")
                         file.write(("Total score of: " + str(score) + "\n"))
                     
-                    return True
+                    return trajecten
