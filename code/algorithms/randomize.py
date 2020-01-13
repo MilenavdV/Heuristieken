@@ -1,4 +1,5 @@
 from .readconnections import readConnections
+from .readstations import readStations
 from ..classes.connection import Connection
 from ..classes.traject import Traject
 import random
@@ -32,6 +33,7 @@ def usefulConnections(origin, options, connections_used, traject_time, timeframe
             for k in destinations_destinations_options:
                 if k not in connections_used and changeDirection(k) not in connections_used and connections[i].time + connections[j].time + connections[k].time + traject_time < timeframe:
                     useful_options.append(i)
+                
     return useful_options
 
 def fastestConnection(origin, previous_station):
@@ -123,17 +125,18 @@ def randomize(file):
                 score = formula(p, i + 1, total_minutes)
                 print(formula(p, i + 1, total_minutes))
 
-                if score > 9172:
-                    os.remove('dienstregeling.txt')
-                    with open('dienstregeling.txt', mode="w") as file:
+                if score > 9100:
+                    stations = readStations('data/StationsNationaal.csv')
+                    with open('dienstregeling.csv', mode="w") as file:
+                        csv_writer = csv.writer(file)
                         for traject in trajecten:
-                            file.write("Traject " + str(traject + 1) + ":")
-                            file.write("\n")
+                            csv_writer.writerow(["Traject " + str(traject + 1)])
+                            csv_writer.writerow([])
                             for connectie in trajecten[traject].connections:
-                                file.write((connectie.origin + "-" + connectie.destination + " " + str(connectie.time) + "\n"))
-                            file.write("\n")
-                            file.write(("Total time of " + str(trajecten[traject].time) + " minutes." + "\n"))
-                            file.write("\n")
-                        file.write(("Total score of: " + str(score) + "\n"))
+                                csv_writer.writerow([connectie.origin, connectie.destination, stations[connectie.origin], stations[connectie.destination], str(connectie.time)])
+                            csv_writer.writerow([])
+                            csv_writer.writerow(["Total time of " + str(trajecten[traject].time) + " minutes."])
+                            csv_writer.writerow([])
+                        csv_writer.writerow(["Total score of: " + str(score)])
                     
                     return True
