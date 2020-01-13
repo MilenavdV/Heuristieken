@@ -1,4 +1,4 @@
-from code.algorithms.randomnize import randomnize
+from code.algorithms.randomize import randomize
 
 if __name__ == "__main__":
-    randomnize('data/ConnectiesHolland.csv')
+    randomize('data/ConnectiesHolland.csv')
