@@ -63,7 +63,7 @@ def formula(p, t, minutes):
     score = p*10000 - (t*100 + minutes)    
     return score
 
-def randomnize(file):
+def randomize(file):
     # create Connection objects
     for station in readConnections(file):
         destinations = readConnections(file)[station]
