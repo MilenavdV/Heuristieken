@@ -40,8 +40,6 @@ def fastestOption(cdict, clist, trains):
 
     total = len(connectionslist) / 2
     
-
-    
     connections_used = []
     total_minutes = 0
 
