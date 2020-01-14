@@ -106,8 +106,12 @@ def randomize(cdict, clist, trains):
 
                 # find the previous station of the traject
                 previous_station = traject.connections[-1].origin
+<<<<<<< HEAD
 
                 # options = findConnections(new_origin, previous_station, connections)
+=======
+                options = findConnections(new_origin, previous_station, connections)
+>>>>>>> bf7f7495c59cd0accb240d2fdc10a7a1e2ae712b
                 useful_options = usefulConnections(new_origin, options, connections_used, traject.time, traject.timeframe, connections)
                 
                 if len(useful_options) != 0 :
@@ -136,5 +140,9 @@ def randomize(cdict, clist, trains):
                 score = formula(p, i + 1, total_minutes)
                 print(formula(p, i + 1, total_minutes))
 
+<<<<<<< HEAD
                 if score > 9100:
+=======
+                if score < 9100:
+>>>>>>> bf7f7495c59cd0accb240d2fdc10a7a1e2ae712b
                     return trajecten

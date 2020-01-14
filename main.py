@@ -10,5 +10,9 @@ if __name__ == "__main__":
     # while p != 1:
     #     trajecten, p = fastestOption(cdict,clist,trains)
 
+<<<<<<< HEAD
     # csvWriter('dienstregeling.csv',trajecten)
     kruskal("data/ConnectiesHolland.csv")
+=======
+    csvWriter('dienstregeling.csv',trajecten)
+>>>>>>> bf7f7495c59cd0accb240d2fdc10a7a1e2ae712b
