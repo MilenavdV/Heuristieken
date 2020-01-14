@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-from code.algorithms.readconnections import readConnections
-from code.classes.traject import Traject
-from code.classes.connection import Connection
-=======
 from .readconnections import readConnections
 from .readstations import readStations
 from ..classes.connection import Connection
 from ..classes.traject import Traject
->>>>>>> 7a3cd8599005339dc298b0870cd7010ad9054b6e
 import random
 import csv
 import os
@@ -131,18 +125,18 @@ def randomize(file):
                 score = formula(p, i + 1, total_minutes)
                 print(formula(p, i + 1, total_minutes))
 
-                if score > 9100:
+                if score < 9100:
                     stations = readStations('data/StationsNationaal.csv')
                     with open('dienstregeling.csv', mode="w") as file:
                         csv_writer = csv.writer(file)
                         for traject in trajecten:
                             csv_writer.writerow(["Traject " + str(traject + 1)])
-                            csv_writer.writerow([])
+                            # csv_writer.writerow([])
                             for connectie in trajecten[traject].connections:
-                                csv_writer.writerow([connectie.origin, connectie.destination, stations[connectie.origin], stations[connectie.destination], str(connectie.time)])
-                            csv_writer.writerow([])
+                                csv_writer.writerow([connectie.origin, connectie.destination, stations[connectie.origin][0],stations[connectie.origin][1], stations[connectie.destination][0], stations[connectie.destination][1], str(connectie.time)])
+                            # csv_writer.writerow([])
                             csv_writer.writerow(["Total time of " + str(trajecten[traject].time) + " minutes."])
-                            csv_writer.writerow([])
+                            # csv_writer.writerow([])
                         csv_writer.writerow(["Total score of: " + str(score)])
                     
                     return True

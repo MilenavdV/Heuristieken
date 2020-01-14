@@ -1,103 +1,55 @@
-<<<<<<< HEAD
-1
-Leiden Centraal-Heemstede Aerdenhout 13
-Heemstede Aerdenhout-Haarlem 6
-Haarlem-Beverwijk 16
-Beverwijk-Zaandam 25
-Zaandam-Amsterdam Sloterdijk 6
-Amsterdam Sloterdijk-Amsterdam Zuid 16
-Amsterdam Zuid-Schiphol Airport 6
-Schiphol Airport-Leiden Centraal 15
-Leiden Centraal-Heemstede Aerdenhout 13
-Heemstede Aerdenhout-Haarlem 6
-Haarlem-Amsterdam Sloterdijk 11
-Amsterdam Sloterdijk-Zaandam 6
-Zaandam-Castricum 12
-Castricum-Beverwijk 13
-2
-Dordrecht-Rotterdam Centraal 17
-Rotterdam Centraal-Schiedam Centrum 5
-Schiedam Centrum-Delft 7
-Delft-Den Haag Centraal 13
-Den Haag Centraal-Gouda 18
-Gouda-Rotterdam Alexander 10
-Rotterdam Alexander-Rotterdam Centraal 8
-Rotterdam Centraal-Schiedam Centrum 5
-Schiedam Centrum-Delft 7
-Delft-Den Haag Centraal 13
-Den Haag Centraal-Leiden Centraal 12
-Leiden Centraal-Alphen a/d Rijn 14
-Alphen a/d Rijn-Gouda 19
-Gouda-Rotterdam Alexander 10
-Rotterdam Alexander-Rotterdam Centraal 8
-Rotterdam Centraal-Schiedam Centrum 5
-Schiedam Centrum-Delft 7
-3
-Alkmaar-Castricum 9
-Castricum-Zaandam 12
-Zaandam-Amsterdam Sloterdijk 6
-Amsterdam Sloterdijk-Amsterdam Centraal 6
-Amsterdam Centraal-Amsterdam Amstel 8
-Amsterdam Amstel-Amsterdam Zuid 10
-Amsterdam Zuid-Amsterdam Sloterdijk 16
-Amsterdam Sloterdijk-Zaandam 6
-Zaandam-Hoorn 26
-Hoorn-Alkmaar 24
-Alkmaar-Den Helder 36
-=======
-Traject 1
-
-Beverwijk,Haarlem,"['52.47833252', '4.656666756']","['52.38777924', '4.638333321']",16
-Haarlem,Amsterdam Sloterdijk,"['52.38777924', '4.638333321']","['52.38888931', '4.837777615']",11
-Amsterdam Sloterdijk,Amsterdam Centraal,"['52.38888931', '4.837777615']","['52.37888718', '4.900277615']",6
-Amsterdam Centraal,Amsterdam Amstel,"['52.37888718', '4.900277615']","['52.34666824', '4.917778015']",8
-Amsterdam Amstel,Amsterdam Zuid,"['52.34666824', '4.917778015']","['52.338889', '4.872356']",10
-Amsterdam Zuid,Amsterdam Sloterdijk,"['52.338889', '4.872356']","['52.38888931', '4.837777615']",16
-Amsterdam Sloterdijk,Zaandam,"['52.38888931', '4.837777615']","['52.43888855', '4.813611031']",6
-Zaandam,Castricum,"['52.43888855', '4.813611031']","['52.54583359', '4.658611298']",12
-Castricum,Alkmaar,"['52.54583359', '4.658611298']","['52.63777924', '4.739722252']",9
-Alkmaar,Hoorn,"['52.63777924', '4.739722252']","['52.64472198', '5.055555344']",24
-
-Total time of 118 minutes.
-
-Traject 2
-
-Leiden Centraal,Heemstede Aerdenhout,"['52.16611099', '4.481666565']","['52.35916519', '4.606666565']",13
-Heemstede Aerdenhout,Haarlem,"['52.35916519', '4.606666565']","['52.38777924', '4.638333321']",6
-Haarlem,Amsterdam Sloterdijk,"['52.38777924', '4.638333321']","['52.38888931', '4.837777615']",11
-Amsterdam Sloterdijk,Amsterdam Zuid,"['52.38888931', '4.837777615']","['52.338889', '4.872356']",16
-Amsterdam Zuid,Schiphol Airport,"['52.338889', '4.872356']","['52.30944443', '4.761944294']",6
-Schiphol Airport,Leiden Centraal,"['52.30944443', '4.761944294']","['52.16611099', '4.481666565']",15
-Leiden Centraal,Den Haag Centraal,"['52.16611099', '4.481666565']","['52.08027649', '4.324999809']",12
-Den Haag Centraal,Gouda,"['52.08027649', '4.324999809']","['52.01750183', '4.704444408']",18
-Gouda,Rotterdam Alexander,"['52.01750183', '4.704444408']","['51.95194626', '4.553611279']",10
-Rotterdam Alexander,Rotterdam Centraal,"['51.95194626', '4.553611279']","['51.92499924', '4.46888876']",8
-
-Total time of 115 minutes.
-
-Traject 3
-
-Haarlem,Heemstede Aerdenhout,"['52.38777924', '4.638333321']","['52.35916519', '4.606666565']",6
-Heemstede Aerdenhout,Leiden Centraal,"['52.35916519', '4.606666565']","['52.16611099', '4.481666565']",13
-Leiden Centraal,Alphen a/d Rijn,"['52.16611099', '4.481666565']","['52.12444305', '4.657777786']",14
-Alphen a/d Rijn,Gouda,"['52.12444305', '4.657777786']","['52.01750183', '4.704444408']",19
-Gouda,Den Haag Centraal,"['52.01750183', '4.704444408']","['52.08027649', '4.324999809']",18
-Den Haag Centraal,Delft,"['52.08027649', '4.324999809']","['52.00666809', '4.356389046']",13
-Delft,Schiedam Centrum,"['52.00666809', '4.356389046']","['51.92124381', '4.408993721']",7
-Schiedam Centrum,Rotterdam Centraal,"['51.92124381', '4.408993721']","['51.92499924', '4.46888876']",5
-Rotterdam Centraal,Dordrecht,"['51.92499924', '4.46888876']","['51.80722046', '4.66833353']",17
-
-Total time of 112 minutes.
-
-Traject 4
-
-Hoorn,Zaandam,"['52.64472198', '5.055555344']","['52.43888855', '4.813611031']",26
-Zaandam,Beverwijk,"['52.43888855', '4.813611031']","['52.47833252', '4.656666756']",25
-Beverwijk,Castricum,"['52.47833252', '4.656666756']","['52.54583359', '4.658611298']",13
-Castricum,Alkmaar,"['52.54583359', '4.658611298']","['52.63777924', '4.739722252']",9
-Alkmaar,Den Helder,"['52.63777924', '4.739722252']","['52.95527649', '4.761111259']",36
-
-Total time of 109 minutes.
-
-Total score of: 9146.0
->>>>>>> 7a3cd8599005339dc298b0870cd7010ad9054b6e
+Traject 1
+Heemstede Aerdenhout,Haarlem,52.35916519,4.606666565,52.38777924,4.638333321,6
+Haarlem,Amsterdam Sloterdijk,52.38777924,4.638333321,52.38888931,4.837777615,11
+Amsterdam Sloterdijk,Zaandam,52.38888931,4.837777615,52.43888855,4.813611031,6
+Zaandam,Beverwijk,52.43888855,4.813611031,52.47833252,4.656666756,25
+Beverwijk,Castricum,52.47833252,4.656666756,52.54583359,4.658611298,13
+Castricum,Zaandam,52.54583359,4.658611298,52.43888855,4.813611031,12
+Zaandam,Amsterdam Sloterdijk,52.43888855,4.813611031,52.38888931,4.837777615,6
+Amsterdam Sloterdijk,Amsterdam Zuid,52.38888931,4.837777615,52.338889,4.872356,16
+Amsterdam Zuid,Amsterdam Amstel,52.338889,4.872356,52.34666824,4.917778015,10
+Amsterdam Amstel,Amsterdam Centraal,52.34666824,4.917778015,52.37888718,4.900277615,8
+Amsterdam Centraal,Amsterdam Sloterdijk,52.37888718,4.900277615,52.38888931,4.837777615,6
+Total time of 119 minutes.
+Traject 2
+Alphen a/d Rijn,Gouda,52.12444305,4.657777786,52.01750183,4.704444408,19
+Gouda,Den Haag Centraal,52.01750183,4.704444408,52.08027649,4.324999809,18
+Den Haag Centraal,Delft,52.08027649,4.324999809,52.00666809,4.356389046,13
+Delft,Schiedam Centrum,52.00666809,4.356389046,51.92124381,4.408993721,7
+Schiedam Centrum,Rotterdam Centraal,51.92124381,4.408993721,51.92499924,4.46888876,5
+Rotterdam Centraal,Rotterdam Alexander,51.92499924,4.46888876,51.95194626,4.553611279,8
+Rotterdam Alexander,Gouda,51.95194626,4.553611279,52.01750183,4.704444408,10
+Gouda,Den Haag Centraal,52.01750183,4.704444408,52.08027649,4.324999809,18
+Den Haag Centraal,Delft,52.08027649,4.324999809,52.00666809,4.356389046,13
+Delft,Schiedam Centrum,52.00666809,4.356389046,51.92124381,4.408993721,7
+Total time of 118 minutes.
+Traject 3
+Rotterdam Centraal,Dordrecht,51.92499924,4.46888876,51.80722046,4.66833353,17
+Total time of 17 minutes.
+Traject 4
+Den Haag Centraal,Gouda,52.08027649,4.324999809,52.01750183,4.704444408,18
+Gouda,Alphen a/d Rijn,52.01750183,4.704444408,52.12444305,4.657777786,19
+Alphen a/d Rijn,Leiden Centraal,52.12444305,4.657777786,52.16611099,4.481666565,14
+Leiden Centraal,Heemstede Aerdenhout,52.16611099,4.481666565,52.35916519,4.606666565,13
+Heemstede Aerdenhout,Haarlem,52.35916519,4.606666565,52.38777924,4.638333321,6
+Haarlem,Beverwijk,52.38777924,4.638333321,52.47833252,4.656666756,16
+Beverwijk,Castricum,52.47833252,4.656666756,52.54583359,4.658611298,13
+Castricum,Alkmaar,52.54583359,4.658611298,52.63777924,4.739722252,9
+Total time of 108 minutes.
+Traject 5
+Alphen a/d Rijn,Leiden Centraal,52.12444305,4.657777786,52.16611099,4.481666565,14
+Leiden Centraal,Schiphol Airport,52.16611099,4.481666565,52.30944443,4.761944294,15
+Schiphol Airport,Amsterdam Zuid,52.30944443,4.761944294,52.338889,4.872356,6
+Amsterdam Zuid,Amsterdam Sloterdijk,52.338889,4.872356,52.38888931,4.837777615,16
+Amsterdam Sloterdijk,Zaandam,52.38888931,4.837777615,52.43888855,4.813611031,6
+Zaandam,Hoorn,52.43888855,4.813611031,52.64472198,5.055555344,26
+Hoorn,Alkmaar,52.64472198,5.055555344,52.63777924,4.739722252,24
+Total time of 107 minutes.
+Traject 6
+Alphen a/d Rijn,Leiden Centraal,52.12444305,4.657777786,52.16611099,4.481666565,14
+Leiden Centraal,Den Haag Centraal,52.16611099,4.481666565,52.08027649,4.324999809,12
+Total time of 26 minutes.
+Traject 7
+Alkmaar,Den Helder,52.63777924,4.739722252,52.95527649,4.761111259,36
+Total time of 36 minutes.
+Total score of: 8769.0

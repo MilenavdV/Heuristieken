@@ -1,12 +1,10 @@
 from bokeh.io import output_file, show
-from bokeh.models import GeoJSONDataSource
-from bokeh.plotting import figure
+from bokeh.models import GeoJSONDataSource, LabelSet, GMapOptions, ColumnDataSource
+from bokeh.plotting import figure, gmap
 from bokeh.sampledata.sample_geojson import geojson
 import json
 import csv
-from bokeh.models import ColumnDataSource, GMapOptions
-from bokeh.plotting import gmap
-from bokeh.models import HoverTool
+
 
 output_file("geojson.html")
 # map_options = GMapOptions(lat=52.5, lng=5, map_type="roadmap", zoom=7)
@@ -41,13 +39,36 @@ p.multi_line(y1,x1,line_width=2)
 
 x2 = []
 y2 = []
-with open("data/traject1.csv", mode='r') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=';')        
+i = 0
+trajecten_x ={}
+trajecten_y = {}
+with open("dienstregeling.csv", mode='r') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')        
     for row in csv_reader:
-        x2.append(float(row[1]))
-        y2.append(float(row[2]))
+        traject = 'Traject ' + str(i + 1)
+        if row == []:
+            continue
+        if 'Total' in row[0]:
+            continue
+        if row[0] == traject:
+            i = i+1
+            trajecten_x[i] = []
+            trajecten_y[i] = []
+            continue
+        trajecten_x[i].append(row[2])
+        trajecten_x[i].append(row[4])
+        trajecten_y[i].append(row[3])
+        trajecten_y[i].append(row[5])
 
-p.line(y2,x2,line_width=2,color="firebrick")
+
+# labels = LabelSet(x=y1, y=x1, text='@name', level='glyph', source=geo_source)
+color = ['peru','red','purple','yellow','aqua']
+for i in range(5):
+    p.line(trajecten_y[i+1],trajecten_x[i+1],line_width=2,color=color[i])
+    # labels = LabelSet(x='trajecten_y',y='trajecten_x',text=i,level='glyph')
+    # p.add_layout(labels)
+
+# p.add_layout(labels)
 p.circle(x='x', y='y', size=5, color='Color', alpha=0.7, source=geo_source)
 show(p)
 
