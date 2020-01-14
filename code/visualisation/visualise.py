@@ -29,12 +29,12 @@ y1 = []
 with open("data/trajectcoordinaten2.csv", mode='r') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=';')
     for row in csv_reader:
-        x1.append([float(row[2]),float(row[4])])
-        y1.append([float(row[3]),float(row[5])])
+        y1.append([float(row[2]),float(row[4])])
+        x1.append([float(row[3]),float(row[5])])
         
 p = figure(background_fill_color="lightgrey", tooltips=TOOLTIPS, plot_width=800,plot_height=800, tools="tap")
 
-p.multi_line(y1,x1,line_width=2)
+p.multi_line(x1,y1,line_width=2)
 
 
 x2 = []
@@ -52,19 +52,19 @@ with open("dienstregeling.csv", mode='r') as csv_file:
             continue
         if row[0] == traject:
             i = i+1
-            trajecten_x[i] = []
             trajecten_y[i] = []
+            trajecten_x[i] = []
             continue
-        trajecten_x[i].append(row[2])
-        trajecten_x[i].append(row[4])
-        trajecten_y[i].append(row[3])
-        trajecten_y[i].append(row[5])
+        trajecten_y[i].append(row[2])
+        trajecten_y[i].append(row[4])
+        trajecten_x[i].append(row[3])
+        trajecten_x[i].append(row[5])
 
 
 # labels = LabelSet(x=y1, y=x1, text='@name', level='glyph', source=geo_source)
 color = ['peru','red','purple','yellow','aqua']
 for i in range(5):
-    p.line(trajecten_y[i+1],trajecten_x[i+1],line_width=2,color=color[i])
+    p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2,color=color[i])
     # labels = LabelSet(x='trajecten_y',y='trajecten_x',text=i,level='glyph')
     # p.add_layout(labels)
 

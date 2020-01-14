@@ -6,6 +6,6 @@ class Connection:
 
     def __str__(self):
         return f"Trein van {self.origin} naar {self.destination} van {self.time} minuten"
-    
-    def print(self):
+
+    def text(self):
         return f"{self.origin}-{self.destination}"

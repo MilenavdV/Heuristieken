@@ -3,7 +3,7 @@ class Traject:
         self.connections = []
         self.stops = []
         self.time = 0
-        self.timeframe = 120
+        self.timeframe = 120        
 
     def addConnection(self, connection, time):
         # traject van a naar b, met mogelijke tussenstops en totale tijd
