@@ -1,5 +1,6 @@
 from .readconnections import readConnections
 from .readstations import readStations
+from .csvwriter import csvWriter
 from ..classes.connection import Connection
 from ..classes.traject import Traject
 import random
@@ -116,18 +117,5 @@ def randomize(cdict, clist, trains):
                 score = formula(p, i + 1, total_minutes)
                 print(formula(p, i + 1, total_minutes))
 
-                # if score > 8000:
-                stations = readStations('data/StationsNationaal.csv')
-                with open('dienstregeling.csv', mode="w") as file:
-                    csv_writer = csv.writer(file)
-                    for traject in trajecten:
-                        csv_writer.writerow(["Traject " + str(traject + 1)])
-                        csv_writer.writerow([])
-                        for connectie in trajecten[traject].connections:
-                            csv_writer.writerow([connectie.origin, connectie.destination, stations[connectie.origin], stations[connectie.destination], str(connectie.time)])
-                        csv_writer.writerow([])
-                        csv_writer.writerow(["Total time of " + str(trajecten[traject].time) + " minutes."])
-                        csv_writer.writerow([])
-                    csv_writer.writerow(["Total score of: " + str(score)])
-                    
+                if score < 9100:
                     return trajecten
