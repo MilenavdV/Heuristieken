@@ -22,9 +22,13 @@ def readConnections(file):
 
     # create Connection objects
     connections = {}
+
+    connectionlist2 = []
     for station in stations:
         # find all connections from station
         destinations = stations[station]
+        for destination in destinations:
+            connectionlist2.append([station, destination[0], int(destination[1])])
 
         for option in destinations:
             destination = option[0]
@@ -34,6 +38,8 @@ def readConnections(file):
             key = connection.origin + "-" + connection.destination
             # add Connection to dictionary
             connections[key] = connection
+
+
     
     # initialise list
     connectionslist = []
@@ -42,4 +48,4 @@ def readConnections(file):
         # create list of all connections
         connectionslist.append(i)
 
-    return connections, connectionslist
+    return stations, connections, connectionslist, connectionlist2
