@@ -133,6 +133,6 @@ def randomize(cdict, clist, trains):
                 print(len(connections_used), connections_used)
                 print(p)
                 score = formula(p, i + 1, total_minutes)
-                print(formula(p, i + 1, total_minutes))
+                print(score)
 
                 return trajecten
