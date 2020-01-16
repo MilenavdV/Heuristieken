@@ -14,7 +14,6 @@ output_file("geojson.html")
 with open("data/StationsNationaal2.json", 'r') as geo_file:
         data = json.load(geo_file)
 
-
 for i in range(len(data['features'])):
     data['features'][i]['properties']['Color'] = ['blue', 'blue'][i%2]
 
@@ -33,9 +32,7 @@ with open("data/trajectcoordinaten2.csv", mode='r') as csv_file:
         x1.append([float(row[3]),float(row[5])])
         
 p = figure(background_fill_color="lightgrey", tooltips=TOOLTIPS, plot_width=800,plot_height=800, tools="tap")
-
 p.multi_line(x1,y1,line_width=2)
-
 
 x2 = []
 y2 = []
