@@ -15,6 +15,7 @@ class Traject:
         return self.stops
     
     def __str__(self):
+        self.stops.append(self.connections[-1].destination)
         print("")
         print(f"Traject langs {self.stops}")
         print("")
