@@ -53,10 +53,7 @@ def fastestOption(cdict, clist, trains):
     # total amount of connections where a to b and b to a are considered as te same
     total = len(connectionslist) / 2
     
-<<<<<<< HEAD
     # keep track of the connections used in the whole timetable
-=======
->>>>>>> bf7f7495c59cd0accb240d2fdc10a7a1e2ae712b
     connections_used = []
 
     # keep track of the total time of the traject object

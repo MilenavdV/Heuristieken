@@ -3,6 +3,7 @@ from .readstations import readStations
 from .csvwriter import csvWriter
 from ..classes.connection import Connection
 from ..classes.traject import Traject
+from statistics import mean
 import random
 import csv
 import os
@@ -93,8 +94,11 @@ def randomize(cdict, clist, trains):
             
             traject = Traject()
 
-            # initialize starting point
-            start = random.choice(connectionslist)
+            while True:
+                # initialize starting point
+                start = random.choice(connectionslist)
+                if start not in connections_used:
+                    break
 
             # add starting connection to the traject
             traject.addConnection(connections[start], connections[start].time)
@@ -106,12 +110,8 @@ def randomize(cdict, clist, trains):
 
                 # find the previous station of the traject
                 previous_station = traject.connections[-1].origin
-<<<<<<< HEAD
 
-                # options = findConnections(new_origin, previous_station, connections)
-=======
                 options = findConnections(new_origin, previous_station, connections)
->>>>>>> bf7f7495c59cd0accb240d2fdc10a7a1e2ae712b
                 useful_options = usefulConnections(new_origin, options, connections_used, traject.time, traject.timeframe, connections)
                 
                 if len(useful_options) != 0 :
@@ -122,27 +122,24 @@ def randomize(cdict, clist, trains):
             total_minutes += traject.time
 
             for k in traject.connections:
-                if k.print() not in connections_used and changeDirection(k.print()) not in connections_used:
-                    connections_used.append(k.print())
+                if k.text() not in connections_used and changeDirection(k.text()) not in connections_used:
+                    connections_used.append(k.text())
             
             p = len(connections_used) / total
             
-            print(traject)
-            print(f"{len(connections_used)} connections used so far.")
-            print(p)
-
-            if p == 1.00:
-                print(trajecten)
+            #print(traject)
+            #print(f"{len(connections_used)} connections used so far.")
+            #print(p)
+        
+            score = formula(p, i + 1, total_minutes)
+    
+            if score > 5123:
+                print(len(trajecten))
                 print(f"{i + 1} treinen gebruikt")
-                print(len(connectionslist), connectionslist)
-                print(len(connections_used), connections_used)
+                #print(len(connectionslist), connectionslist)
+                #print(len(connections_used), connections_used)
                 print(p)
-                score = formula(p, i + 1, total_minutes)
-                print(formula(p, i + 1, total_minutes))
+                
+                print(score)
 
-<<<<<<< HEAD
-                if score > 9100:
-=======
-                if score < 9100:
->>>>>>> bf7f7495c59cd0accb240d2fdc10a7a1e2ae712b
-                    return trajecten
+                return trajecten
