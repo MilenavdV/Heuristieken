@@ -19,7 +19,7 @@ for i in range(len(data['features'])):
     stations.append(data['features'][i]['properties']['name'])
 
 geo_source = GeoJSONDataSource(geojson=json.dumps(data))
-print(stations)
+# print(stations)
 TOOLTIPS = [
     ('Station', '@name')
 ]
@@ -53,6 +53,7 @@ with open("dienstregeling.csv", mode='r') as csv_file:
             trajecten_y[i] = []
             trajecten_x[i] = []
             continue
+        print(row)
         trajecten_y[i].append(row[2])
         trajecten_y[i].append(row[4])
         trajecten_x[i].append(row[3])
@@ -60,8 +61,8 @@ with open("dienstregeling.csv", mode='r') as csv_file:
 
 
 # labels = LabelSet(x=y1, y=x1, text=stations, level='glyph',source=geo_source)
-color = ['peru','red','purple','yellow','aqua']
-for i in range(5):
+color = ['peru','red','purple','yellow','aqua','green','magenta','pink','orange','white','black','grey','brown','blue','cyan']
+for i in range(15):
     p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2,color=color[i])
     # labels = LabelSet(x='trajecten_y',y='trajecten_x',text=i,level='glyph')
     # p.add_layout(labels)

@@ -7,38 +7,19 @@ from code.algorithms.randomize import randomize
 from code.algorithms.vrijdag import test
 
 if __name__ == "__main__":
-    trains = 7
-    timeframe = 120
+    trains = 20
+    timeframe = 180
     p = 0
-    time = 180
+
     file = 'data/ConnectiesNationaal.csv'
     output = 'dienstregeling.csv'
     stations, cdict, clist, clist2= readConnections(file)
 
-    test(file,timeframe,stations)
-    # count = 0
-    # while p != 1:
-    #     trajecten, p,minutes = fastestOption(stations, cdict, clist,clist2, trains, time)
-    #     count +=1
-    #     print(count)
+    while True:
+        trajecten,scorerandom,p = randomize(cdict, clist, trains, timeframe)
+        if scorerandom > 6200:
+            break
 
-    # csvWriter(output,trajecten)
-    # score = 10000*p -(trains*100+minutes)
-    # print("Fastest",score,count)
-
-    # # Kruskal 
-    # trajecten,p,score = kruskal("data/ConnectiesHolland.csv",trains,timeframe)
-    # print("Kruskal",score)
-    # # print(trajecten)
-    # # csvWriter('dienstregeling.csv',trajecten) 
-
-<<<<<<< HEAD
-    csvWriter('dienstregeling.csv', randomize(cdict, clist, trains))
-=======
-    # # Random
-    # # while p != 1:
-    # #     trajecten,scorerandom,p,countr = randomize(cdict, clist, trains, timeframe)
-    # #     # countr +=1
-    # # print("Random",scorerandom,countr)
-    # # csvWriter('dienstregeling.csv',trajecten)
->>>>>>> 9ae4982cfc86e94e5f68b2abcaf17d237a05cb41
+    print("Random",scorerandom, p)
+    csvWriter('dienstregeling.csv',trajecten)
+    #6256.561797752809
