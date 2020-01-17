@@ -25,7 +25,7 @@ def shortest(usefulOptions, connections):
     except:
         return None
 
-def kruskal(file):
+def kruskal(file,trains,timeframe):
     stations, connections, connectionlist, connectionlist2 = readConnections(file)
     connectionlist3 =[]
 
@@ -36,7 +36,7 @@ def kruskal(file):
 
     if 'Den Helder' in connectionlist2:
         print('yes')
-    with open("data/ConnectiesHolland.csv", mode='r') as csv_file:
+    with open(file, mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             connectionlist3.append([row[0],row[1],int(row[2])])
@@ -46,10 +46,10 @@ def kruskal(file):
     graph = sorted(connectionlist2, key=lambda item: item[2])
 
     # begin, eind, tijd
-    for i in range(0, 7):
+    for i in range(0, trains):
         u,v,w = graph[0]
         traject = Traject()
-        timeframe = 120   
+        timeframe = timeframe   
         traject.addConnection(connections[f"{u}-{v}"], w, timeframe)
         connections_used.append(connections[f"{u}-{v}"])
         graph.remove([u, v, w])
@@ -87,10 +87,8 @@ def kruskal(file):
         trajecten[i + 1] = traject
         total_minutes += traject.time
        
-    trains = len(trajecten)
-    p = (len(connections_used) -7) / total_connections
-    # print(p)
+    trains = trains
+    # print(total_connections)
+    p = (len(connections_used)-trains) / total_connections
     score = formula(p, trains, total_minutes)
-    # print(score)
-
     return trajecten,p,score
