@@ -5,31 +5,32 @@ from code.algorithms.kruskal import kruskal
 from code.algorithms.randomize import randomize
 
 if __name__ == "__main__":
-    stations, cdict, clist, clist2= readConnections('data/ConnectiesHolland.csv')
-    trains = 7
-    timeframe = 120
+    stations, cdict, clist, clist2= readConnections('data/ConnectiesNationaal.csv')
+    trains = 20
+    timeframe = 180
     p = 0
-    time = 120
+    time = 180
 
     count = 0
     while p != 1:
         trajecten, p,minutes = fastestOption(stations, cdict, clist,clist2, trains, time)
         count +=1
+        print(count)
 
     csvWriter('dienstregeling.csv',trajecten)
     score = 10000*p -(trains*100+minutes)
     print("Fastest",score,count)
 
-    # Kruskal 
-    trajecten,p,score = kruskal("data/ConnectiesHolland.csv")
-    print("Kruskal",score)
-    # csvWriter('dienstregeling.csv',trajecten)
+    # # Kruskal 
+    # trajecten,p,score = kruskal("data/ConnectiesHolland.csv",trains,timeframe)
+    # print("Kruskal",score)
+    # # print(trajecten)
+    # # csvWriter('dienstregeling.csv',trajecten)
     
 
-    # Random
-    # countr =0 
-    while p != 1:
-        trajecten,scorerandom,p,countr = randomize(cdict, clist, trains, timeframe)
-        # countr +=1
-    print("Random",scorerandom,countr)
+    # # # Random
+    # while p != 1:
+    #     trajecten,scorerandom,p,countr = randomize(cdict, clist, trains, timeframe)
+    #     # countr +=1
+    # print("Random",scorerandom,countr)
     # csvWriter('dienstregeling.csv',trajecten)
