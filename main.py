@@ -4,21 +4,15 @@ from code.algorithms.csvwriter import csvWriter
 from code.algorithms.kruskal import kruskal
 from code.algorithms.randomize import randomize
 from code.algorithms.vrijdag import test
+from code.algorithms.hillclimb import HillClimber
 
 if __name__ == "__main__":
     trains = 7
     timeframe = 120
     p = 0
-<<<<<<< HEAD
     time = 120
-=======
-    time = 180
-    file = 'data/ConnectiesNationaal.csv'
-    output = 'dienstregeling.csv'
-    stations, cdict, clist, clist2= readConnections(file)
->>>>>>> 9ae4982cfc86e94e5f68b2abcaf17d237a05cb41
 
-    test(file,timeframe,stations)
+    # test(file,timeframe,stations)
     # count = 0
     # while p != 1:
     #     trajecten, p,minutes = fastestOption(stations, cdict, clist,clist2, trains, time)
@@ -29,19 +23,14 @@ if __name__ == "__main__":
     # score = 10000*p -(trains*100+minutes)
     # print("Fastest",score,count)
 
-<<<<<<< HEAD
     # Kruskal 
-    trajecten,p,score = kruskal("data/ConnectiesHolland.csv")
+    trajecten,p,score = kruskal("data/ConnectiesHolland.csv",7,120)
     print("Kruskal",score)
+    
+    hillclimb = HillClimber("data/ConnectiesHolland.csv",p,trajecten)
+    hillclimb.improve(10)
     # csvWriter('dienstregeling.csv',trajecten)
     
-=======
-    # # Kruskal 
-    # trajecten,p,score = kruskal("data/ConnectiesHolland.csv",trains,timeframe)
-    # print("Kruskal",score)
-    # # print(trajecten)
-    # # csvWriter('dienstregeling.csv',trajecten) 
->>>>>>> 9ae4982cfc86e94e5f68b2abcaf17d237a05cb41
 
     # # Random
     # # while p != 1:
