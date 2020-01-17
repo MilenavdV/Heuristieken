@@ -10,13 +10,6 @@ if __name__ == "__main__":
     timeframe = 120
     p = 0
     time = 120
-<<<<<<< HEAD
-    # while p != 1:
-    trajecten, p = fastestOption(stations, cdict, clist,clist2, trains, time)
-    print(trajecten)
-    for traject in trajecten.values():
-        print(traject.connections)
-=======
 
     count = 0
     while p != 1:
@@ -30,7 +23,6 @@ if __name__ == "__main__":
     # Kruskal 
     trajecten,p,score = kruskal("data/ConnectiesHolland.csv")
     print("Kruskal",score)
->>>>>>> d797cc1614955cd06a7c47e4d43118887846cb46
     # csvWriter('dienstregeling.csv',trajecten)
     
 
