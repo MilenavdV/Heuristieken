@@ -3,18 +3,19 @@ class Traject:
         self.connections = []
         self.stops = []
         self.time = 0
-        self.timeframe = 180        
 
-    def addConnection(self, connection, time):
+
+    def addConnection(self, connection, time, timeframe):
         # traject van a naar b, met mogelijke tussenstops en totale tijd
         # minimaliseren van functie K= p*10000-(T*100+Min)
-        if (self.time + time) < self.timeframe:
+        if (self.time + connection.time) < timeframe:
             self.connections.append(connection)
-            self.time += time
+            self.time += connection.time
             self.stops.append(connection.origin)
         return self.stops
     
     def __str__(self):
+        self.stops.append(self.connections[-1].destination)
         print("")
         print(f"Traject langs {self.stops}")
         print("")
@@ -22,15 +23,3 @@ class Traject:
             print(i)
         print("")
         return f"Totale reistijd van {self.time} minuten"
-
-class Connection:
-    def __init__(self, origin, destination, time):
-        self.origin = origin
-        self.destination = destination
-        self.time = time
-
-    def __str__(self):
-        return f"Trein van {self.origin} naar {self.destination} van {self.time} minuten"
-    
-    def print(self):
-        return f"{self.origin}-{self.destination}"

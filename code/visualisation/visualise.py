@@ -13,13 +13,13 @@ output_file("geojson.html")
 
 with open("data/StationsNationaal2.json", 'r') as geo_file:
         data = json.load(geo_file)
-
-
+stations =[]
 for i in range(len(data['features'])):
     data['features'][i]['properties']['Color'] = ['blue', 'blue'][i%2]
+    stations.append(data['features'][i]['properties']['name'])
 
 geo_source = GeoJSONDataSource(geojson=json.dumps(data))
-
+print(stations)
 TOOLTIPS = [
     ('Station', '@name')
 ]
@@ -33,9 +33,7 @@ with open("data/trajectcoordinaten2.csv", mode='r') as csv_file:
         x1.append([float(row[3]),float(row[5])])
         
 p = figure(background_fill_color="lightgrey", tooltips=TOOLTIPS, plot_width=800,plot_height=800, tools="tap")
-
 p.multi_line(x1,y1,line_width=2)
-
 
 x2 = []
 y2 = []
@@ -61,7 +59,7 @@ with open("dienstregeling.csv", mode='r') as csv_file:
         trajecten_x[i].append(row[5])
 
 
-# labels = LabelSet(x=y1, y=x1, text='@name', level='glyph', source=geo_source)
+# labels = LabelSet(x=y1, y=x1, text=stations, level='glyph',source=geo_source)
 color = ['peru','red','purple','yellow','aqua']
 for i in range(5):
     p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2,color=color[i])

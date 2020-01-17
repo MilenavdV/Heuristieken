@@ -4,8 +4,8 @@ class Connection:
         self.destination = destination
         self.time = time
 
-    def __str__(self):
-        return f"Trein van {self.origin} naar {self.destination} van {self.time} minuten"
-
     def text(self):
         return f"{self.origin}-{self.destination}"
+
+    def __str__(self):
+        return f"Trein van {self.origin} naar {self.destination} van {self.time} minuten"
