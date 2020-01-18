@@ -14,6 +14,8 @@ def randomize(cdict, clist, trains, timeframe):
     timeframe = timeframe
     connections = cdict
     count = 0
+    max_trains = trains
+    trains_used = 0
     # total amount of connections where a to b and b to a are considered as te same
     total = len(clist) / 2
     while True:
@@ -26,8 +28,15 @@ def randomize(cdict, clist, trains, timeframe):
         # keep track of the total time of the traject object
         total_minutes = 0
 
+        failed_attemps = 0
+
         # create a new traject object for the amount of trains allowed
-        for i in range(0, trains):
+        while True:
+            current_p = (len(connections_used)) / total
+            
+            current_score = formula(current_p, trains_used , total_minutes)
+            #print(current_p, trains_used, total_minutes, current_score)
+            count_new_connections = 0
             
             traject = Traject()
 
@@ -41,7 +50,7 @@ def randomize(cdict, clist, trains, timeframe):
             traject.addConnection(connections[start], connections[start].time, timeframe)
 
             # ugly for-loop that adds connections to the traject object 
-            for j in range(0,20):
+            while True:
                 # find the current station of the traject
                 new_origin = traject.connections[-1].destination
 
@@ -53,23 +62,37 @@ def randomize(cdict, clist, trains, timeframe):
                 if len(useful_options) != 0 :
                     new_connection = random.choice(useful_options)
                     traject.addConnection(connections[new_connection], connections[new_connection].time,timeframe)
-               
-            trajecten[i] = traject
-            total_minutes += traject.time
-
+                else:
+                    break
+            new_connections = []
             for k in traject.connections:
-                if k.text() not in connections_used and changeDirection(k.text()) not in connections_used:
-                    connections_used.append(k.text())
+                if k.text() not in connections_used and changeDirection(k.text()) not in connections_used and k.text() not in new_connections and changeDirection(k.text()) not in new_connections:
+                    new_connections.append(k.text())
+                    count_new_connections += 1
+                    
+            p = (len(connections_used) + count_new_connections) / total
             
-            p = len(connections_used) / total
+            score = formula(p, trains_used + 1, total_minutes + traject.time)
             
-            #print(traject)
-            #print(f"{len(connections_used)} connections used so far.")
-            #print(p)
+            #print(p, trains_used + 1, total_minutes + traject.time , score)
 
-            if p != 1.00:
-                count +=1 
-            if p == 1.00:
-                count +=1
-                score = formula(p, i + 1, total_minutes)
-                return trajecten,score,p,count
+            if score > current_score and trains_used != max_trains:
+                trajecten[trains_used] = traject
+                trains_used += 1
+                total_minutes += traject.time
+                for k in traject.connections:
+                    if k.text() not in connections_used and changeDirection(k.text()) not in connections_used:
+                        connections_used.append(k.text())
+                #print("Train Added")
+            else:
+                failed_attemps +=1
+            
+            if failed_attemps == 75:
+                print(round(score))
+                break
+
+            #print(traject)
+            # print(f"{len(connections_used)} connections used so far.")
+            # print(current_p)
+        score = formula(p, trains_used + 1, total_minutes)
+        return trajecten,score,p,trains_used

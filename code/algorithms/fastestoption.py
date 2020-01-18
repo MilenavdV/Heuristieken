@@ -20,6 +20,7 @@ def fastestOption(stations,cdict, clist, clist2, trains, timeframe):
     # count of all the elements in list 
     total = len([ele for sub in stations.values() for ele in sub])/2 
     
+    # keep track of the connections used in the whole timetable
     connections_used = []
 
     # keep track of the total time of the traject object
