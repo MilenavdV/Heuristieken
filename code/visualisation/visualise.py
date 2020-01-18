@@ -4,6 +4,7 @@ from bokeh.plotting import figure, gmap
 from bokeh.sampledata.sample_geojson import geojson
 import json
 import csv
+import random
 
 
 output_file("geojson.html")
@@ -15,14 +16,14 @@ with open("data/StationsNationaal2.json", 'r') as geo_file:
         data = json.load(geo_file)
 stations =[]
 for i in range(len(data['features'])):
-    data['features'][i]['properties']['Color'] = ['blue', 'blue'][i%2]
+    data['features'][i]['properties']['Color'] = ['black', 'black'][i%2]
     stations.append(data['features'][i]['properties']['name'])
 
 geo_source = GeoJSONDataSource(geojson=json.dumps(data))
-print(stations)
-TOOLTIPS = [
-    ('Station', '@name')
-]
+# print(stations)
+# TOOLTIPS = [
+#     ('Station', '@name')
+# ]
 
 x1 = []
 y1 = []
@@ -32,7 +33,7 @@ with open("data/trajectcoordinaten2.csv", mode='r') as csv_file:
         y1.append([float(row[2]),float(row[4])])
         x1.append([float(row[3]),float(row[5])])
         
-p = figure(background_fill_color="lightgrey", tooltips=TOOLTIPS, plot_width=800,plot_height=800, tools="tap")
+p = figure(background_fill_color="lightgrey", plot_width=800,plot_height=800, tools="tap")
 p.multi_line(x1,y1,line_width=2)
 
 x2 = []
@@ -58,11 +59,18 @@ with open("dienstregeling.csv", mode='r') as csv_file:
         trajecten_x[i].append(row[3])
         trajecten_x[i].append(row[5])
 
-
+r = random.randint(0,255)
+g = random.randint(0,255)
+b = random.randint(0,255)
+rgb = [r,g,b]
 # labels = LabelSet(x=y1, y=x1, text=stations, level='glyph',source=geo_source)
-color = ['peru','red','purple','yellow','aqua']
-for i in range(5):
-    p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2,color=color[i])
+color = ['peru','red','purple','yellow','aqua', 'grey','black','' ]
+for i in range(6):
+    r = random.randint(0,255)
+    g = random.randint(0,255)
+    b = random.randint(0,255)
+    # rgb = 
+    p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2,color=(r,g,b))
     # labels = LabelSet(x='trajecten_y',y='trajecten_x',text=i,level='glyph')
     # p.add_layout(labels)
 

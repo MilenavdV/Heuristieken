@@ -108,12 +108,4 @@ def fastestOption(stations,cdict, clist, clist2, trains, timeframe):
         # calculate p
         p = len(connections_used) / total
         
-    #     print(traject)
-    #     print(f"{len(connections_used)} connections used so far.")
-    #     print(p)
-
-    # print(connections_used)
-    # print(i + 1)
-    # print(p)
-    # print(formula(p, i + 1, total_minutes))
     return trajecten, p,total_minutes

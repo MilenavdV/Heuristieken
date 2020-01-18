@@ -6,13 +6,9 @@ class Station:
         self.stations, self.connections, self.connectionlist, self.connectionslist2 = readConnections(file)
         
 
-    def findConnections(self,parent,station):
-        # print(station,parent)
-        index = parent.index(station)
-        if parent[index] == station:
-            return station
-        return self.findConnections(parent, parent[index])  
-
+    def findConnections(self,station):
+        pass
+        
 
     def __str__(self):
         return f"{self.stations}"

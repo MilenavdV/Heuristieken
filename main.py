@@ -6,24 +6,25 @@ from code.algorithms.randomize import randomize
 from code.algorithms.vrijdag import test
 
 if __name__ == "__main__":
-    trains = 7
-    timeframe = 120
+    trains = 20
+    timeframe = 180
     p = 0
     time = 180
     file = 'data/ConnectiesNationaal.csv'
     output = 'dienstregeling.csv'
     stations, cdict, clist, clist2= readConnections(file)
 
-    test(file,timeframe,stations)
+    trajecten,p,score = test(file,timeframe,stations,cdict,trains)
+    # print(trajecten)
     # count = 0
     # while p != 1:
     #     trajecten, p,minutes = fastestOption(stations, cdict, clist,clist2, trains, time)
     #     count +=1
     #     print(count)
 
-    # csvWriter(output,trajecten)
+    csvWriter(output,trajecten)
     # score = 10000*p -(trains*100+minutes)
-    # print("Fastest",score,count)
+    print("Fastest",score)
 
     # # Kruskal 
     # trajecten,p,score = kruskal("data/ConnectiesHolland.csv",trains,timeframe)
