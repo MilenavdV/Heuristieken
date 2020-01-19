@@ -99,4 +99,4 @@ def randomize(cdict, clist, trains, timeframe):
             # print(f"{len(connections_used)} connections used so far.")
             # print(current_p)
         score = formula(p, trains_used + 1, total_minutes)
-        return trajecten,score,p
+        return trajecten,score,p,trains_used

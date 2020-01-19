@@ -5,12 +5,13 @@ from code.algorithms.csvwriter import csvWriter
 from code.algorithms.kruskal import kruskal
 from code.algorithms.randomize import randomize
 from code.algorithms.vrijdag import test
+from code.algorithms.hillclimb import HillClimber
+from code.visualisation.visualise import visualise
 
 if __name__ == "__main__":
     trains = 20
     timeframe = 180
     p = 0
-
     file = 'data/ConnectiesNationaal.csv'
     output = 'dienstregeling.csv'
     stations, cdict, clist, clist2= readConnections(file)
@@ -20,7 +21,7 @@ if __name__ == "__main__":
         if scorerandom > 6789:
             break
 
-    print("Random",scorerandom, p)
+    print("Random",scorerandom, p,train_used)
     csvWriter('dienstregeling.csv',trajecten)
-   
-    #6789.2808988764045
+    visualise(train_used)
+    
