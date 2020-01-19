@@ -14,12 +14,13 @@ if __name__ == "__main__":
     file = 'data/ConnectiesNationaal.csv'
     output = 'dienstregeling.csv'
     stations, cdict, clist, clist2= readConnections(file)
-
+    
     while True:
         trajecten,scorerandom,p = randomize(cdict, clist, trains, timeframe)
-        if scorerandom > 6200:
+        if scorerandom > 6789:
             break
 
     print("Random",scorerandom, p)
     csvWriter('dienstregeling.csv',trajecten)
-    #6256.561797752809
+   
+    #6789.2808988764045

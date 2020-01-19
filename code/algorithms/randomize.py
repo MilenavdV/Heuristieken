@@ -13,7 +13,6 @@ def randomize(cdict, clist, trains, timeframe):
     connectionslist = clist
     timeframe = timeframe
     connections = cdict
-    count = 0
     max_trains = trains
     trains_used = 0
     # total amount of connections where a to b and b to a are considered as te same
@@ -57,13 +56,18 @@ def randomize(cdict, clist, trains, timeframe):
                 # find the previous station of the traject
                 previous_station = traject.connections[-1].origin
                 options = findConnections(new_origin, previous_station, connections)
-                useful_options = usefulConnections(new_origin, options, connections_used, traject.time, timeframe, connections)
-                
-                if len(useful_options) != 0 :
-                    new_connection = random.choice(useful_options)
-                    traject.addConnection(connections[new_connection], connections[new_connection].time,timeframe)
+                #useful_options = usefulConnections(new_origin, options, connections_used, traject.time, timeframe, connections)
+                best_option = bestOption(new_origin, options, connections_used, traject.time, timeframe, connections)
+                # if len(useful_options) != 0 :
+                #     new_connection = random.choice(useful_options)
+                #     traject.addConnection(connections[new_connection], connections[new_connection].time,timeframe)
+                # else:
+                #     break
+                if best_option != None:
+                    traject.addConnection(connections[best_option], connections[best_option].time,timeframe)
                 else:
                     break
+
             new_connections = []
             for k in traject.connections:
                 if k.text() not in connections_used and changeDirection(k.text()) not in connections_used and k.text() not in new_connections and changeDirection(k.text()) not in new_connections:
@@ -87,7 +91,7 @@ def randomize(cdict, clist, trains, timeframe):
             else:
                 failed_attemps +=1
             
-            if failed_attemps == 75:
+            if failed_attemps == 50:
                 print(round(score))
                 break
 

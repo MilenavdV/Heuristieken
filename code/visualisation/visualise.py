@@ -62,7 +62,7 @@ with open("dienstregeling.csv", mode='r') as csv_file:
 
 # labels = LabelSet(x=y1, y=x1, text=stations, level='glyph',source=geo_source)
 color = ['peru','red','purple','yellow','aqua','green','magenta','pink','orange','white','black','grey','brown','blue','cyan']
-for i in range(15):
+for i in range(11):
     p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2,color=color[i])
     # labels = LabelSet(x='trajecten_y',y='trajecten_x',text=i,level='glyph')
     # p.add_layout(labels)
