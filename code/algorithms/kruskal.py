@@ -60,7 +60,6 @@ def kruskal(file,trains,timeframe):
             
             options = findConnections(new_origin, previous_station, connections)
             useful_options = usefulConnections(new_origin, options, connections_used, traject.time, timeframe, connections)
-
             new_connection = shortest(useful_options, connections)
             try:
                 time_new_connection = connections[new_connection].time
@@ -85,6 +84,7 @@ def kruskal(file,trains,timeframe):
 
         graph = sorted(graph, key=lambda item: item[2])
         trajecten[i + 1] = traject
+        print(traject, i)
         total_minutes += traject.time
        
     trains = trains

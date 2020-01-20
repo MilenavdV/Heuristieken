@@ -8,22 +8,23 @@ import random
 
 def visualise(train_used):
     output_file("geojson.html")
-    # map_options = GMapOptions(lat=52.5, lng=5, map_type="roadmap", zoom=7)
-
-    # p = gmap("AIzaSyCnGx0iTuaHmLPA8LdqDnIo7vK15mp5sww", map_options)
+    map_options = GMapOptions(lat=52.5, lng=5, map_type="roadmap", zoom=7)
+    	
+    # hover.tooltips = [
+    #     ("Station", "@name"),
+    #     ("(x,y)", "($x, $y)"),
+    # ]
+    p = gmap("AIzaSyCnGx0iTuaHmLPA8LdqDnIo7vK15mp5sww", map_options, tools="save,tap,pan,wheel_zoom,box_select,box_zoom,reset")
 
     with open("data/StationsNationaal2.json", 'r') as geo_file:
             data = json.load(geo_file)
-    stations =[]
+            
     for i in range(len(data['features'])):
         data['features'][i]['properties']['Color'] = ['black', 'black'][i%2]
-        stations.append(data['features'][i]['properties']['name'])
-    # source = ColumnDataSource(names=stations)
+
     geo_source = GeoJSONDataSource(geojson=json.dumps(data))
-    # print(stations)
-    TOOLTIPS = [
-        ('Station', '@name')
-    ]
+
+   
 
     x1 = []
     y1 = []
@@ -33,11 +34,8 @@ def visualise(train_used):
             y1.append([float(row[2]),float(row[4])])
             x1.append([float(row[3]),float(row[5])])
             
-    p = figure(background_fill_color="lightgrey", plot_width=800,plot_height=800, tools="tap")
-    p.multi_line(x1,y1,line_width=1)
-
-    x2 = []
-    y2 = []
+    # p = figure(background_fill_color="lightgrey", plot_width=800,plot_height=800, tools="save,tap,pan,lasso_select,box_select,box_zoom,reset", active_drag="lasso_select")
+    p.multi_line(x1,y1,line_width=5,color='white')
     i = 0
     trajecten_x ={}
     trajecten_y = {}
@@ -64,7 +62,7 @@ def visualise(train_used):
         g = random.randint(0,255)
         b = random.randint(0,255)
         #
-        p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2,color=(r,g,b))
+        p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2.5,color=(r,g,b))
 
     # p.add_layout(labels)
     p.circle(x='x', y='y', size=5, color='Color', alpha=0.7, source=geo_source)

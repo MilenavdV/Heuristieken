@@ -15,6 +15,25 @@ if __name__ == "__main__":
     file = 'data/ConnectiesNationaal.csv'
     output = 'dienstregeling.csv'
     stations, cdict, clist, clist2= readConnections(file)
+    time = 180
+    # trajecten,p,score,train_used = test(file,timeframe,stations,cdict,trains)
+    # print(trajecten)
+    # test(file,timeframe,stations)
+    # count = 0
+    # while True:
+    #     trajecten, p,minutes,score = fastestOption(stations, cdict, clist,clist2, trains, time)
+    #     count +=1
+    #     print(score)
+    #     if score >= 100:
+    #         break
+    # print(trajecten)
+    # csvWriter(output,trajecten)
+    # # score = 10000*p -(trains*100+minutes)
+    # print("Fastest",score)
+
+    # Kruskal 
+    # trajecten,p,score = kruskal(file,trains,timeframe)
+    # print("Kruskal",score)
     
     while True:
         trajecten,scorerandom,p,trains_used = randomize(cdict, clist, trains, timeframe)
