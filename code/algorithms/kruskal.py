@@ -84,11 +84,9 @@ def kruskal(file,trains,timeframe):
 
         graph = sorted(graph, key=lambda item: item[2])
         trajecten[i + 1] = traject
-        print(traject, i)
         total_minutes += traject.time
        
     trains = trains
-    # print(total_connections)
     p = (len(connections_used)-trains) / total_connections
     score = formula(p, trains, total_minutes)
     return trajecten,p,score

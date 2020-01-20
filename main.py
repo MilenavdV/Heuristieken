@@ -15,6 +15,7 @@ if __name__ == "__main__":
     # trains = 20
     # timeframe = 180
     # p = 0
+<<<<<<< HEAD
     file = 'data/ConnectiesNationaal.csv'
     # output = 'dienstregeling.csv'
     # stations, cdict, clist, clist2= readConnections(file)
@@ -27,13 +28,19 @@ if __name__ == "__main__":
     print("Gemiddelde: ", sum(scoreslist)/len(scoreslist))
     print("Maximum: ", max(scoreslist))
     print("Minimum: ", min(scoreslist))
+=======
+    # file = 'data/ConnectiesNationaal.csv'
+    # output = 'dienstregeling.csv'
+    # stations, cdict, clist, clist2= readConnections(file)
+    # time = 180
+>>>>>>> 999eba9df56a59bff0c294e930e0ce75f00c17f9
     # trajecten,p,score,train_used = test(file,timeframe,stations,cdict,trains)
-    # print(trajecten)
+    # print(score,p,train_used)
     # test(file,timeframe,stations)
     # count = 0
-    # while True:
+    # for i in range(0,500):
     #     trajecten, p,minutes,score = fastestOption(stations, cdict, clist,clist2, trains, time)
-    #     count +=1
+    # #     count +=1
     #     print(score)
     #     if score >= 100:
     #         break
@@ -46,6 +53,7 @@ if __name__ == "__main__":
     # trajecten,p,score = kruskal(file,trains,timeframe)
     # print("Kruskal",score)
     
+<<<<<<< HEAD
     # while True:
     #     trajecten,scorerandom,p,trains_used = randomize(cdict, clist, trains, timeframe)
     #     if scorerandom > 6780:
@@ -55,3 +63,14 @@ if __name__ == "__main__":
     # csvWriter('dienstregeling.csv',trajecten)
     # visualise(10)
     
+=======
+    # for i in range(0,500):
+    #     trajecten,scorerandom,p,train_used = randomize(cdict, clist, trains, timeframe)
+        # if scorerandom > 7000:
+        #     break
+
+    # print("Random",scorerandom, p,train_used)
+    # csvWriter('dienstregeling.csv',trajecten)
+    visualise(12)
+    #6256.561797752809
+>>>>>>> 999eba9df56a59bff0c294e930e0ce75f00c17f9
