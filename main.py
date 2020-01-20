@@ -15,21 +15,24 @@ if __name__ == "__main__":
     file = 'data/ConnectiesNationaal.csv'
     output = 'dienstregeling.csv'
     stations, cdict, clist, clist2= readConnections(file)
-    # trajecten,p,score = test(file,timeframe,stations,cdict,trains)
+    time = 180
+    # trajecten,p,score,train_used = test(file,timeframe,stations,cdict,trains)
     # print(trajecten)
     # test(file,timeframe,stations)
     # count = 0
-    # while p != 1:
-    #     trajecten, p,minutes = fastestOption(stations, cdict, clist,clist2, trains, time)
+    # while True:
+    #     trajecten, p,minutes,score = fastestOption(stations, cdict, clist,clist2, trains, time)
     #     count +=1
-    #     print(count)
-
+    #     print(score)
+    #     if score >= 100:
+    #         break
+    # print(trajecten)
     # csvWriter(output,trajecten)
     # # score = 10000*p -(trains*100+minutes)
     # print("Fastest",score)
 
     # Kruskal 
-    # trajecten,p,score = kruskal("data/ConnectiesHolland.csv",7,120)
+    # trajecten,p,score = kruskal(file,trains,timeframe)
     # print("Kruskal",score)
     
     # hillclimb = HillClimber("data/ConnectiesHolland.csv",p,trajecten)
@@ -40,10 +43,10 @@ if __name__ == "__main__":
 
     while True:
         trajecten,scorerandom,p,train_used = randomize(cdict, clist, trains, timeframe)
-        if scorerandom > 5600:
+        if scorerandom > 7000:
             break
 
-    print("Random",scorerandom, p,train_used)
-    csvWriter('dienstregeling.csv',trajecten)
-    visualise(train_used)
+    # print("Random",scorerandom, p,train_used)
+    # csvWriter('dienstregeling.csv',trajecten)
+    # visualise(11)
     #6256.561797752809
