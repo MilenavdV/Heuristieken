@@ -1,6 +1,6 @@
-from .code.algorithms.readconnections import readConnections
-from .code.classes.connection import Connection
-from .code.classes.traject import Traject
+from code.algorithms.readconnections import readConnections
+from code.classes.connection import Connection
+from code.classes.traject import Traject
 import random
 import csv
 import os
@@ -63,7 +63,7 @@ def formula(p, t, minutes):
     score = p*10000 - (t*100 + minutes)    
     return score
 
-def randomize2(file):
+def randomize2(file, trains, timeframe):
     # create Connection objects
     for station in readConnections(file):
         destinations = readConnections(file)[station]
@@ -84,7 +84,7 @@ def randomize2(file):
         trajecten = {}
         connections_used = []
         total_minutes = 0
-        for i in range(0, 7):
+        for i in range(0, trains):
             
             traject = Traject()
         

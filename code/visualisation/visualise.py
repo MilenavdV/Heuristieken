@@ -14,7 +14,7 @@ def visualise(train_used):
     #     ("Station", "@name"),
     #     ("(x,y)", "($x, $y)"),
     # ]
-    # p = gmap("AIzaSyCnGx0iTuaHmLPA8LdqDnIo7vK15mp5sww", map_options, tools="save,tap,pan,wheel_zoom,box_select,box_zoom,reset")
+    # p = gmap("-", map_options, tools="save,tap,pan,wheel_zoom,box_select,box_zoom,reset")
 
     with open("data/StationsNationaal2.json", 'r') as geo_file:
             data = json.load(geo_file)
@@ -39,7 +39,7 @@ def visualise(train_used):
     i = 0
     trajecten_x ={}
     trajecten_y = {}
-    with open("dienstregeling2.csv", mode='r') as csv_file:
+    with open("dienstregeling-1.csv", mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')        
         for row in csv_reader:
             traject = 'Traject ' + str(i + 1)
