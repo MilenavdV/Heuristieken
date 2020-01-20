@@ -7,6 +7,7 @@ from code.algorithms.randomize import randomize
 from code.algorithms.vrijdag import test
 from code.algorithms.hillclimb import HillClimber
 from code.visualisation.visualise import visualise
+from code.algorithms.oldrandomize import randomize2
 
 if __name__ == "__main__":
     trains = 20
@@ -20,10 +21,10 @@ if __name__ == "__main__":
     # print(score,p,train_used)
     # test(file,timeframe,stations)
     # count = 0
-    for i in range(0,500):
-        trajecten, p,minutes,score = fastestOption(stations, cdict, clist,clist2, trains, time)
-    #     count +=1
-        print(score)
+    # for i in range(0,500):
+    #     trajecten, p,minutes,score = fastestOption(stations, cdict, clist,clist2, trains, time)
+    # #     count +=1
+    #     print(score)
     #     if score >= 100:
     #         break
     # print(trajecten)
@@ -35,12 +36,12 @@ if __name__ == "__main__":
     # trajecten,p,score = kruskal(file,trains,timeframe)
     # print("Kruskal",score)
     
-    # for i in range(0,500):
-    #     trajecten,scorerandom,p,train_used = randomize(cdict, clist, trains, timeframe)
+    for i in range(0,500):
+        trajecten,scorerandom,p,train_used = randomize2(file)
         # if scorerandom > 7000:
         #     break
 
     # print("Random",scorerandom, p,train_used)
     # csvWriter('dienstregeling.csv',trajecten)
-    # visualise(10)
+    # visualise(11)
     #6256.561797752809

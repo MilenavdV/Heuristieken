@@ -48,18 +48,18 @@ def usefulConnections(origin, options, connections_used, traject_time, timeframe
     origin = origin
     for i in options:
         destinations_options = findConnections(connections[i].destination, origin, connections)
-        if i not in connections_used and changeDirection(i) not in connections_used and connections[i].time + traject_time < timeframe:
+        if i not in connections_used and connections[i].time + traject_time < timeframe:
             useful_options.append(i)
         for j in destinations_options:
-            destinations_destinations_options = findConnections(connections[j].destination, origin, connections)
-            if j not in connections_used and changeDirection(j) not in connections_used and connections[i].time + connections[j].time + traject_time < timeframe:
+            destinations_destinations_options = findConnections(connections[j].destination, connections[j].origin, connections)
+            if j not in connections_used and connections[i].time + connections[j].time + traject_time < timeframe:
                 useful_options.append(i)
             for k in destinations_destinations_options:
-                destinations_destinations_destinations_options = findConnections(connections[k].destination, origin, connections)
-                if k not in connections_used and changeDirection(k) not in connections_used and connections[i].time + connections[j].time + connections[k].time + traject_time < timeframe:
+                destinations_destinations_destinations_options = findConnections(connections[k].destination, connections[k].origin, connections)
+                if k not in connections_used and connections[i].time + connections[j].time + connections[k].time + traject_time < timeframe:
                     useful_options.append(i)
                 for l in destinations_destinations_destinations_options:
-                    if l not in connections_used and changeDirection(k) not in connections_used and connections[i].time + connections[j].time + connections[k].time + traject_time < timeframe:
+                    if l not in connections_used and connections[i].time + connections[j].time + connections[k].time + traject_time < timeframe:
                         useful_options.append(i)
     return useful_options
 
@@ -76,7 +76,7 @@ def bestOption(origin, options, connections_used, traject_time, timeframe, conne
         possible_scores_per_option = []
         
         destinations_options = findConnections(connections[i].destination, origin, connections)
-        if i not in connections_used and changeDirection(i) not in connections_used and connections[i].time + traject_time < timeframe:
+        if i not in connections_used and connections[i].time + traject_time < timeframe:
             useful_options.append(i)
             added_score = 112 - connections[i].time
         else:
@@ -87,7 +87,7 @@ def bestOption(origin, options, connections_used, traject_time, timeframe, conne
         for j in destinations_options:
             
             destinations_destinations_options = findConnections(connections[j].destination, origin, connections)
-            if j != i and changeDirection(j) != i and j not in connections_used and changeDirection(j) not in connections_used and connections[i].time + connections[j].time + traject_time < timeframe:
+            if j != i and changeDirection(j) != i and j not in connections_used and connections[i].time + connections[j].time + traject_time < timeframe:
                 useful_options.append(i)
                 added_score_child = added_score + 112 - connections[j].time
             else:
@@ -98,7 +98,7 @@ def bestOption(origin, options, connections_used, traject_time, timeframe, conne
             for k in destinations_destinations_options:
                
                 destinations_destinations_destinations_options = findConnections(connections[k].destination, origin, connections)
-                if k != i and changeDirection(k) != i  and k != j and changeDirection(k) != j and k not in connections_used and changeDirection(k) not in connections_used and connections[i].time + connections[j].time + connections[k].time + traject_time < timeframe:
+                if k != i and changeDirection(k) != i  and k != j and changeDirection(k) != j and k not in connections_used and connections[i].time + connections[j].time + connections[k].time + traject_time < timeframe:
                     useful_options.append(i)
                     added_score_child_k = added_score_child + 112 - connections[k].time
                 else:
@@ -108,7 +108,7 @@ def bestOption(origin, options, connections_used, traject_time, timeframe, conne
                 #print("k", k, added_score_child_k) 
                 for l in destinations_destinations_destinations_options:
                     
-                    if l != i and changeDirection(l) != i  and l != j and changeDirection(l) != j and l != k and changeDirection(l)!= k and l not in connections_used and changeDirection(k) not in connections_used and connections[i].time + connections[j].time + connections[k].time + connections[l].time + traject_time < timeframe:
+                    if l != i and changeDirection(l) != i  and l != j and changeDirection(l) != j and l != k and changeDirection(l)!= k and l not in connections_used and connections[i].time + connections[j].time + connections[k].time + connections[l].time + traject_time < timeframe:
                         useful_options.append(i)
                         added_score_child_l = added_score_child_k + 112 - connections[l].time
                     else:
