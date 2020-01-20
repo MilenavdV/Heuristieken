@@ -35,12 +35,6 @@ if __name__ == "__main__":
     # trajecten,p,score = kruskal(file,trains,timeframe)
     # print("Kruskal",score)
     
-    # hillclimb = HillClimber("data/ConnectiesHolland.csv",p,trajecten)
-    # hillclimb.improve(10)
-    # csvWriter('dienstregeling.csv',trajecten)
-    # 
-    # 
-
     while True:
         trajecten,scorerandom,p,train_used = randomize(cdict, clist, trains, timeframe)
         if scorerandom > 7000:

@@ -3,6 +3,7 @@ class Connection:
         self.origin = origin
         self.destination = destination
         self.time = time
+        self.used = False
 
     def text(self):
         return f"{self.origin}-{self.destination}"
