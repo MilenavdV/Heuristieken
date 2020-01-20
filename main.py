@@ -17,13 +17,13 @@ if __name__ == "__main__":
     stations, cdict, clist, clist2= readConnections(file)
     time = 180
     # trajecten,p,score,train_used = test(file,timeframe,stations,cdict,trains)
-    # print(trajecten)
+    # print(score,p,train_used)
     # test(file,timeframe,stations)
     # count = 0
-    # while True:
-    #     trajecten, p,minutes,score = fastestOption(stations, cdict, clist,clist2, trains, time)
+    for i in range(0,500):
+        trajecten, p,minutes,score = fastestOption(stations, cdict, clist,clist2, trains, time)
     #     count +=1
-    #     print(score)
+        print(score)
     #     if score >= 100:
     #         break
     # print(trajecten)
@@ -35,12 +35,12 @@ if __name__ == "__main__":
     # trajecten,p,score = kruskal(file,trains,timeframe)
     # print("Kruskal",score)
     
-    while True:
-        trajecten,scorerandom,p,train_used = randomize(cdict, clist, trains, timeframe)
-        if scorerandom > 7000:
-            break
+    # for i in range(0,500):
+    #     trajecten,scorerandom,p,train_used = randomize(cdict, clist, trains, timeframe)
+        # if scorerandom > 7000:
+        #     break
 
     # print("Random",scorerandom, p,train_used)
     # csvWriter('dienstregeling.csv',trajecten)
-    # visualise(11)
+    # visualise(10)
     #6256.561797752809

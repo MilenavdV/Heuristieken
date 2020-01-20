@@ -14,7 +14,7 @@ def visualise(train_used):
     #     ("Station", "@name"),
     #     ("(x,y)", "($x, $y)"),
     # ]
-    p = gmap("AIzaSyCnGx0iTuaHmLPA8LdqDnIo7vK15mp5sww", map_options, tools="save,tap,pan,wheel_zoom,box_select,box_zoom,reset")
+    # p = gmap("AIzaSyCnGx0iTuaHmLPA8LdqDnIo7vK15mp5sww", map_options, tools="save,tap,pan,wheel_zoom,box_select,box_zoom,reset")
 
     with open("data/StationsNationaal2.json", 'r') as geo_file:
             data = json.load(geo_file)
@@ -34,12 +34,12 @@ def visualise(train_used):
             y1.append([float(row[2]),float(row[4])])
             x1.append([float(row[3]),float(row[5])])
             
-    # p = figure(background_fill_color="lightgrey", plot_width=800,plot_height=800, tools="save,tap,pan,lasso_select,box_select,box_zoom,reset", active_drag="lasso_select")
+    p = figure(background_fill_color="lightgrey", plot_width=800,plot_height=800, tools="save,tap,pan,lasso_select,box_select,box_zoom,reset", active_drag="lasso_select")
     p.multi_line(x1,y1,line_width=5,color='white')
     i = 0
     trajecten_x ={}
     trajecten_y = {}
-    with open("dienstregeling.csv", mode='r') as csv_file:
+    with open("dienstregeling2.csv", mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')        
         for row in csv_reader:
             traject = 'Traject ' + str(i + 1)
@@ -56,6 +56,7 @@ def visualise(train_used):
             trajecten_y[i].append(row[4])
             trajecten_x[i].append(row[3])
             trajecten_x[i].append(row[5])
+
 
     for i in range(train_used):
         r = random.randint(0,255)
