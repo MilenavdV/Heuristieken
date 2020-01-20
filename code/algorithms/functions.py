@@ -1,4 +1,5 @@
 def fastestConnection(connections, origin, previous_station):
+    """ Finds the fastest connection from a specific station that isn't the station the train arrived from """
     # initialize lists to keep track of options and the corresponding time
     options = []
     time_of_options = []
@@ -27,12 +28,14 @@ def fastestConnection(connections, origin, previous_station):
         return None
     
 def changeDirection(connection):
+    """ Reverses the direction of a connection """
     newB = str(connection)[:str(connection).find("-")]
     newA = str(connection)[str(connection).find("-") + 1:]
     bToA = newA + "-" + newB
     return bToA
 
 def formula(p, t, min):
+    """ Takes the proportion, amount of trains and minutes and returns score """
     score = p*10000 - (t*100 + min)
     return score
 
