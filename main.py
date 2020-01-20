@@ -22,7 +22,7 @@ if __name__ == "__main__":
     # count = 0
     # for i in range(0,500):
     #     trajecten, p,minutes,score = fastestOption(stations, cdict, clist,clist2, trains, time)
-    # #     count +=1
+    #     count +=1
     #     print(score)
     #     if score >= 100:
     #         break
