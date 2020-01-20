@@ -10,30 +10,28 @@ from code.algorithms.hillclimb import HillClimber
 from code.visualisation.visualise import visualise
 
 import numpy
+import pandas as pd
 
 if __name__ == "__main__":
     # trains = 20
     # timeframe = 180
     # p = 0
-<<<<<<< HEAD
     file = 'data/ConnectiesNationaal.csv'
     # output = 'dienstregeling.csv'
     # stations, cdict, clist, clist2= readConnections(file)
     # time = 180
-    scoreslist = []
-    for i in range(100):
-        trajecten, p, score = oldrandomize(file)
-        scoreslist.append(score)
-    print(scoreslist)
-    print("Gemiddelde: ", sum(scoreslist)/len(scoreslist))
-    print("Maximum: ", max(scoreslist))
-    print("Minimum: ", min(scoreslist))
-=======
-    # file = 'data/ConnectiesNationaal.csv'
-    # output = 'dienstregeling.csv'
-    # stations, cdict, clist, clist2= readConnections(file)
-    # time = 180
->>>>>>> 999eba9df56a59bff0c294e930e0ce75f00c17f9
+    df = pd.DataFrame()
+    scoreslist = {}
+    for j in range(4):
+        for i in range(5):
+            trajecten, p, score = oldrandomize(file)
+            scoreslist[i] = score
+        if j == 0:
+            df = pd.DataFrame({j: scoreslist.values()}, index = scoreslist.keys())
+        else:
+            df.assign(j = scoreslist, index = scoreslist.keys())
+    boxplot = df.boxplot()
+    print(boxplot)
     # trajecten,p,score,train_used = test(file,timeframe,stations,cdict,trains)
     # print(score,p,train_used)
     # test(file,timeframe,stations)
@@ -53,7 +51,6 @@ if __name__ == "__main__":
     # trajecten,p,score = kruskal(file,trains,timeframe)
     # print("Kruskal",score)
     
-<<<<<<< HEAD
     # while True:
     #     trajecten,scorerandom,p,trains_used = randomize(cdict, clist, trains, timeframe)
     #     if scorerandom > 6780:
@@ -63,14 +60,3 @@ if __name__ == "__main__":
     # csvWriter('dienstregeling.csv',trajecten)
     # visualise(10)
     
-=======
-    # for i in range(0,500):
-    #     trajecten,scorerandom,p,train_used = randomize(cdict, clist, trains, timeframe)
-        # if scorerandom > 7000:
-        #     break
-
-    # print("Random",scorerandom, p,train_used)
-    # csvWriter('dienstregeling.csv',trajecten)
-    visualise(12)
-    #6256.561797752809
->>>>>>> 999eba9df56a59bff0c294e930e0ce75f00c17f9
