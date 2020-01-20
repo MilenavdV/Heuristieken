@@ -4,18 +4,36 @@ from code.algorithms.randomize import randomize
 from code.algorithms.csvwriter import csvWriter
 from code.algorithms.kruskal import kruskal
 from code.algorithms.randomize import randomize
+from code.algorithms.oldrandomize import oldrandomize
 from code.algorithms.vrijdag import test
 from code.algorithms.hillclimb import HillClimber
 from code.visualisation.visualise import visualise
+
+import numpy
 
 if __name__ == "__main__":
     # trains = 20
     # timeframe = 180
     # p = 0
+<<<<<<< HEAD
+    file = 'data/ConnectiesNationaal.csv'
+    # output = 'dienstregeling.csv'
+    # stations, cdict, clist, clist2= readConnections(file)
+    # time = 180
+    scoreslist = []
+    for i in range(100):
+        trajecten, p, score = oldrandomize(file)
+        scoreslist.append(score)
+    print(scoreslist)
+    print("Gemiddelde: ", sum(scoreslist)/len(scoreslist))
+    print("Maximum: ", max(scoreslist))
+    print("Minimum: ", min(scoreslist))
+=======
     # file = 'data/ConnectiesNationaal.csv'
     # output = 'dienstregeling.csv'
     # stations, cdict, clist, clist2= readConnections(file)
     # time = 180
+>>>>>>> 999eba9df56a59bff0c294e930e0ce75f00c17f9
     # trajecten,p,score,train_used = test(file,timeframe,stations,cdict,trains)
     # print(score,p,train_used)
     # test(file,timeframe,stations)
@@ -35,6 +53,17 @@ if __name__ == "__main__":
     # trajecten,p,score = kruskal(file,trains,timeframe)
     # print("Kruskal",score)
     
+<<<<<<< HEAD
+    # while True:
+    #     trajecten,scorerandom,p,trains_used = randomize(cdict, clist, trains, timeframe)
+    #     if scorerandom > 6780:
+    #         break
+
+    # print("Random",scorerandom, p)
+    # csvWriter('dienstregeling.csv',trajecten)
+    # visualise(10)
+    
+=======
     # for i in range(0,500):
     #     trajecten,scorerandom,p,train_used = randomize(cdict, clist, trains, timeframe)
         # if scorerandom > 7000:
@@ -44,3 +73,4 @@ if __name__ == "__main__":
     # csvWriter('dienstregeling.csv',trajecten)
     visualise(12)
     #6256.561797752809
+>>>>>>> 999eba9df56a59bff0c294e930e0ce75f00c17f9
