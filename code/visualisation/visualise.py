@@ -39,7 +39,7 @@ def visualise(train_used):
     i = 0
     trajecten_x ={}
     trajecten_y = {}
-    with open("dienstregeling-1.csv", mode='r') as csv_file:
+    with open("dienstregeling.csv", mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')        
         for row in csv_reader:
             traject = 'Traject ' + str(i + 1)

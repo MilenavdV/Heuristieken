@@ -12,30 +12,23 @@ from code.visualisation.visualise import visualise
 import numpy
 
 if __name__ == "__main__":
-    # trains = 20
-    # timeframe = 180
-    # p = 0
-<<<<<<< HEAD
+    trains = 20
+    timeframe = 180
+    p = 0
     file = 'data/ConnectiesNationaal.csv'
-    # output = 'dienstregeling.csv'
-    # stations, cdict, clist, clist2= readConnections(file)
-    # time = 180
-    scoreslist = []
-    for i in range(100):
-        trajecten, p, score = oldrandomize(file)
-        scoreslist.append(score)
-    print(scoreslist)
-    print("Gemiddelde: ", sum(scoreslist)/len(scoreslist))
-    print("Maximum: ", max(scoreslist))
-    print("Minimum: ", min(scoreslist))
-=======
-    # file = 'data/ConnectiesNationaal.csv'
-    # output = 'dienstregeling.csv'
-    # stations, cdict, clist, clist2= readConnections(file)
-    # time = 180
->>>>>>> 999eba9df56a59bff0c294e930e0ce75f00c17f9
-    # trajecten,p,score,train_used = test(file,timeframe,stations,cdict,trains)
-    # print(score,p,train_used)
+    output = 'dienstregeling.csv'
+    stations, cdict, clist, clist2= readConnections(file)
+    time = 180
+    # scoreslist = []
+    # for i in range(100):
+    #     trajecten, p, score = oldrandomize(file)
+    #     scoreslist.append(score)
+    # print(scoreslist)
+    # print("Gemiddelde: ", sum(scoreslist)/len(scoreslist))
+    # print("Maximum: ", max(scoreslist))
+    # print("Minimum: ", min(scoreslist))
+    trajecten,p,score,train_used = test(file,timeframe,stations,cdict,trains)
+    print(score,p,train_used)
     # test(file,timeframe,stations)
     # count = 0
     # for i in range(0,500):
@@ -53,24 +46,12 @@ if __name__ == "__main__":
     # trajecten,p,score = kruskal(file,trains,timeframe)
     # print("Kruskal",score)
     
-<<<<<<< HEAD
     # while True:
     #     trajecten,scorerandom,p,trains_used = randomize(cdict, clist, trains, timeframe)
     #     if scorerandom > 6780:
     #         break
 
     # print("Random",scorerandom, p)
-    # csvWriter('dienstregeling.csv',trajecten)
-    # visualise(10)
+    csvWriter('dienstregeling.csv',trajecten)
+    visualise(train_used)
     
-=======
-    # for i in range(0,500):
-    #     trajecten,scorerandom,p,train_used = randomize(cdict, clist, trains, timeframe)
-        # if scorerandom > 7000:
-        #     break
-
-    # print("Random",scorerandom, p,train_used)
-    # csvWriter('dienstregeling.csv',trajecten)
-    visualise(12)
-    #6256.561797752809
->>>>>>> 999eba9df56a59bff0c294e930e0ce75f00c17f9

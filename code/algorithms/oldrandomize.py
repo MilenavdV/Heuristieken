@@ -68,7 +68,6 @@ def oldrandomize(file):
             
         p = len(connections_used) / total
 
-<<<<<<< HEAD
     
         # print(p)
         score = formula(p, randtrains, total_minutes)
@@ -88,28 +87,3 @@ def oldrandomize(file):
             #         file.write(("Total score of: " + str(score) + "\n"))
                 
         return trajecten, p, score
-=======
-            # if p == 1.00:
-            #     print(trajecten)
-            #     print(f"{i + 1} treinen gebruikt")
-            #     print(len(connectionslist), connectionslist)
-            #     print(len(connections_used), connections_used)
-            #     print(p)
-            score = formula(p, i + 1, total_minutes)
-            #     print(formula(p, i + 1, total_minutes))
-
-            #     if score > 9172:
-            #         os.remove('dienstregeling.txt')
-            #         with open('dienstregeling.txt', mode="w") as file:
-            #             for traject in trajecten:
-            #                 file.write("Traject " + str(traject + 1) + ":")
-            #                 file.write("\n")
-            #                 for connectie in trajecten[traject].connections:
-            #                     file.write((connectie.origin + "-" + connectie.destination + " " + str(connectie.time) + "\n"))
-            #                 file.write("\n")
-            #                 file.write(("Total time of " + str(trajecten[traject].time) + " minutes." + "\n"))
-            #                 file.write("\n")
-            #             file.write(("Total score of: " + str(score) + "\n"))
-                    
-            return score
->>>>>>> 999eba9df56a59bff0c294e930e0ce75f00c17f9
