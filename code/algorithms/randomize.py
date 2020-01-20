@@ -15,8 +15,9 @@ def randomize(cdict, clist, trains, timeframe):
     connections = cdict
     max_trains = trains
     trains_used = 0
+    
     # total amount of connections where a to b and b to a are considered as te same
-    total = len(clist) / 2
+    total = len(clist)
     while True:
         # save traject objects in dictionairy
         trajecten = {}
@@ -42,7 +43,7 @@ def randomize(cdict, clist, trains, timeframe):
             while True:
                 # initialize starting point
                 start = random.choice(connectionslist)
-                if start not in connections_used:
+                if start not in connections_used and changeDirection(start) not in connections_used:
                     break
 
             # add starting connection to the traject
@@ -55,14 +56,10 @@ def randomize(cdict, clist, trains, timeframe):
 
                 # find the previous station of the traject
                 previous_station = traject.connections[-1].origin
+
                 options = findConnections(new_origin, previous_station, connections)
-                #useful_options = usefulConnections(new_origin, options, connections_used, traject.time, timeframe, connections)
                 best_option = bestOption(new_origin, options, connections_used, traject.time, timeframe, connections)
-                # if len(useful_options) != 0 :
-                #     new_connection = random.choice(useful_options)
-                #     traject.addConnection(connections[new_connection], connections[new_connection].time,timeframe)
-                # else:
-                #     break
+              
                 if best_option != None:
                     traject.addConnection(connections[best_option], connections[best_option].time,timeframe)
                 else:
@@ -70,8 +67,9 @@ def randomize(cdict, clist, trains, timeframe):
 
             new_connections = []
             for k in traject.connections:
-                if k.text() not in connections_used and changeDirection(k.text()) not in connections_used and k.text() not in new_connections and changeDirection(k.text()) not in new_connections:
+                if k.text() not in connections_used and k.text() not in new_connections:
                     new_connections.append(k.text())
+                    new_connections.append(changeDirection(k.text()))
                     count_new_connections += 1
                     
             p = (len(connections_used) + count_new_connections) / total
@@ -85,13 +83,14 @@ def randomize(cdict, clist, trains, timeframe):
                 trains_used += 1
                 total_minutes += traject.time
                 for k in traject.connections:
-                    if k.text() not in connections_used and changeDirection(k.text()) not in connections_used:
+                    if k.text() not in connections_used:
                         connections_used.append(k.text())
+                        connections_used.append(changeDirection(k.text()))
                 #print("Train Added")
             else:
                 failed_attemps +=1
             
-            if failed_attemps == 50:
+            if failed_attemps == 75:
                 print(round(score))
                 break
 

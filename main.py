@@ -17,11 +17,11 @@ if __name__ == "__main__":
     stations, cdict, clist, clist2= readConnections(file)
     
     while True:
-        trajecten,scorerandom,p = randomize(cdict, clist, trains, timeframe)
-        if scorerandom > 6789:
+        trajecten,scorerandom,p,trains_used = randomize(cdict, clist, trains, timeframe)
+        if scorerandom > 6780:
             break
 
-    print("Random",scorerandom, p,train_used)
+    print("Random",scorerandom, p)
     csvWriter('dienstregeling.csv',trajecten)
-    visualise(train_used)
+    #visualise(train_used)
     
