@@ -1,12 +1,13 @@
+from code.algorithms.readconnections import readConnections
+from code.algorithms.functions import findConnections, usefulConnections, fastestConnection, changeDirection, formula
+from code.classes.connection import Connection
+from code.classes.traject import Traject
+
 import random
 import csv
 import os
 import fnmatch
 
-from code.algorithms.readconnections import readConnections
-from code.algorithms.functions import findConnections, usefulConnections, fastestConnection, changeDirection, formula
-from code.classes.connection import Connection
-from code.classes.traject import Traject
 
 class Randomize():
     
