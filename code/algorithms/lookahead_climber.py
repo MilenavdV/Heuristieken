@@ -29,7 +29,7 @@ def lookaheadClimber(cdict, clist, trains, timeframe):
         total_minutes = 0
 
         failed_attemps = 0
-
+        current_p = 0
         # create a new traject object for the amount of trains allowed
         while True:
             current_p = (len(connections_used)) / total
@@ -39,27 +39,25 @@ def lookaheadClimber(cdict, clist, trains, timeframe):
             count_new_connections = 0
             
             traject = Traject()
-
             while True:
                 # initialize starting point
                 start = random.choice(connectionslist)
+                # print(start)
                 if start not in connections_used and changeDirection(start) not in connections_used:
+                    print(start)
                     break
-
             # add starting connection to the traject
             traject.addConnection(connections[start], connections[start].time, timeframe)
-
             # ugly for-loop that adds connections to the traject object 
             while True:
                 # find the current station of the traject
                 new_origin = traject.connections[-1].destination
-
+                
                 # find the previous station of the traject
                 previous_station = traject.connections[-1].origin
-
                 options = findConnections(new_origin, previous_station, connections)
                 best_option = bestOption(new_origin, options, connections_used, traject.time, timeframe, connections)
-              
+                
                 if best_option != None:
                     traject.addConnection(connections[best_option], connections[best_option].time,timeframe)
                 else:
@@ -75,7 +73,6 @@ def lookaheadClimber(cdict, clist, trains, timeframe):
             p = (len(connections_used) + count_new_connections) / total
             
             score = formula(p, trains_used + 1, total_minutes + traject.time)
-            
             #print(p, trains_used + 1, total_minutes + traject.time , score)
 
             if score > current_score and trains_used != max_trains:
@@ -86,7 +83,6 @@ def lookaheadClimber(cdict, clist, trains, timeframe):
                     if k.text() not in connections_used:
                         connections_used.append(k.text())
                         connections_used.append(changeDirection(k.text()))
-                #print("Train Added")
             else:
                 failed_attemps +=1
             

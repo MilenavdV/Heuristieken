@@ -28,8 +28,8 @@ def connectionCount(file,timeframe,stations,connections,trains):
     # after making this dictionary, sort it with the lowest amount of connections first
     sort_con = sorted(stationsvalues.items(),key = lambda kv:(kv[1], kv[0]))
 
-    # used 9 trains because this provides the best solution
-    for i in range(0,9):
+    # used 18 trains because this provides the best solution
+    for i in range(1,trains):
         traject = Traject()
 
         # searches for a station with the least connection and not used
@@ -86,6 +86,7 @@ def connectionCount(file,timeframe,stations,connections,trains):
         train_used = i
         p = (len(connections_used) - i)/total_connections
         score = formula(p,train_used,total_minutes)
-    return trajecten,p,score, train_used
+        
+    return trajecten, p, score, train_used
 
 
