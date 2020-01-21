@@ -12,7 +12,7 @@ class Greedy:
         self.trains = trains
         self.timeframe = timeframe
 
-    def run(self):
+    def run(self, verbose):
         """ Finds a solution for the problem by using a greedy algorithm that takes the fastest option. """
         # initialize list of connections for usage of random.choice function
         #strins lijst
@@ -33,60 +33,22 @@ class Greedy:
         # create traject object
         traject = Traject()
 
-        # add starting connection to the traject    
-        traject.addConnection(self.connections["Den Helder-Alkmaar"], self.connections["Den Helder-Alkmaar"].time, timeframe)
-
-        # adds connections to the traject object
-        for j in range(0,20):
-            # find the current station of the traject
-            new_origin = traject.connections[-1].destination
-
-            # find the previous station of the traject
-            previous_station = traject.connections[-1].origin
-
-            # check whether there is an option to expand the traject further 
-            if fastestConnection(self.connections, new_origin, previous_station) != None:
-
-                # add the connection with the shortest time to the traject
-                new_connection = fastestConnection(self.connections, new_origin, previous_station)
-                traject.addConnection(self.connections[new_connection], self.connections[new_connection].time, timeframe)
-
-        # save traject in the trajecten dictionairy
-        trajecten[0] = traject
-        total_minutes += traject.time
-
-        # update the list of connections used for every new connection that had not been used before
-        for k in traject.connections:
-            if k.text() not in connections_used and changeDirection(k.text()) not in connections_used:
-                connections_used.append(k.text())
-        
-        # print(traject)
         # create a new traject object for the amount of trains allowed
-        for i in range(1, self.trains):
+        for i in range(self.trains):
             
             # create traject object
             traject = Traject()
 
-            # # initialize starting point, not a used connection
+            # initialize starting point, not a used connection
             while True:
                 start = random.choice(self.connectionslist)
                 if start not in connections_used:
                     break
-            # print(">>>>>",connections_used)
-            # graph = sorted(clist2, key=lambda item: item[2])
-            # # while True:
-            # for station in graph:
-            #     start = f"{station[1]}-{station[0]}"
-            #     start2 = f"{station[0]}-{station[1]}"
-            #     if start not in connections_used and start2 not in connections_used:
-            #         break
             
-
-            # print(graph)
             # add starting connection to the traject
-            traject.addConnection(self.connections[str(start)], self.connections[str(start)].time, timeframe)
+            traject.addConnection(self.connections[str(start)], self.connections[str(start)].time, self.timeframe)
             
-            # ugly for-loop that adds connections to the traject object 
+            # for-loop that adds connections to the traject object 
             for j in range(0, 20):
                 # find the current station of the traject
                 new_origin = traject.connections[-1].destination
@@ -99,7 +61,7 @@ class Greedy:
 
                     # add the connection with the shortest time to the traject
                     new_connection = fastestConnection(self.connections, new_origin, previous_station)
-                    traject.addConnection(self.connections[new_connection], self.connections[new_connection].time, timeframe)
+                    traject.addConnection(self.connections[new_connection], self.connections[new_connection].time, self.timeframe)
             
             # save traject in the trajecten dictionairy
             trajecten[i] = traject
@@ -112,5 +74,6 @@ class Greedy:
             
             # calculate p
             p = len(connections_used) / total
-            score = formula(p,trains,total_minutes)
+            score = formula(p,self.trains,total_minutes)
+
         return trajecten, p,total_minutes,score
