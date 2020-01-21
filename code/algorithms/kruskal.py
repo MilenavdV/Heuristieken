@@ -89,4 +89,4 @@ def kruskal(file,trains,timeframe):
     trains = trains
     p = (len(connections_used)-trains) / total_connections
     score = formula(p, trains, total_minutes)
-    return trajecten,p,score
+    return score

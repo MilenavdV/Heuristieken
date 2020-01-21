@@ -29,7 +29,7 @@ def connectionCount(file,timeframe,stations,connections,trains):
     sort_con = sorted(stationsvalues.items(),key = lambda kv:(kv[1], kv[0]))
 
     # used 18 trains because this provides the best solution
-    for i in range(0,9):
+    for i in range(1,trains):
         traject = Traject()
         while True:
             check = f"{sort_con[0][0]}-{stations[sort_con[0][0]][0][0]}"
@@ -65,7 +65,7 @@ def connectionCount(file,timeframe,stations,connections,trains):
         p = (len(connections_used) - i)/89
         # print(len(connections_used)-i)
         score = formula(p,train_used,total_minutes)
-        print(score)
-    return trajecten,p,score, train_used
+        # print(score)
+    return trajecten, p, score, train_used
 
 
