@@ -1,5 +1,5 @@
 from code.algorithms.readconnections import readConnections
-from code.algorithms.fastestoption import fastestOption
+from code.algorithms.greedy import Greedy
 from code.algorithms.randomize import randomize
 from code.algorithms.csvwriter import csvWriter
 from code.algorithms.kruskal import kruskal
@@ -23,15 +23,14 @@ if __name__ == "__main__":
     output = 'dienstregeling.csv'
     stations, cdict, clist, clist2 = readConnections(file)
     plt.close('all')
-    test = Vergelijking(sims,file,trains,timeframe)
-    test.run()
-    # daf = pd.DataFrame()
-    # scoreslist = {}
-    # for i in range(sims):
-    #     trajecten, p, score = oldrandomize(file)
-    #     scoreslist[i] = score
-    # df = pd.DataFrame(scoreslist.values(), columns = ['random'],index = scoreslist.keys())
-    # print('Random klaar')
+    # test = Vergelijking(sims,file,trains,timeframe)
+    # test.run()
+    scoreslist = {}
+    for i in range(sims):
+        trajecten, p, score = oldrandomize(file)
+        scoreslist[i] = score
+    df = pd.DataFrame(scoreslist.values(), columns = ['random'],index = scoreslist.keys())
+    print('Random klaar')
 
     # for i in range(sims):
     #     trajecten, p, total_minutes, score = fastestOption(stations, cdict, clist, clist2, trains, timeframe)
@@ -56,7 +55,7 @@ if __name__ == "__main__":
     #     scoreslist[i] = score
     # df['Greedy lookahead'] = scoreslist.values()
     # print('Greedy lookahead klaar')
-    # plt.figure()
-    # boxplot = df.boxplot()
-    # fig = boxplot.get_figure()
-    # plt.show()
+    plt.figure()
+    boxplot = df.boxplot()
+    fig = boxplot.get_figure()
+    plt.show()

@@ -1,6 +1,6 @@
 from code.algorithms.readconnections import readConnections
 from code.algorithms.kruskal import kruskal
-from code.algorithms.fastestoption import fastestOption
+from code.algorithms.greedy import Greedy
 from code.algorithms.randomize import randomize
 from code.algorithms.oldrandomize import oldrandomize
 from code.algorithms.connectioncount import connectionCount
