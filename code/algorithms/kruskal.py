@@ -34,18 +34,13 @@ def kruskal(file,trains,timeframe):
     total_connections = len(connectionlist) / 2
     connections_used = []
 
-    if 'Den Helder' in connectionlist2:
-        print('yes')
     with open(file, mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             connectionlist3.append([row[0],row[1],int(row[2])])
  
-
-    # print(graph)
     graph = sorted(connectionlist2, key=lambda item: item[2])
 
-    # begin, eind, tijd
     for i in range(0, trains):
         u,v,w = graph[0]
         traject = Traject()

@@ -8,7 +8,7 @@ import random
 import csv
 import os
 
-def randomize(cdict, clist, trains, timeframe):
+def lookaheadClimber(cdict, clist, trains, timeframe):
     # initialize list of connections for usage of random.choice function
     connectionslist = clist
     timeframe = timeframe
@@ -91,11 +91,7 @@ def randomize(cdict, clist, trains, timeframe):
                 failed_attemps +=1
             
             if failed_attemps == 75:
-                print(round(score))
                 break
 
-            #print(traject)
-            # print(f"{len(connections_used)} connections used so far.")
-            # print(current_p)
         score = formula(p, trains_used + 1, total_minutes)
         return trajecten,score,p,trains_used

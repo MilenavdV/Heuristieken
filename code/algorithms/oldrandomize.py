@@ -67,23 +67,5 @@ def oldrandomize(file):
                     connections_used.append(k.text())
             
         p = len(connections_used) / total
-
-    
-        # print(p)
-        score = formula(p, randtrains, total_minutes)
-            # print(score)
-
-            # if score > 0:
-            #     os.remove('dienstregeling.txt')
-            #     with open('dienstregeling.txt', mode="w") as file:
-            #         for traject in trajecten:
-            #             file.write("Traject " + str(traject + 1) + ":")
-            #             file.write("\n")
-            #             for connectie in trajecten[traject].connections:
-            #                 file.write((connectie.origin + "-" + connectie.destination + " " + str(connectie.time) + "\n"))
-            #             file.write("\n")
-            #             file.write(("Total time of " + str(trajecten[traject].time) + " minutes." + "\n"))
-            #             file.write("\n")
-            #         file.write(("Total score of: " + str(score) + "\n"))
-                
+        score = formula(p, randtrains, total_minutes)                
         return trajecten, p, score
