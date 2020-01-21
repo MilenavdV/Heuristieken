@@ -39,7 +39,7 @@ def visualise(train_used):
     # the lines for all the connections are given the same color, white
     p.multi_line(x1,y1,line_width=5,color='white')
     
-    # all the x and y coordinates of the trajecten are saved in the same dictionary,
+    # all the x and y coordinates of the tracks are saved in the same dictionary,
     # with the key being the number of a traject
     i = 0
     trajecten_x ={}
