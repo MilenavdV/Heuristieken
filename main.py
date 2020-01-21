@@ -54,7 +54,7 @@ if __name__ == "__main__":
     #         break
 
     # print("Random",scorerandom, p)
-    # csvWriter('dienstregeling.csv',trajecten)
-    # train_used =12
-    # visualise(train_used)
+    csvWriter('dienstregeling.csv',trajecten)
+    # train_used =17
+    visualise(train_used)
     

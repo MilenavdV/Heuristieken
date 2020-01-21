@@ -1,16 +1,24 @@
+'''
+connectioncount.py is focused on where a train should start.
+It chooses a station with the least connections and that isn't used in another track yet.
+
+'''
+
 from code.algorithms.functions import *
 from code.classes.traject import Traject
 
 
 def connectionCount(file,timeframe,stations,connections,trains):
+    """Returns the tracks that are covered, p, score and amount of train used"""
+
     traject = Traject()
     connections_used =[]
     stationsvalues = {}
     trajecten ={}
     total_minutes = 0
     
+    # counts on how many connection each station has
     for station in stations:
-        # how many connections does a certain station have
         con_values = len(stations[station])
         if station not in stationsvalues:
             stationsvalues[station] = []
@@ -21,7 +29,7 @@ def connectionCount(file,timeframe,stations,connections,trains):
     sort_con = sorted(stationsvalues.items(),key = lambda kv:(kv[1], kv[0]))
 
     # used 18 trains because this provides the best solution
-    for i in range(0,18):
+    for i in range(0,9):
         traject = Traject()
         while True:
             check = f"{sort_con[0][0]}-{stations[sort_con[0][0]][0][0]}"
@@ -54,8 +62,10 @@ def connectionCount(file,timeframe,stations,connections,trains):
         total_minutes +=traject.time
         trajecten[i] = traject
         train_used = i
-        p = len(connections_used)/89
+        p = (len(connections_used) - i)/89
+        # print(len(connections_used)-i)
         score = formula(p,train_used,total_minutes)
+        print(score)
     return trajecten,p,score, train_used
 
 
