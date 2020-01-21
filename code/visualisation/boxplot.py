@@ -1,7 +1,7 @@
 from code.algorithms.readconnections import readConnections
 from code.algorithms.kruskal import kruskal
 from code.algorithms.greedy import Greedy
-from code.algorithms.randomize import randomize
+from code.algorithms.lookahead_climber import lookaheadClimber
 from code.algorithms.oldrandomize import oldrandomize
 from code.algorithms.connectioncount import connectionCount
 
@@ -50,7 +50,7 @@ class Vergelijking:
         print('least connections klaar')
 
         for i in range(self.sims):
-            trajecten,score,p,trains_used = randomize(cdict, clist, self.trains, self.timeframe)
+            trajecten,score,p,trains_used = lookaheadClimber(cdict, clist, self.trains, self.timeframe)
             scoreslist[i] = score
         df['Greedy lookahead'] = scoreslist.values()
         print('Greedy lookahead klaar')

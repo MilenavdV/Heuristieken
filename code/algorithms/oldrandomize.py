@@ -8,82 +8,47 @@ from code.algorithms.functions import findConnections, usefulConnections, fastes
 from code.classes.connection import Connection
 from code.classes.traject import Traject
 
-connections = {}
-connectionslist = []
+class Randomize():
+    
+    def __init__(self,file,trains,timeframe):
+        self.trains = trains
+        self.timeframe = timeframe
+        self.stations, self.connections, self.clist, self.clist2 = readConnections(file)
+    
+    
+    def randomize(self):
+        """ Makes a random solution for the problem. """
 
-def oldrandomize(file):
-    """ Makes a random solution for the problem. """
-    # create Connection objects
-    if fnmatch.fnmatch(file,'data/ConnectiesHolland.csv'):
-        timeframe = 120
-        trains = 7
-    else:
-        timeframe = 180
-        trains = 20
-
-    for station in readConnections(file)[0]:
-        destinations = readConnections(file)[0][station]
+        total = len(self.clist) / 2
         
-        for optie in destinations:
-            destination = optie[0]
-            time = optie[1]
-            connection = Connection(station, destination, int(time))
-            key = connection.origin + "-" + connection.destination
-            connections[key] = connection
-    
-    for i in connections:
-        connectionslist.append(i)
+        while True:
+            trajecten = {}
+            connections_used = []
+            total_minutes = 0
+            randtrains = random.randrange(self.trains)
 
-    total = len(connectionslist) / 2
-    
-    while True:
-        trajecten = {}
-        connections_used = []
-        total_minutes = 0
-        randtrains = random.randrange(trains)
-
-        for i in range(0, randtrains):
+            for i in range(0, randtrains):
+                
+                traject = Traject()
             
-            traject = Traject()
-        
-            start = random.choice(connectionslist)
-            traject.addConnection(connections[start], connections[start].time, timeframe)
+                start = random.choice(self.clist)
+                traject.addConnection(self.connections[start], self.connections[start].time, self.timeframe)
 
-            for j in range(0,20):
                 new_origin = traject.connections[-1].destination
                 previous_station = traject.connections[-1].origin
-                options = findConnections(new_origin, previous_station, connections)
-                useful_options = usefulConnections(new_origin, options, connections_used, traject.time, timeframe, connections)
+                options = findConnections(new_origin, previous_station, self.connections)
+
+                if len(options) != 0:
+                    new_connection = random.choice(options)
+                    traject.addConnection(self.connections[new_connection], self.connections[new_connection].time, self.timeframe)
                 
-                if len(useful_options) != 0 :
-                    new_connection = random.choice(useful_options)
-                    traject.addConnection(connections[new_connection], connections[new_connection].time, timeframe)
-               
-            trajecten[i] = traject
-            total_minutes += traject.time
+                trajecten[i] = traject
+                total_minutes += traject.time
 
-            for k in traject.connections:
-                if k.text() not in connections_used and changeDirection(k.text()) not in connections_used:
-                    connections_used.append(k.text())
-            
-        p = len(connections_used) / total
-
-    
-        # print(p)
-        score = formula(p, randtrains, total_minutes)
-            # print(score)
-
-            # if score > 0:
-            #     os.remove('dienstregeling.txt')
-            #     with open('dienstregeling.txt', mode="w") as file:
-            #         for traject in trajecten:
-            #             file.write("Traject " + str(traject + 1) + ":")
-            #             file.write("\n")
-            #             for connectie in trajecten[traject].connections:
-            #                 file.write((connectie.origin + "-" + connectie.destination + " " + str(connectie.time) + "\n"))
-            #             file.write("\n")
-            #             file.write(("Total time of " + str(trajecten[traject].time) + " minutes." + "\n"))
-            #             file.write("\n")
-            #         file.write(("Total score of: " + str(score) + "\n"))
+                for k in traject.connections:
+                    if k.text() not in connections_used and changeDirection(k.text()) not in connections_used:
+                        connections_used.append(k.text())
                 
-        return trajecten, p, score
+            p = len(connections_used) / total
+            score = formula(p, randtrains, total_minutes)                
+            return trajecten, p, score,randtrains

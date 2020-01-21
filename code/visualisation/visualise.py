@@ -11,8 +11,8 @@ def visualise(train_used):
     output_file("geojson.html")
 
     # googlemaps settings
-    # map_options = GMapOptions(lat=52.5, lng=5, map_type="roadmap", zoom=7)
-    # p = gmap("-", map_options, tools="save,tap,pan,wheel_zoom,box_select,box_zoom,reset")
+    # map_options = GMapOptions(lat=52.5, lng=5, map_type="roadmap", zoom=7,styles = style_options)
+    # p = gmap("AIzaSyB9pKdfe3bVfkZR_sseLIf6y-9bs2x2aLo", map_options, tools="save,tap,pan,wheel_zoom,box_select,box_zoom,reset")
     
     # loading the geodata 
     with open("data/StationsNationaal.json", 'r') as geo_file:
@@ -34,7 +34,7 @@ def visualise(train_used):
             x1.append([float(row[3]),float(row[5])])
             
     # figure settings
-    p = figure(background_fill_color="lightgrey", plot_width=800,plot_height=800, tools="save,tap,pan,lasso_select,box_select,box_zoom,reset", active_drag="lasso_select")
+    # p = figure(background_fill_color="lightgrey", plot_width=800,plot_height=800, tools="save,tap,pan,lasso_select,box_select,box_zoom,reset", active_drag="lasso_select")
     
     # the lines for all the connections are given the same color, white
     p.multi_line(x1,y1,line_width=5,color='white')
@@ -44,7 +44,7 @@ def visualise(train_used):
     i = 0
     trajecten_x ={}
     trajecten_y = {}
-    with open("dienstregeling.csv", mode='r') as csv_file:
+    with open("dienstregeling-1.csv", mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')        
         for row in csv_reader:
             traject = 'Traject ' + str(i + 1)
