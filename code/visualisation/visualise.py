@@ -6,7 +6,9 @@ import json
 import csv
 import random
 
-def visualise(train_used):
+class Visualise:
+
+def map(train_used):
     # the file where we save the map
     output_file("geojson.html")
 
