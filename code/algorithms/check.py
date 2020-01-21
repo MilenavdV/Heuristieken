@@ -1,4 +1,4 @@
-from functions import formula
+from code.algorithms.functions import formula
 import csv
 
 total_minutes=0

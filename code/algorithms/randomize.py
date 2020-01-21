@@ -35,16 +35,13 @@ def randomize(cdict, clist, trains, timeframe):
             current_p = (len(connections_used)) / total
             
             current_score = formula(current_p, trains_used , total_minutes)
-            #print(current_p, trains_used, total_minutes, current_score)
             count_new_connections = 0
             
             traject = Traject()
             while True:
                 # initialize starting point
                 start = random.choice(connectionslist)
-                # print(start)
                 if start not in connections_used and changeDirection(start) not in connections_used:
-                    print(start)
                     break
             # add starting connection to the traject
             traject.addConnection(connections[start], connections[start].time, timeframe)
@@ -73,9 +70,7 @@ def randomize(cdict, clist, trains, timeframe):
             p = (len(connections_used) + count_new_connections) / total
             
             score = formula(p, trains_used + 1, total_minutes + traject.time)
-            #print(p, trains_used + 1, total_minutes + traject.time , score)
-
-            if score > current_score and trains_used != max_trains:
+            if score > current_score and trains_used <= max_trains:
                 trajecten[trains_used] = traject
                 trains_used += 1
                 total_minutes += traject.time
@@ -85,11 +80,7 @@ def randomize(cdict, clist, trains, timeframe):
                         connections_used.append(changeDirection(k.text()))
             else:
                 failed_attemps +=1
-            
-            if failed_attemps == 0:
+            if failed_attemps == 75:
                 break
-            #print(traject)
-            # print(f"{len(connections_used)} connections used so far.")
-            # print(current_p)
         score = formula(p, trains_used + 1, total_minutes)
         return trajecten,score,p,trains_used
