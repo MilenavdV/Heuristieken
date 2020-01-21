@@ -2,7 +2,7 @@ from code.algorithms.functions import *
 from code.classes.traject import Traject
 
 
-def test(file,timeframe,stations,connections,trains):
+def connectionCount(file,timeframe,stations,connections,trains):
     traject = Traject()
     connections_used =[]
     stationsvalues = {}
@@ -40,10 +40,6 @@ def test(file,timeframe,stations,connections,trains):
             # options = findConnections(destination,origin,connections)
             
             if new_connection != None:
-                # useful = usefulConnections(destination,options,connections_used,connections[new_connection].time,timeframe,connections)
-                # if connections[new_connection] not in useful:
-                #     print(useful,new_connection)
-                #     new_connection = useful[0]
                 if connections[new_connection] in traject.connections:
                     break         
                 traject.addConnection(connections[new_connection],connections[new_connection].time,timeframe)    
@@ -57,7 +53,7 @@ def test(file,timeframe,stations,connections,trains):
                 break 
         total_minutes +=traject.time
         trajecten[i] = traject
-        train_used = i -1
+        train_used = i
         p = len(connections_used)/89
         score = formula(p,train_used,total_minutes)
     return trajecten,p,score, train_used

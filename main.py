@@ -5,7 +5,7 @@ from code.algorithms.csvwriter import csvWriter
 from code.algorithms.kruskal import kruskal
 from code.algorithms.randomize import randomize
 from code.algorithms.oldrandomize import oldrandomize
-from code.algorithms.vrijdag import test
+from code.algorithms.connectioncount import connectionCount
 from code.algorithms.hillclimb import HillClimber
 from code.visualisation.visualise import visualise
 
@@ -31,10 +31,8 @@ if __name__ == "__main__":
             df.assign(j = scoreslist, index = scoreslist.keys())
     boxplot = df.boxplot()
     print(boxplot)
-    trajecten,p,score,train_used = test(file,timeframe,stations,cdict,trains)
+    trajecten,p,score,train_used = connectionCount(file,timeframe,stations,cdict,trains)
     print(score,p,train_used)
-    # test(file,timeframe,stations)
-    # count = 0
     # for i in range(0,500):
     #     trajecten, p,minutes,score = fastestOption(stations, cdict, clist,clist2, trains, time)
     #     count +=1
@@ -56,6 +54,7 @@ if __name__ == "__main__":
     #         break
 
     # print("Random",scorerandom, p)
-    csvWriter('dienstregeling.csv',trajecten)
-    visualise(train_used)
+    # csvWriter('dienstregeling.csv',trajecten)
+    # train_used =12
+    # visualise(train_used)
     
