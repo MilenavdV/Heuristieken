@@ -48,10 +48,12 @@ class Visualise:
         i = 0
         trajecten_x ={}
         trajecten_y = {}
-        with open("dienstregeling-1.csv", mode='r') as csv_file:
+        with open("dienstregeling2-1.csv", mode='r') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')        
             for row in csv_reader:
                 traject = 'Traject ' + str(i + 1)
+                # if traject == 'Traject '+ str(i):
+                #     continue
                 if row == []:
                     continue
                 if 'Total' in row[0]:
@@ -66,12 +68,10 @@ class Visualise:
                 trajecten_x[i].append(row[3])
                 trajecten_x[i].append(row[5])
 
+        color = ['blue','red', 'cyan','peru', 'olive', 'black', 'lime', 'pink','orchid','goldenrod']
         # for each traject a random rgb color is generated and with this color a line is made on the same figure as above
         for i in range(self.train_used):
-            r = random.randint(0,255)
-            g = random.randint(0,255)
-            b = random.randint(0,255)
-            p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2.5,color=(r,g,b))
+            p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2.5,color= color[i])
 
         # the stations are added at the the end to make sure the black dotes are in front of the lines
         p.circle(x='x', y='y', size=5, color='Color', alpha=0.7, source=geo_source)

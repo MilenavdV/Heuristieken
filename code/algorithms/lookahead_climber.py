@@ -8,6 +8,7 @@ import random
 import csv
 import os
 
+
 class Lookahead:
 
     def __init__(self,file,trains,timeframe):
@@ -16,12 +17,14 @@ class Lookahead:
         self.stations, self.connections, self.clist, self.clist2 = readConnections(file)
 
     def lookaheadClimber(self):
+        
         # initialize list of connections for usage of random.choice function
         trains_used = 0
         
         # total amount of connections where a to b and b to a are considered as te same
         total = len(self.clist)
         while True:
+            count = 0 
             # save traject objects in dictionairy
             trajecten = {}
 
@@ -45,7 +48,9 @@ class Lookahead:
                     # initialize starting point
                     start = random.choice(self.clist)
                     if start not in connections_used and changeDirection(start) not in connections_used:
+                        count +=1
                         break
+
                 # add starting connection to the traject
                 traject.addConnection(self.connections[start], self.connections[start].time, self.timeframe)
                 # ugly for-loop that adds connections to the traject object 
@@ -73,19 +78,27 @@ class Lookahead:
                 p = (len(connections_used) + count_new_connections) / total
                 
                 score = formula(p, trains_used + 1, total_minutes + traject.time)
-                if score > current_score and trains_used <= self.trains:
+                if score > current_score and trains_used != self.trains:
                     trajecten[trains_used] = traject
                     trains_used += 1
                     total_minutes += traject.time
                     for k in traject.connections:
                         if k.text() not in connections_used:
+                            count +=1
                             connections_used.append(k.text())
+                            # print(k.text())
                             connections_used.append(changeDirection(k.text()))
+                            # print(changeDirection(k.text()))
+
                 else:
                     failed_attemps +=1
                 
                 if failed_attemps == 75:
+                    p = len(connections_used)/total
+                    if p >= 1:
+                        print(connections_used, p)
+                        input()
                     break
 
             score = formula(p, trains_used + 1, total_minutes)
-            return trajecten,p,score,trains_used
+            return trajecten, p, score, trains_used
