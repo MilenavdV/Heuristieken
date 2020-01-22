@@ -1,9 +1,9 @@
 from code.algorithms.readconnections import readConnections
-from code.algorithms.kruskal import kruskal
+from code.algorithms.kruskal import Kruskal
 from code.algorithms.greedy import Greedy
-from code.algorithms.lookahead_climber import lookaheadClimber
-from code.algorithms.oldrandomize import oldrandomize
-from code.algorithms.connectioncount import connectionCount
+from code.algorithms.lookahead_climber import Lookahead
+from code.algorithms.oldrandomize import Randomize
+from code.algorithms.connectioncount import Count
 
 import numpy
 import pandas as pd
