@@ -4,11 +4,10 @@ class Traject:
         self.stops = []
         self.time = 0
 
-
     def addConnection(self, connection, time, timeframe):
         # traject van a naar b, met mogelijke tussenstops en totale tijd
         # minimaliseren van functie K= p*10000-(T*100+Min)
-        if (self.time + connection.time) < timeframe:
+        if (self.time + connection.time) <= timeframe:
             self.connections.append(connection)
             self.time += connection.time
             self.stops.append(connection.origin)
