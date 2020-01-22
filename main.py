@@ -5,7 +5,6 @@ from code.algorithms.lookahead_climber import Lookahead
 from code.algorithms.oldrandomize import Randomize
 from code.algorithms.connectioncount import Count
 from code.algorithms.hillclimb import HillClimber
-# from code.visualisation.boxplot import Vergelijking
 from code.algorithms.connectioncount import Count
 from code.visualisation.visualise import Visualise
 
@@ -22,12 +21,12 @@ if __name__ == "__main__":
     file = 'data/ConnectiesNationaal.csv'
     output = 'dienstregeling3.csv'
     functie = Lookahead(file,trains,timeframe)
-    # while True:
-    #     trajecten, p, score, trains_used = functie.lookaheadClimber()
-    #     print(score,p*178)
-    #     if score >7000 or p ==1:
-    #         print('YAS')
-    #         csvWriter(station_file,f"dienstregeling{round(score)}T.csv",trajecten)
+    while True:
+        trajecten, p, score, trains_used = functie.lookaheadClimber()
+        print(score,p*178)
+        if score >7000 or p ==1:
+            print('YAS')
+            csvWriter(station_file,f"dienstregeling{round(score)}T.csv",trajecten)
 
     # # csvWriter(station_file,output,trajecten)
     vis = Visualise(10)  
