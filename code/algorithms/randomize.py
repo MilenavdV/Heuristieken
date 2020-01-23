@@ -1,6 +1,3 @@
-"""
-"""
-
 from code.algorithms.readconnections import readConnections
 from code.algorithms.functions import findConnections, usefulConnections, fastestConnection, changeDirection, formula
 from code.classes.connection import Connection

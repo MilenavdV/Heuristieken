@@ -2,10 +2,11 @@ from code.algorithms.greedy import Greedy
 from code.algorithms.csvwriter import csvWriter
 from code.algorithms.kruskal import Kruskal
 from code.algorithms.lookahead_climber import Lookahead
-from code.algorithms.oldrandomize import Randomize
+from code.algorithms.randomize import Randomize
 from code.algorithms.connectioncount import Count
 from code.algorithms.hillclimb import HillClimber
-# from code.visualisation.boxplot import Vergelijking
+# from code.visualisation.visualise import visualise
+# from code.algorithms.csvreader import checkScore
 from code.algorithms.connectioncount import Count
 from code.visualisation.visualise import Visualise
 from code.algorithms.royspartytent import randomize
@@ -19,12 +20,13 @@ import matplotlib.pyplot as plt
 
 
 if __name__ == "__main__":
-    # # # sims = 10
+    sims = 10
     trains = 20
     timeframe = 180
     station_file = 'data/StationsNationaal.csv'
     file = 'data/ConnectiesNationaal.csv'
     output = 'dienstregeling.csv'
+<<<<<<< HEAD
     stations, cdict, clist, clist2 = readConnections(file)
     time = 180
     
@@ -52,3 +54,9 @@ if __name__ == "__main__":
     # vis = Visualise(10)
     # vis.map()
     
+=======
+    # stations, cdict, clist, clist2 = readConnections(file)
+    test = Count(file,trains,timeframe)
+    trajecten,p,score,train_used = test.connectionCount()
+    print(score)
+>>>>>>> 78ddf4ce075cd4abfa005dca18b9942c7dd6efa3

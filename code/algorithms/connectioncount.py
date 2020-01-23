@@ -1,6 +1,10 @@
 '''
-connectioncount.py is focused on where a train should start.
+connectioncount.py
+
+This script is focused on where a train should start his track.
 It chooses a station with the least connections and that isn't used in another track yet.
+
+Author: 0505 + Wouter
 
 '''
 
@@ -8,41 +12,48 @@ from code.algorithms.functions import *
 from code.classes.traject import Traject
 from code.algorithms.readconnections import readConnections
 
+
 class Count:
 
     def __init__(self,file,trains,timeframe):
+        """Initializes the values needed for the algorithm"""
         self.timeframe = timeframe
         self.trains = trains
         self.stations, self.connections, self.clist, self.clist2 = readConnections(file)
 
     def connectionCount(self):
-        """Returns the tracks that are covered, p, score and amount of train used"""
+        """Returns the tracks that are covered, p, score and amount of trais used"""
 
-        connections_used =[]
+        # a list which will be filled with the connections that are used
+        connections_used = []
+
+        # a dictionary, with the key being the station and the value is the amount of connections of this station
         stationsvalues = {}
-        trajecten ={}
+
+        # a dictionary filled with the tracks that are made
+        trajecten = {}
+
+        # total minutes of all the tracks together
         total_minutes = 0
+
+        # amount of connections possible
         total_connections = len(self.connections)/2
         
-        # counts on how many connection each station has
+        # fills the stationsvalues dictionary
         for station in self.stations:
             con_values = len(self.stations[station])
             if station not in stationsvalues:
                 stationsvalues[station] = []
-            # save this value is a dictionary, with the station being the key
             stationsvalues[station].append(con_values)     
         
-        # after making this dictionary, sort it with the lowest amount of connections first
+        # sorts the stationvalues dictionary in ascending order
         sort_con = sorted(stationsvalues.items(),key = lambda kv:(kv[1], kv[0]))
 
-        # used 18 trains because this provides the best solution
-        # trains_used = 1
-        # score2 = 0
+        # loops 9 times, MOET NOG IETS GEFIXT WORDEN, AANTAL TREINEN IS NU HARDCODED
         for i in range(1,10):
-            # trains_used += 1
             traject = Traject()
 
-            # searches for a station with the least connection and not used
+            # searches for a station with the least connections and not used yet
             while True:
                 check = f"{sort_con[0][0]}-{self.stations[sort_con[0][0]][0][0]}"
 
@@ -59,10 +70,10 @@ class Count:
             destination = self.stations[origin][0][0]
             traject.addConnection(self.connections[f"{origin}-{destination}"],self.stations[origin][0][1],self.timeframe)
             
-            # keeps track of the used connections
+            # append track of the used connections, so it won't be used a second time
             connections_used.append(f"{origin}-{destination}")
 
-            # make sure the connection is not in the dictonary anymore
+            # delete the connection from the sorted dictionary, so it wont be used a second time as a start connection
             sort_con.pop(0)  
         
             # after the first connection is found, finish the track
@@ -83,6 +94,7 @@ class Count:
                 # if there is no new connection stop the current track
                 else: 
                     break
+                
                 destination = traject.connections[-1].destination
                 origin = traject.connections[-1].origin
 
@@ -90,11 +102,13 @@ class Count:
                 if traject.time + self.connections[new_connection].time >= self.timeframe:
                     break 
 
-            # data we keep track of to calculate the final score
+            # data to keep track of to calculate the final score
             total_minutes += traject.time
             trajecten[i] = traject
             train_used = i
             p = (len(connections_used)-i)/total_connections
+
+            # score after track is added
             score = formula(p,train_used,total_minutes)
         return trajecten, p, score, train_used
 
