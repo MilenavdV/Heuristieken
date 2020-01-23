@@ -182,6 +182,11 @@ def best(origin, time_left, connections, used_connections, traject_connections):
     for score in max_scores:
         if score == highest_score:
             position = count
-            #print(score)
             return options[position]
         count += 1
+
+
+    
+
+
+    

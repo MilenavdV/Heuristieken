@@ -41,12 +41,6 @@ class Kruskal:
         total_minutes = 0
         total_connections = len(self.clist) / 2
         connections_used = []
-
-        # with open(file, mode='r') as csv_file:
-        #     csv_reader = csv.reader(csv_file, delimiter=',')
-        #     for row in csv_reader:
-        #         connectionlist3.append([row[0],row[1],int(row[2])])
-    
         graph = sorted(self.clist2, key=lambda item: item[2])
 
         for i in range(0, self.trains):
