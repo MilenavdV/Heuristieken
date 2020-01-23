@@ -25,4 +25,6 @@ if __name__ == "__main__":
     # stations, cdict, clist, clist2 = readConnections(file)
     test = Count(file,trains,timeframe)
     trajecten,p,score,train_used = test.connectionCount()
-    print(score)
+    print("a")
+    improvement = HillClimber(file,p,trajecten)
+    improvement.improve(5)
