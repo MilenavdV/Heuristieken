@@ -39,8 +39,6 @@ def readConnections(file):
             # add Connection to dictionary
             connections[key] = connection
 
-
-    
     # initialise list
     connectionslist = []
     

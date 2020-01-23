@@ -53,14 +53,9 @@ def randomize(cdict, clist, trains, timeframe):
             while True:
                 # find the current station of the traject
                 new_origin = traject.connections[-1].destination
-
-                # find the previous station of the traject
-                #previous_station = traject.connections[-1].origin
                 
                 time_left = timeframe - traject.time
 
-                #options = findConnections(new_origin, previous_station, connections)
-                #best_option = bestOption(new_origin, options, connections_used, traject.time, timeframe, connections)
                 traject_connections = []
                 for each in traject.connections:
                     traject_connections.append(each.text())
@@ -72,7 +67,6 @@ def randomize(cdict, clist, trains, timeframe):
                     traject.addConnection(connections[best_option], connections[best_option].time, timeframe)
                 else:
                     break
-
 
             while True:
                 if traject.connections[-1] in traject.connections[:-1]:
@@ -106,7 +100,7 @@ def randomize(cdict, clist, trains, timeframe):
             else:
                 failed_attemps +=1
             
-            if failed_attemps == 100:
+            if failed_attemps == 200:
                 break
 
         p = len(connections_used) / total

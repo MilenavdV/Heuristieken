@@ -67,12 +67,15 @@ def usefulConnections(origin, options, connections_used, traject_time, timeframe
     return useful_options
 
 def Options(origin, time_left, connections):
+    """ Finds the possible options given a certain station and the time that is left """
     origin = origin
     time_left = time_left
     connections = connections
 
+    # initialize list to save optoins
     options = []
 
+    # save connection as option when it meets the conditions
     for i in connections:
         if connections[i].origin == origin and connections[i].time <= time_left:
             options.append(i)
@@ -80,104 +83,117 @@ def Options(origin, time_left, connections):
     return options
 
 def best(origin, time_left, connections, used_connections, traject_connections):
+    """ Return the connection that could lead to the highest added score 
+        by looking three steps ahead """
+
     origin = origin
     time_left = time_left
     connections = connections
+
+    # save connections that have been used in other trajects so far
     used_connections = used_connections
+
+    # save connections that have been added so far to this particular traject
     traject_connections = traject_connections
 
+    # find the possible connections by calling the Options function
     options = Options(origin, time_left, connections)
     
+    # initialize list to keep track of maximum scores per possible connection from the origin
     max_scores = []
+
+    # loop over the connections that are possible from the origin
     for i in options:
+
+        # save all the scores that are achievable per possible connection from the origin
         all_scores_this_i = []
-       
+
+        # check if the connection has been used already
         if i in used_connections or i in traject_connections:
+            
+            # added score of adding this connection is equal to minus the time of the connection
             score_i = - connections[i].time
+        
+        # when the connection has not been used already
         else:
+
+            # added score of adding this connection is equal to:
+            # 1 out of 89 connections times the score of 10000 minus the time of the connection
             score_i = (10000/89) - connections[i].time
+
+        # save the score in the score list   
         all_scores_this_i.append(score_i)
 
-        
+        # update the time that is left for this traject
         time_left_i = time_left - connections[i].time
-       
-        options_i = Options(connections[i].destination, time_left_i, connections)
-       
-        for j in options_i:
 
+        # find the possible connections starting from the first connections destination
+        options_i = Options(connections[i].destination, time_left_i, connections)
+
+        # loop over the connections that are possible from the new origin
+        for j in options_i:
+            
+            # when the connection has been used so far 
+            # or when the connection is the same as the connection of the previous loop
             if j in used_connections or j in traject_connections or j == i or j == changeDirection(i):
+
+                # added score of adding this connection is equal to minus the time of the connection
                 score_j = score_i - connections[j].time
+            
+            # when the connection has not been used already
             else:
+
+                # added score of adding this connection is equal to:
+                # 1 out of 89 connections times the score of 10000 minus the time of the connection
                 score_j = score_i + (10000/89) - connections[j].time
+            
+            # save the score in the score list
             all_scores_this_i.append(score_j)     
-        
+
+            # update the time that is left for this traject
             time_left_j = time_left_i - connections[j].time
 
+            # find the possible connections starting from the second connections destination
             options_j = Options(connections[j].destination, time_left_j, connections)
-           
-            for k in options_j:
-                if k in used_connections or k in traject_connections or k == i or k == changeDirection(i) or k == j or k == changeDirection(j):
-                    score_k = score_j - connections[k].time
-                else:
-                    score_k = score_j + (10000/89) - connections[k].time  
-                all_scores_this_i.append(score_k)
-                
             
-                time_left_k = time_left_j - connections[k].time
+            # print(j, 'j', score_j)
 
-                options_k = Options(connections[k].destination, time_left_k, connections)
+            # loop over the connections that are possible from the new origin
+            for k in options_j:
 
-                for l in options_k:
-                    if l in used_connections or l in traject_connections or l == i or l == changeDirection(i) or l == j or l == changeDirection(j) or l == k or l == changeDirection(k): 
-                        score_l = score_k - connections[l].time
-                    else:
-                        score_l = score_k + (10000/89) - connections[l].time
-                    all_scores_this_i.append(score_l)
+                # when the connection has been used so far 
+                # or when the connection is the same as the connections of the previous loops
+                if k in used_connections or k in traject_connections or k == i or k == changeDirection(i) or k == j or k == changeDirection(j):
                     
-                    # time_left_l = time_left_k - connections[l].time
+                    # added score of adding this connection is equal to minus the time of the connection
+                    score_k = score_j - connections[k].time
+                
+                # when the connection has not been used already
+                else:
 
-                    # options_l = Options(connections[l].destination, time_left_l, connections)
-
-                    # for m in options_l:
-                    #     if m in used_connections or m in traject_connections or m == i or m == changeDirection(i) or m == j or m == changeDirection(j) or m == k or m == changeDirection(k) or m == l or m == changeDirection(l):
-                    #         score_m = score_l - connections[m].time
-                    #     else:
-                    #         score_m = score_l + (10000/89) - connections[m].time
-                    #     all_scores_this_i.append(score_m)
-
-                    #     time_left_m = time_left_l - connections[m].time
-
-                        #options_m = Options(connections[m].destination, time_left_m, connections)
-
-                        # for n in options_m:
-                        #     if n in used_connections or n in traject_connections or n == i or n == changeDirection(i) or n == j or n == changeDirection(j) or n == k or n == changeDirection(k) or n == l or n == changeDirection(l) or n == m or n == changeDirection(m):
-                        #         score_n = score_m - connections[n].time
-                        #     else:
-                        #         score_n = score_m + (10000/89) - connections[n].time
-                        #     all_scores_this_i.append(score_n)
-
-                        #     time_left_n = time_left_m - connections[n].time
-
-                        #     options_n = Options(connections[n].destination, time_left_n, connections)
-
-                        #     for o in options_n:
-                        #         if o in used_connections or o in traject_connections or o == i or o == changeDirection(i) or o == j or o == changeDirection(j) or o == k or o == changeDirection(k) or o == l or o == changeDirection(l) or o == m or o == changeDirection(m) or o == n or o == changeDirection(n):
-                        #             score_o = score_n - connections[o].time
-                        #         else:
-                        #             score_o = score_n + (10000/89) - connections[o].time
-                        #         all_scores_this_i.append(score_o)
-                        
-                    
+                    # added score of adding this connection is equal to:
+                    # 1 out of 89 connections times the score of 10000 minus the time of the connection
+                    score_k = score_j + (10000/89) - connections[k].time  
+                
+                # save the score in the score list
+                all_scores_this_i.append(score_k)
+        
+        # save the highest added score possible from the connection 
         max_scores.append(max(all_scores_this_i))
-   
-    try:
+    
+    # find maximum possible added score unless there are no possible connections
+    if len(max_scores) != 0:
         highest_score = max(max_scores)
-    except:
+    
+    # there is no possible next connection to add to the traject
+    else:
         return None
 
+    # when the maximum added score is negative do not add any connection to the traject
     if highest_score <= 0:
         return None
 
+    # find and return corresponding connection by the highest added score
     count = 0
     for score in max_scores:
         if score == highest_score:
