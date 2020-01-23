@@ -23,7 +23,6 @@ if __name__ == "__main__":
     functie = Lookahead(file,trains,timeframe)
     while True:
         trajecten, p, score, trains_used = functie.lookaheadClimber()
-        print(score,p*178)
         if score >7000 or p ==1:
             print('YAS')
             csvWriter(station_file,f"dienstregeling{round(score)}T.csv",trajecten)

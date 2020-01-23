@@ -57,9 +57,7 @@ class Lookahead:
                     # find the current station of the traject
                     new_origin = traject.connections[-1].destination
 
-                    # find the previous station of the traject
-                    #previous_station = traject.connections[-1].origin
-                    
+                    # find the previous station of the traject                   
                     time_left = self.timeframe - traject.time
 
                     traject_connections = []
@@ -70,7 +68,6 @@ class Lookahead:
                     best_option = best(new_origin, time_left, self.connections, connections_used, traject_connections)
 
                     if best_option != None:
-                        
                         traject.addConnection(self.connections[best_option], self.connections[best_option].time, self.timeframe)
                     else:
                         break
@@ -94,7 +91,6 @@ class Lookahead:
                 
                 score = formula(possible_p, trains_used + 1, total_minutes + traject.time)
                 
-                #print(p, trains_used + 1, total_minutes + traject.time , score)
 
                 if score > current_score and trains_used != self.trains:
                     trajecten[trains_used] = traject
@@ -107,7 +103,6 @@ class Lookahead:
 
                 else:
                     failed_attemps +=1
-                    print(failed_attemps)
                 
                 if failed_attemps == 10:
                     break
