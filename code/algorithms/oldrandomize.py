@@ -9,7 +9,7 @@ import os
 import fnmatch
 
 
-class Randomize():
+class Randomize:
     
     def __init__(self,file,trains,timeframe):
         self.trains = trains

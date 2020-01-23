@@ -8,7 +8,7 @@ class Greedy:
     """ A class using a greedy algorithm to solve a train planning problem. """
     def __init__(self, file, trains, timeframe):
         """ Initialises the problem. """
-        stations, self.connections, self.connectionslist = readConnections(file)
+        self.stations, self.connections, self.connectionslist = readConnections(file)
         self.trains = trains
         self.timeframe = timeframe
 
