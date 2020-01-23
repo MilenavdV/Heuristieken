@@ -24,7 +24,7 @@ class Randomize:
         self.trains = trains
         self.timeframe = timeframe
         read = Read(file)
-        self.stations, self.connections, self.connectionslist = read.readConnections()
+        self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
         # self.stations, self.connections, self.clist, self.clist2 = readConnections(file)
     
     

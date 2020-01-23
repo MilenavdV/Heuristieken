@@ -37,7 +37,7 @@ class HillClimber:
         train = self.trains[key]
 
         connections_used = []
-        for traject in self.trains:
+        for traject in self.trains.values():
             if traject is not train:
                 for connection in traject.connections:
                     if connection.text() not in connections_used and changeDirection(connection.text()) not in connections_used:
@@ -63,7 +63,7 @@ class HillClimber:
             previous_station = new_train.connections[-1].origin
 
             # check whether there is an option to expand the traject further 
-            if fastestConnection(self.cdict, new_origin, previous_station) != None:
+            if fastestConnection(self.cdict, new_origin, previous_station) is not None:
 
                 # add the connection with the shortest time to the traject
                 new_connection = fastestConnection(self.cdict, new_origin, previous_station)
@@ -98,7 +98,7 @@ class HillClimber:
         return new_score
 
     def improve(self, iterations):
-        print('Before hill climber the quality was', self.score)
+        print("Before hill climber the quality was", self.score)
         for i in range(iterations):
             self.rerun_train()
         print(f"After {iterations} iterations, HillClimber has improved the quality to {self.score}")
