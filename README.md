@@ -24,7 +24,8 @@ Deze case gaat over het eerste deel, het maken van de lijnvoering. Meer specifie
 Voorbeeld: Het traject [Castricum , Zaandam , Hoorn , Alkmaar] is een traject met een duur van 59 minuten, en zou dus binnen het tijdsframe van een uur passen.
 
   
-procces:
+*Proces*
+Als eerste stap hebben we een random algoritme geschreven, dit gaf geen geweldige resultaten. 
 - random
 - greedy
 - greedy met nog ongebruikt begin punt (16seconde)
