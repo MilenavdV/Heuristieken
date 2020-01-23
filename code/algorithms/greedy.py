@@ -1,3 +1,14 @@
+"""
+greedy.py
+
+This script chooses a random begin station to start a track. 
+After a begin station is chosen, it will select the connection 
+with the shortest amount of minutes. This will continue untill the timeframe is exceeded.
+
+Author: 05050 + Wouter
+
+"""
+
 from code.algorithms.readconnections import readConnections
 from code.classes.traject import Traject
 from code.classes.connection import Connection
@@ -14,29 +25,26 @@ class Greedy:
 
     def run(self, verbose):
         """ Finds a solution for the problem by using a greedy algorithm that takes the fastest option. """
-        # initialize list of connections for usage of random.choice function
-        #strins lijst
         
         # save traject objects in dictionairy
         trajecten = {}
 
-        # total amount of connections where a to b and b to a are considered the same
-        # count of all the elements in list 
+        # total amount of connections where a to b and b to a are considered the same count of all the elements in list 
         total = len(self.connectionslist)/2 
         
-        # keep track of the connections used in the whole timetable
+        # a list which will be filled with the connections that are used in all tracks
         connections_used = []
 
-        # keep track of the total time of the traject object
+        # total minutes of all the tracks together
         total_minutes = 0
 
-        # create traject object
+        # create track object
         traject = Traject()
 
-        # create a new traject object for the amount of trains allowed
+        # create a new track object for the amount of trains allowed
         for i in range(self.trains):
             
-            # create traject object
+            # create track object
             traject = Traject()
 
             # initialize starting point, not a used connection
@@ -45,25 +53,25 @@ class Greedy:
                 if start not in connections_used:
                     break
             
-            # add starting connection to the traject
+            # add starting connection to the track
             traject.addConnection(self.connections[str(start)], self.connections[str(start)].time, self.timeframe)
             
-            # for-loop that adds connections to the traject object 
+            # for loop that adds connections to the track object 
             for j in range(0, 20):
-                # find the current station of the traject
+                # find the current station of the track
                 new_origin = traject.connections[-1].destination
 
-                # find the previous station of the traject
+                # find the previous station of the track
                 previous_station = traject.connections[-1].origin
 
-                # check whether there is an option to expand the traject further 
+                # check whether there is an option to expand the track further 
                 if fastestConnection(self.connections, new_origin, previous_station) != None:
 
-                    # add the connection with the shortest time to the traject
+                    # add the connection with the shortest time to the track
                     new_connection = fastestConnection(self.connections, new_origin, previous_station)
                     traject.addConnection(self.connections[new_connection], self.connections[new_connection].time, self.timeframe)
             
-            # save traject in the trajecten dictionairy
+            # save track in the tracks dictionairy
             trajecten[i] = traject
             total_minutes += traject.time
 

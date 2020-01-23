@@ -1,7 +1,7 @@
 from code.algorithms.readconnections import readConnections
 from code.classes.traject import Traject
 from code.classes.connection import Connection
-from code.classes.station import Station
+# from code.classes.station import Station
 from code.algorithms.functions import *
 import random
 import csv
