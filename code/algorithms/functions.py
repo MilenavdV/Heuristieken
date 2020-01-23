@@ -134,16 +134,16 @@ def best(origin, time_left, connections, used_connections, traject_connections):
                         score_l = score_k + (10000/89) - connections[l].time
                     all_scores_this_i.append(score_l)
                     
-                    # time_left_l = time_left_k - connections[l].time
+                    time_left_l = time_left_k - connections[l].time
 
-                    # options_l = Options(connections[l].destination, time_left_l, connections)
+                    options_l = Options(connections[l].destination, time_left_l, connections)
 
-                    # for m in options_l:
-                    #     if m in used_connections or m in traject_connections or m == i or m == changeDirection(i) or m == j or m == changeDirection(j) or m == k or m == changeDirection(k) or m == l or m == changeDirection(l):
-                    #         score_m = score_l - connections[m].time
-                    #     else:
-                    #         score_m = score_l + (10000/89) - connections[m].time
-                    #     all_scores_this_i.append(score_m)
+                    for m in options_l:
+                        if m in used_connections or m in traject_connections or m == i or m == changeDirection(i) or m == j or m == changeDirection(j) or m == k or m == changeDirection(k) or m == l or m == changeDirection(l):
+                            score_m = score_l - connections[m].time
+                        else:
+                            score_m = score_l + (10000/89) - connections[m].time
+                        all_scores_this_i.append(score_m)
 
                     #     time_left_m = time_left_l - connections[m].time
 

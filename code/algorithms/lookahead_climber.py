@@ -1,5 +1,5 @@
-from code.algorithms.readconnections import readConnections
-from code.algorithms.readstations import readStations
+from code.algorithms.readconnections import Read
+# from code.algorithms.readstations import readStations
 from code.algorithms.csvwriter import csvWriter
 from code.classes.connection import Connection
 from code.algorithms.functions import *
@@ -14,7 +14,8 @@ class Lookahead:
     def __init__(self,file,trains,timeframe):
         self.trains = trains
         self.timeframe = timeframe
-        self.stations, self.connections, self.clist, self.clist2 = readConnections(file)
+        read = Read(file)
+        self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
 
     def lookaheadClimber(self):
         

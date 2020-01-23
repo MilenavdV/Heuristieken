@@ -1,4 +1,4 @@
-from code.algorithms.readconnections import readConnections
+from code.algorithms.readconnections import Read
 from code.classes.traject import Traject
 from code.classes.connection import Connection
 # from code.classes.station import Station
@@ -11,7 +11,9 @@ class Kruskal:
     def __init__(self,file,trains,timeframe):
         self.trains = trains
         self.timeframe = timeframe
-        self.stations, self.connections, self.clist, self.clist2 = readConnections(file)
+        read = Read(file)
+        self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
+        # self.stations, self.connections, self.clist, self.clist2 = readConnections(file)
 
 
     def shortest(self, usefulOptions, connections):

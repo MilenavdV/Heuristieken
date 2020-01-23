@@ -2,7 +2,7 @@ import copy
 import random
 import fnmatch
 
-from code.algorithms.readconnections import readConnections
+from code.algorithms.readconnections import Read
 from code.algorithms.functions import findConnections, fastestConnection, changeDirection, formula
 # from code.classes.station import Station
 from code.classes.traject import Traject
@@ -14,7 +14,8 @@ class HillClimber:
     """
     def __init__(self, file, p, traject):
         self.trains = copy.deepcopy(traject)
-        self.stations, self.cdict, self.clist, self.clist2= readConnections(file)
+        read = Read(file)
+        self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
         self.proportion = p
 
         if fnmatch.fnmatch(file,'data/ConnectiesHolland.csv'):

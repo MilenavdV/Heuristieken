@@ -10,7 +10,7 @@ Author: 0505 + Wouter
 
 from code.algorithms.functions import *
 from code.classes.traject import Traject
-from code.algorithms.readconnections import readConnections
+from code.algorithms.readconnections import Read
 
 
 class Count:
@@ -19,7 +19,8 @@ class Count:
         """Initializes the values needed for the algorithm"""
         self.timeframe = timeframe
         self.trains = trains
-        self.stations, self.connections, self.clist, self.clist2 = readConnections(file)
+        read = Read(file)
+        self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
 
     def connectionCount(self):
         """Returns the tracks that are covered, p, score and amount of trais used"""
@@ -95,6 +96,7 @@ class Count:
                 else: 
                     break
                 
+                # hoe omschrijf ik dit ??
                 destination = traject.connections[-1].destination
                 origin = traject.connections[-1].origin
 
@@ -102,10 +104,16 @@ class Count:
                 if traject.time + self.connections[new_connection].time >= self.timeframe:
                     break 
 
-            # data to keep track of to calculate the final score
+            # update the total minutes
             total_minutes += traject.time
+
+            # save track
             trajecten[i] = traject
+
+            # save amount of trains used
             train_used = i
+
+            # calculate p
             p = (len(connections_used)-i)/total_connections
 
             # score after track is added

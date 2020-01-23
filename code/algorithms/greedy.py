@@ -9,7 +9,7 @@ Author: 05050 + Wouter
 
 """
 
-from code.algorithms.readconnections import readConnections
+from code.algorithms.readconnections import Read
 from code.classes.traject import Traject
 from code.classes.connection import Connection
 from code.algorithms.functions import *
@@ -19,7 +19,9 @@ class Greedy:
     """ A class using a greedy algorithm to solve a train planning problem. """
     def __init__(self, file, trains, timeframe):
         """ Initialises the problem. """
-        self.stations, self.connections, self.connectionslist = readConnections(file)
+        read = Read(file)
+        self.stations, self.connections, self.connectionslist = read.readConnections()
+        # self.stations, self.connections, self.connectionslist = readConnections(file)
         self.trains = trains
         self.timeframe = timeframe
 
