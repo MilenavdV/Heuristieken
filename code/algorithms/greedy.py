@@ -60,6 +60,7 @@ class Greedy:
             
             # for loop that adds connections to the track object 
             for j in range(0, 20):
+                
                 # find the current station of the track
                 new_origin = traject.connections[-1].destination
 

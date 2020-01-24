@@ -1,3 +1,12 @@
+"""
+functions.py
+
+All the functions that are used by multiple algorithms.
+
+Authors: 0505 + Wouter
+
+"""
+
 def fastestConnection(connections, origin, previous_station):
     """ Finds the fastest connection from a specific station that isn't the station the train arrived from """
     # initialize lists to keep track of options and the corresponding time

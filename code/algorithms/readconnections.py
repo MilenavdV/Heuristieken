@@ -40,32 +40,35 @@ class Read:
                 thistuple = (row[0], row[2])
                 stations[row[1]].append(thistuple)
 
-        # create connection dictionary, with the key the connection and the corresponding value the connection object
+        # create connection dictionary, with the key the connection and the value the corresponding connection object
         connections = {}
     
+        # list with connections saved as [[origin,destionation,time]..]
         connectionlist2 = []
         for station in stations:
-            # find all connections from station
+
+            # fill connectionslist 2
             destinations = stations[station]
             for destination in destinations:
                 connectionlist2.append([station, destination[0], int(destination[1])])
-
+            
+            # fill connection dictionary
             for option in destinations:
                 destination = option[0]
                 time = option[1]
+
                 # create Connection object
                 connection = Connection(station, destination, int(time))
+
+                # creat key and add connection object
                 key = connection.origin + "-" + connection.destination
-                # add Connection to dictionary
                 connections[key] = connection
 
-
-        
         # initialise list
         connectionslist = []
         
+        # fill list with all the connections as string
         for i in connections:
-            # create list of all connections
             connectionslist.append(i)
 
         return stations, connections, connectionslist, connectionlist2

@@ -7,7 +7,6 @@ Author 0505 + Wouter
 
 '''
 
-from code.algorithms.readstations import readStations
 import csv
 
 
@@ -15,7 +14,12 @@ def csvWriter(station_file,file,trajecten):
     """Returns a csv file with all the tracks"""
 
     # all the available stations
-    stations = readStations(station_file)
+    stations = {}
+    with open(station_file, mode='r') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            stations[row[0]] = [row[1], row[2]]
+    
 
     with open(file, mode="w") as file:
         # open the file where the solution will be written in
