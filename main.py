@@ -15,30 +15,51 @@ import matplotlib.pyplot as plt
 
 
 if __name__ == "__main__":
-    sims = 10
-    trains = 20
-    timeframe = 180
-    station_file = 'data/StationsNationaal.csv'
-    file = 'data/ConnectiesNationaal.csv'
-    outputfile = 'dienstregeling7108.csv'
+    summary = 'Welcome to our algorithm sources for the rail problem, first of all make sure that you donwloaded the requirements.\n' \
+            + 'All these algorithms are focused on maxizmizing the function: K = 10.000*p -(T*100 - MIN) \n'\
+            + 'Where k is the quality, p is the proportions of all available connections covered, T amount of train used '\
+            + 'and finally the MIN stands for the sum of all the connections made in the solution.'
 
-    test = Count(file,trains,timeframe)
-    trajecten,p,score,train_used = test.connectionCount()
+    while True:
+        print(summary)
+        station_file =input('Which file do you want to use for all the stations: \n')
+        file = input('Which file do you want to use for all the connections: \n')
+        trains = int(input('How many trains, max, do you want to use? \n'))
+        timeframe =  int(input('How many minutes is a train allowed to ride? \n'))
+        visualise = input('Do you want the answer to be visualised?')
 
-    run = Lookahead(file,trains,timeframe)
-    trajecten,p,score,train_used = run.lookaheadClimber()
+        while visualise.lower() != 'no' or visualise.lower() != 'yes':
+            print('please answer with a simple yes or no')
+            visualise = input('') 
+            if visualise.lower() == 'yes' or visualise.lower() == 'no':
+                break
+        options = ['Random', 'Greedy', 'Kruskal', 'ConnectionCount', 'hillClimber', 'Lookahead']
+        print('possible algorithms:')
+        i = 0
+        for option in options:
+            print(i,':',option)
+            i += 1
 
-    # climber = HillClimber(file,p,trajecten)
-    # score= climber.rerun_train()
-    # climber.improve(200)
-    # print(score)
-        # if round(score) == 6593:
-        #     continue
-        # if score > 7100:
-        #     print("bijna",score)
-        #     csvWriter(station_file,f"test{round(score)}.csv",trajecten)
-        # if score > 7175:
-        #     print("yas?",score)
-    # csvWriter(station_file,outputfile,trajecten)
-    # vis = Visualise(10)
-    # vis.map()
+        algorithm = int(input('which algorithm do you want to use?\n'))
+
+        if algorithm == 0:
+            sims = int(input('How many simulations do you want?'))
+            alg = Randomize(file,trains,timeframe)
+            for i in range(0,sims):
+                trajecten,p,score,train_used = alg.randomize()
+                print('Using the Random algorithm the following score is found:',score)
+                print('With a p of: ',p,f'and {train_used} trains are used')
+            again = input('Do you want to try a different algorithm?')
+            if again.lower() == 'yes':
+                pass
+            else:
+                break
+
+        if algorithm == 1:
+            sims = int(input('How many simulations do you want?'))
+            alg = Greedy(file,trains,timeframe)
+            for i in range(0,sims):
+                trajecten,p,score,train_used = alg.run()
+                print('Using the Greedy algorithm the following score is found:',score)
+                print('With a p of: ',p,f'and {train_used} trains are used')
+            break

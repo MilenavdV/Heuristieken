@@ -20,12 +20,12 @@ class Greedy:
     def __init__(self, file, trains, timeframe):
         """ Initialises the problem. """
         read = Read(file)
-        self.stations, self.connections, self.connectionslist = read.readConnections()
+        self.stations, self.connections, self.connectionslist, self.connectionslist2 = read.readConnections()
         # self.stations, self.connections, self.connectionslist = readConnections(file)
         self.trains = trains
         self.timeframe = timeframe
 
-    def run(self, verbose):
+    def run(self):
         """ Finds a solution for the problem by using a greedy algorithm that takes the fastest option. """
         
         # save traject objects in dictionairy
