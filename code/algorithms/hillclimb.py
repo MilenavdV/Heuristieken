@@ -4,7 +4,6 @@ import fnmatch
 
 from code.algorithms.readconnections import Read
 from code.algorithms.functions import findConnections, fastestConnection, changeDirection, formula
-# from code.classes.station import Station
 from code.classes.traject import Traject
 from code.classes.connection import Connection
 
@@ -15,7 +14,7 @@ class HillClimber:
     def __init__(self, file, p, traject):
         self.trains = copy.deepcopy(traject)
         read = Read(file)
-        self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
+        self.stations, self.cdict, self.clist, self.clist2 = read.readConnections()
         self.proportion = p
 
         if fnmatch.fnmatch(file,'data/ConnectiesHolland.csv'):
@@ -25,6 +24,7 @@ class HillClimber:
 
         # initialise time
         self.time = 0
+
         # adds time of all trains
         for train in self.trains.values():
             self.time += train.time
@@ -56,23 +56,26 @@ class HillClimber:
         new_train.addConnection(self.cdict[str(start)], self.cdict[str(start)].time, self.timeframe)
 
         while True:
-             # find the current station of the traject
-            new_origin = new_train.connections[-1].destination
+            # find the current station of the traject
 
-            # find the previous station of the traject
-            previous_station = new_train.connections[-1].origin
+            # # find the previous station of the traject
+            destination = traject.connections[-1].destination
+            origin = traject.connections[-1].origin
 
             # check whether there is an option to expand the traject further 
-            if fastestConnection(self.cdict, new_origin, previous_station) is not None:
-
+            if fastestConnection(self.cdict,destination,origin) != None:
                 # add the connection with the shortest time to the traject
-                new_connection = fastestConnection(self.cdict, new_origin, previous_station)
+                new_connection = fastestConnection(self.cdict, destination, origin)
+                if self.cdict[new_connection] in traject.connections:
+                    break
                 traject.addConnection(self.cdict[new_connection], self.cdict[new_connection].time, self.timeframe)
-            
             # stops the process when done
             else:
                 break
             
+            destination = traject.connections[-1].destination
+            origin = traject.connections[-1].origin
+
         for k in new_train.connections:
             if k.text() not in connections_used and changeDirection(k.text()) not in connections_used:
                 connections_used.append(k.text)
@@ -85,7 +88,7 @@ class HillClimber:
         new_p = 2*len(connections_used)/len(self.clist)
 
         new_time = 0
-        for train in new_plan:
+        for train in new_plan.values():
             new_time += train.time
         
         new_score = formula(new_p, len(new_plan.keys()),new_time)
@@ -100,5 +103,6 @@ class HillClimber:
     def improve(self, iterations):
         print("Before hill climber the quality was", self.score)
         for i in range(iterations):
+            # print(i)
             self.rerun_train()
         print(f"After {iterations} iterations, HillClimber has improved the quality to {self.score}")

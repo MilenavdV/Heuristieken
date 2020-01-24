@@ -20,11 +20,18 @@ if __name__ == "__main__":
     timeframe = 180
     station_file = 'data/StationsNationaal.csv'
     file = 'data/ConnectiesNationaal.csv'
-    outputfile = 'test7101.csv'
-    test = Lookahead(file,trains,timeframe)
-    for i in range(1):
-        trajecten, p, score,train_used = test.lookaheadClimber()
-        print(score)
+    outputfile = 'dienstregeling7108.csv'
+
+    test = Count(file,trains,timeframe)
+    trajecten,p,score,train_used = test.connectionCount()
+
+    run = Lookahead(file,trains,timeframe)
+    trajecten,p,score,train_used = run.lookaheadClimber()
+
+    # climber = HillClimber(file,p,trajecten)
+    # score= climber.rerun_train()
+    # climber.improve(200)
+    # print(score)
         # if round(score) == 6593:
         #     continue
         # if score > 7100:
@@ -32,6 +39,6 @@ if __name__ == "__main__":
         #     csvWriter(station_file,f"test{round(score)}.csv",trajecten)
         # if score > 7175:
         #     print("yas?",score)
-        csvWriter(station_file,outputfile,trajecten)
+    # csvWriter(station_file,outputfile,trajecten)
     # vis = Visualise(10)
     # vis.map()
