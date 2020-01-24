@@ -31,6 +31,6 @@ Na random probeerden we een greedy algoritme; de code koos de kortste connectie 
 Op basis van Minimum Spanning Tree theorie probeerden we met het Kruskal-algoritme een oplossing te vinden, deze had echter een erg lage score. Dit komt doordat Kruskal bedoeld is om de route met de laagste kosten te vinden, zonder daarbij de proportie te maximaliseren. Zo kregen we dus een erg efficiënte route langs alle stations, maar niet een van hoge kwaliteit.  
 Om te zorgen dat de stations in de uithoeken (Den Helder, Vlissingen, Enschede) altijd bereikt worden, schreven we vervolgens een algoritme dat steeds het station met de minste connecties koos. Hierdoor kregen we een score van ongeveer 4200. Om deze score te verbeteren schreven we een nieuw algoritme waarbij steeds een aantal stations vooruit gekeken wordt en de route met de hoogste marginale kwaliteit gekozen wordt. Hieronder een boxplot ter vergelijking van de algoritmes, waarbij Greedy Lookahead 2 stations vooruit kijkt. De boxplots zijn gebaseerd op 100 simulaties per algoritme. 
 
-![Vergelijking van vijf methodes.]('doc/vergelijking.png')
+![Vergelijking van vijf methodes.]('/doc/vergelijking.png')
 
 Door later drie stations vooruit te kijken hebben we de score met greedy lookahead nog een stuk omhoog gekregen naar 7175.
