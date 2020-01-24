@@ -50,8 +50,6 @@ class Count:
         # sorts the stationvalues dictionary in ascending order
         sort_con = sorted(stationsvalues.items(),key = lambda kv:(kv[1], kv[0]))
 
-        # loops 9 times, MOET NOG IETS GEFIXT WORDEN, AANTAL TREINEN IS NU HARDCODED
-        train_used = 1
         scorelist = {}
         
         for i in range(1,self.trains):
