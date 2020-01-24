@@ -37,7 +37,7 @@ class Count:
         # total minutes of all the tracks together
         total_minutes = 0
 
-        # amount of connections possible
+        # amount of connections possible, used for calculating p
         total_connections = len(self.connections)/2
         
         # fills the stationsvalues dictionary
@@ -96,7 +96,7 @@ class Count:
                 else: 
                     break
                 
-                # hoe omschrijf ik dit ??
+                # extracts destination and origin from the connection object
                 destination = traject.connections[-1].destination
                 origin = traject.connections[-1].origin
 
@@ -118,6 +118,7 @@ class Count:
 
             # score after track is added
             score = formula(p,train_used,total_minutes)
+            
         return trajecten, p, score, train_used
 
 
