@@ -11,10 +11,10 @@ Author: 0505 + Wouter
 from code.algorithms.functions import *
 from code.classes.traject import Traject
 from code.algorithms.readconnections import Read
+import operator
 
 
 class Count:
-
     def __init__(self,file,trains,timeframe):
         """Initializes the values needed for the algorithm"""
         self.timeframe = timeframe
@@ -51,13 +51,19 @@ class Count:
         sort_con = sorted(stationsvalues.items(),key = lambda kv:(kv[1], kv[0]))
 
         # loops 9 times, MOET NOG IETS GEFIXT WORDEN, AANTAL TREINEN IS NU HARDCODED
-        for i in range(1,10):
+        train_used = 1
+        scorelist = {}
+        
+        for i in range(1,self.trains):
             traject = Traject()
 
             # searches for a station with the least connections and not used yet
             while True:
-                check = f"{sort_con[0][0]}-{self.stations[sort_con[0][0]][0][0]}"
-
+                try:
+                    check = f"{sort_con[0][0]}-{self.stations[sort_con[0][0]][0][0]}"
+                except:
+                    check = 'not valid'
+                    break
                 # if the connection is used, drop this connection from the dictionary
                 if check in connections_used or changeDirection(check) in connections_used:
                     sort_con.pop(0)
@@ -65,7 +71,8 @@ class Count:
                 # otherwise use this connection
                 else:
                     break
-
+            if check == 'not valid':
+                break
             # add the connection to the track
             origin = sort_con[0][0]
             destination = self.stations[origin][0][0]
@@ -108,17 +115,20 @@ class Count:
             total_minutes += traject.time
 
             # save track
-            trajecten[i] = traject
+            trajecten[i + 1] = traject
 
             # save amount of trains used
-            train_used = i
+            train_used = i + 1
 
             # calculate p
             p = (len(connections_used)-i)/total_connections
 
             # score after track is added
-            score = formula(p,train_used,total_minutes)
-            
+            score_i = formula(p,train_used,total_minutes)
+            if i not in scorelist:
+                scorelist[i] = []
+            scorelist[i].append(score_i)
+
+        train_used= max(scorelist.items(), key=operator.itemgetter(1))[0]
+        score = max(scorelist.values())[0]
         return trajecten, p, score, train_used
-
-
