@@ -1,8 +1,8 @@
-from code.algorithms.readconnections import readConnections
+from code.algorithms.readconnections import Read
 from code.algorithms.kruskal import Kruskal
 from code.algorithms.greedy import Greedy
 from code.algorithms.lookahead_climber import Lookahead
-from code.algorithms.oldrandomize import Randomize
+from code.algorithms.randomize import Randomize
 from code.algorithms.connectioncount import Count
 
 import numpy
@@ -20,8 +20,7 @@ class Vergelijking:
 
     def run(self):
         """ Runs the algorithms and creates boxplot """
-        p = 0
-        stations, cdict, clist, clist2 = readConnections(self.file)
+        stations, cdict, clist, clist2 = Read(self.file).readConnections()
         plt.close('all')
         
         scoreslist = {}
