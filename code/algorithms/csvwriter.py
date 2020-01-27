@@ -29,7 +29,7 @@ def csvWriter(station_file,file,trajecten):
             # track number
             csv_writer.writerow(["Traject " + str(traject + 1)])
 
-            # connection (origin, destionation, coordinaties of origin, coordinates of destionation, connectiontime)
+            # writes out connection
             for connectie in trajecten[traject].connections:
                 csv_writer.writerow([connectie.origin, connectie.destination, stations[connectie.origin][0],stations[connectie.origin][1], stations[connectie.destination][0], stations[connectie.destination][1], str(connectie.time)])
             

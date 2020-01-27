@@ -15,7 +15,6 @@ import operator
 
 
 class Count:
-
     def __init__(self,file,trains,timeframe):
         """Initializes the values needed for the algorithm"""
         self.timeframe = timeframe
@@ -38,7 +37,7 @@ class Count:
         # total minutes of all the tracks together
         total_minutes = 0
 
-        # amount of connections possible
+        # amount of connections possible, used for calculating p
         total_connections = len(self.connections)/2
         
         # fills the stationsvalues dictionary
@@ -102,7 +101,7 @@ class Count:
                 else: 
                     break
                 
-                # hoe omschrijf ik dit ??
+                # extracts destination and origin from the connection object
                 destination = traject.connections[-1].destination
                 origin = traject.connections[-1].origin
 
