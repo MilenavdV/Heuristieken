@@ -7,17 +7,14 @@ import csv
 import random
 
 class Visualise:
+
     def __init__(self,train_used):
         self.train_used = train_used
 
     def map(self):
         # the file where we save the map
         output_file("geojson.html")
-
-        # googlemaps settings
-        # map_options = GMapOptions(lat=52.5, lng=5, map_type="roadmap", zoom=7,styles = style_options)
-        # p = gmap("AIzaSyB9pKdfe3bVfkZR_sseLIf6y-9bs2x2aLo", map_options, tools="save,tap,pan,wheel_zoom,box_select,box_zoom,reset")
-        
+       
         # loading the geodata 
         with open("data/StationsNationaal.json", 'r') as geo_file:
                 data = json.load(geo_file)
@@ -48,7 +45,7 @@ class Visualise:
         i = 0
         trajecten_x ={}
         trajecten_y = {}
-        with open("dienstregeling7108.csv", mode='r') as csv_file:
+        with open("results/dienstregeling.csv", mode='r') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')        
             for row in csv_reader:
                 traject = 'Traject ' + str(i + 1)
@@ -57,7 +54,7 @@ class Visualise:
                 if 'Total' in row[0]:
                     continue
                 if row[0] == traject:
-                    i = i+1
+                    i = i + 1
                     trajecten_y[i] = []
                     trajecten_x[i] = []
                     continue
@@ -67,7 +64,6 @@ class Visualise:
                 trajecten_x[i].append(row[5])
 
         color = ['blue','red', 'cyan','peru', 'olive', 'black', 'lime', 'pink','orchid','goldenrod']
-        # for each traject a random rgb color is generated and with this color a line is made on the same figure as above
         for i in range(self.train_used):
             p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2.5,color= color[i])
 
