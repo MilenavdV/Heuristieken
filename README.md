@@ -8,8 +8,8 @@ Wouter de Boer
 
 ## Probleem
 
-Het treinverkeer in Nederland kan op vele manieren ingevuld worden. Het probleem dat hierbij komt kijken is het vinden van de beste invulling, die kan worden beoordeeld als de lijnvoering met de hoogste kwaliteit. 
-De kwaliteit van de lijnvoering wordt bepaald aan de hand van een scorefunctie. Het doel wordt dus het maximaliseren van de volgende functie: ```K = 10.000*p - (T*100 - MIN)``` 
+Het treinverkeer in Nederland kan op vele manieren ingevuld worden. Het probleem dat hierbij komt kijken is het vinden van de beste lijnvoering. 
+De kwaliteit van de lijnvoering kan worden bepaald aan de hand van een scorefunctie. Het doel wordt dus het maximaliseren van de volgende functie: ```K = 10.000*p - (T*100 - MIN)``` 
 - p = proportie bereden connecties
 - T = aantal treinen ingezet 
 - MIN = totaal aantal minuten van de treinen samen  
