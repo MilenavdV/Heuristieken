@@ -8,13 +8,13 @@ Wouter de Boer
 
 ## Probleem
 
-Het treinverkeer in Nederland kan op vele manieren ingevuld worden. Het probleem dat hierbij komt kijken is het vinden van de meest efficiente invulling, dit wordt ook wel omschreven als de kwaliteit van een lijnvoering. 
+Het treinverkeer in Nederland kan op vele manieren ingevuld worden. Het probleem dat hierbij komt kijken is het vinden van de beste invulling, die kan worden beoordeeld als de lijnvoering met de hoogste kwaliteit. 
 De kwaliteit van de lijnvoering wordt bepaald aan de hand van een scorefunctie. Het doel wordt dus het maximaliseren van de volgende functie: ```K = 10.000*p - (T*100 - MIN)``` 
 - p = proportie bereden connecties
 - T = aantal treinen ingezet 
 - MIN = totaal aantal minuten van de treinen samen  
 
-Daarnaast zal er rekening moeten worden gehouden met het maximaal aantal treinen wat er in mag worden gezet. Tevens mag een trein niet langer dan een gegeven timeframe onderweg zijn. In de RAILNL case wordt er gekeken naar niveau Holland en Nationaal. Waarbij Holland de restricitie heeft van 7 treinen, met een maximum tijd van 120 min dat een trein onderweg mag zijn, en bij Nationaal is dit 20 treinen en 180 min.
+Daarnaast zal er rekening moeten worden gehouden met het maximaal aantal treinen wat er in mag worden gezet. Tevens mag een trein niet langer dan een gegeven timeframe onderweg zijn. In de RAILNL case wordt er gekeken naar niveau Holland en Nationaal. Waarbij in Holland een restrictie geldt van 7 treinen, waarbij een trein maximaal 120 minuten onderweg mag zijn. Bij Nationaal gaat het om 20 treinen en 180 min.
  
 ### Proces
 
