@@ -90,11 +90,15 @@ class Kruskal:
                 previous_station = traject.connections[-1].origin
                 
                 # find options that are allowed to use
-                options = findConnections(new_origin, previous_station, self.connections)
-                useful_options = usefulConnections(new_origin, options, connections_used, traject.time, self.timeframe, self.connections)
+                options = findConnections(new_origin, previous_station, 
+                            self.connections)
+                useful_options = usefulConnections(new_origin, options, 
+                        connections_used, traject.time, self.timeframe, 
+                        self.connections)
 
                 # with the found options, find shortest option
-                new_connection = self.shortest(useful_options, self.connections)
+                new_connection = self.shortest(useful_options, 
+                                    self.connections)
                 try:
                     time_new_connection = self.connections[new_connection].time
                 except:
@@ -102,16 +106,24 @@ class Kruskal:
                 
                 if new_connection != None:
                     # add connection to the current track
-                    traject.addConnection(self.connections[new_connection], time_new_connection, self.timeframe)
+                    traject.addConnection(self.connections[new_connection], 
+                                    time_new_connection, self.timeframe)
                     
-                    # update the list of connections used for every new connection that had not been used before
-                    if new_connection not in connections_used and changeDirection(new_connection) not in connections_used:
+                    # update the list of connections used for every new 
+                    # connection that had not been used before
+                    if (new_connection not in connections_used and 
+                        changeDirection(new_connection) not in 
+                        connections_used):
                         connections_used.append(new_connection)
                     
                     try:
-                        # if newconnection is still in graph, remove this from graph
-                        graph.remove([new_origin, traject.connections[-1].destination, int(time_new_connection)])
-                        graph.remove([traject.connections[-1].destination,new_origin,int(time_new_connection)])
+                        # if newconnection is still in graph, remove this from 
+                        # graph
+                        graph.remove([new_origin, 
+                            traject.connections[-1].destination, 
+                                int(time_new_connection)])
+                        graph.remove([traject.connections[-1].destination,
+                                new_origin,int(time_new_connection)])
                     except:
                         pass    
                 else:
