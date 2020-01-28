@@ -30,7 +30,8 @@ class Count:
         # a list which will be filled with the connections that are used
         connections_used = []
 
-        # a dictionary, with the key being the station and the value is the amount of connections of this station
+        # a dictionary, with the key being the station and the value is the 
+        # amount of connections of this station
         stationsvalues = {}
 
         # a dictionary filled with the tracks that are made
