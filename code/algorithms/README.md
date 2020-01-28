@@ -5,7 +5,8 @@ In this file you can find descriptions of the algorithms used in the project.
 - Random: randomize.py
 - Greedy: greedy.py
 - Kruskal: kruskal.py
-- Least Connections Method: connectioncount.py
+- Least Connections Method: leastconnenctions.py
+- HillClimber: hillclimber.py
 - Iterative deepening search: iterativedeepening.py
 
 The algorithms all have a similar set up, yet different methods and approaches have been used to determine which connection to use next. 
