@@ -25,7 +25,7 @@ Necessary arguments: connections file, maximum trains allowed, timeframe
 
 **Greedy**
 
-*Creates a solution by choosing the connection with the least amount of minutes*
+*Creates a solution by choosing the connection with the smallest amount of minutes*
 
 Necessary arguments: connections file, maximum trains allowed, timeframe
 
@@ -37,7 +37,7 @@ Necessary arguments: connections file, maximum trains allowed, timeframe
 **Kruskal**
 
 *Creates a solution based on the method described by Kruskal:
-Start off by picking the shortest unused connection and connect this with the shortest adjacent connection *
+Start off by picking the shortest unused connection and connect this with the shortest adjacent connection*
 
 Necessary arguments: connections file, maximum trains allowed, timeframe
 
@@ -48,7 +48,7 @@ Necessary arguments: connections file, maximum trains allowed, timeframe
 
 **Least Connections Method**
 
-*Creates a solution by choosing the connection with the least amount of connections as starting point*
+*Creates a solution by choosing the connection with the least connections as starting point*
 
 Necessary arguments: connections file, maximum trains allowed, timeframe
 
