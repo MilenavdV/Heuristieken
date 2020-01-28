@@ -56,7 +56,7 @@ if __name__ == "__main__":
     timeframe =  int(input('How many minutes is a train allowed to ride? \n'))
     visualise = input('Do you want the answer to be visualised? \n')
     	
-    while visualise.lower() != 'no' or visualise.lower() != 'yes':
+    while visualise.lower() != 'no' and visualise.lower() != 'yes':
         print('please answer with a simple yes or no')
         visualise = input('') 
         if visualise.lower() == 'yes' or visualise.lower() == 'no':
