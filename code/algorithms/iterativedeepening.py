@@ -1,11 +1,10 @@
 """
-lookahead_climber.py
+iterativedeepening.py
 
 This algorithm looks three steps ahead of the current situation, after finding the best path
 it makes one move forward and repeats the process. 
 
 Author: 0505 + Wouter
-
 
 """
 
@@ -17,16 +16,17 @@ import random
 import csv
 import os
 
-
 class Lookahead:
+    """A class using a iterativedeepening algorithm to solve a train planning problem."""
 
-    def __init__(self,file,trains,timeframe):
+    def __init__(self,file,trains, timeframe, failed_attemps):
         """Initializes the objects needed for the algorithm"""
 
         self.trains = trains
         self.timeframe = timeframe
         read = Read(file)
         self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
+        self.failed_attemps = failed_attemps
 
 
     def lookaheadClimber(self):
@@ -120,9 +120,8 @@ class Lookahead:
                 else:
                     failed_attemps +=1
                 
-                
                 # if, after 10 failed attemps, no track is found that improves the score we stop
-                if failed_attemps == 10:
+                if failed_attemps == self.failed_attemps:
                     break
             
             # final p and score

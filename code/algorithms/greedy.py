@@ -15,18 +15,19 @@ from code.classes.connection import Connection
 from code.algorithms.helpers import fastestConnection, changeDirection, formula
 import random
 
+
 class Greedy:
-    """ A class using a greedy algorithm to solve a train planning problem. """
+    """A class using a Greedy algorithm to solve a train planning problem."""
+
     def __init__(self, file, trains, timeframe):
-        """ Initialises the problem. """
+        """Initializes the objects needed for the algorithm"""
         read = Read(file)
         self.stations, self.connections, self.connectionslist, self.connectionslist2 = read.readConnections()
-        # self.stations, self.connections, self.connectionslist = readConnections(file)
         self.trains = trains
         self.timeframe = timeframe
 
     def run(self):
-        """ Finds a solution for the problem by using a greedy algorithm that takes the fastest option. """
+        """Returns a solution for the problem by using a greedy algorithm that takes the fastest option."""
         
         # save traject objects in dictionairy
         trajecten = {}

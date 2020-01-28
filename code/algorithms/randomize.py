@@ -19,13 +19,13 @@ import random
 
 class Randomize:
     
+    
     def __init__(self,file,trains,timeframe):
         """Initializes the objects needed for the algorithm"""
         self.trains = trains
         self.timeframe = timeframe
         read = Read(file)
         self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
-        # self.stations, self.connections, self.clist, self.clist2 = readConnections(file)
     
     
     def randomize(self):

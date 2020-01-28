@@ -1,9 +1,12 @@
-from code.algorithms.readconnections import Read
-from code.algorithms.kruskal import Kruskal
 from code.algorithms.greedy import Greedy
-from code.algorithms.lookahead_climber import Lookahead
+from code.algorithms.kruskal import Kruskal
+from code.algorithms.iterativedeepening import Lookahead
 from code.algorithms.randomize import Randomize
 from code.algorithms.connectioncount import Count
+from code.algorithms.hillclimb import HillClimber
+from code.algorithms.connectioncount import Count
+from code.visualisation.visualise import Visualise
+from code.algorithms.readconnections import Read
 
 import numpy
 import pandas as pd
@@ -12,7 +15,7 @@ import matplotlib.pyplot as plt
 class Vergelijking:
     """Creates a boxplot of the different algorithms"""
 
-    def __init__(self, sims, file, trains, timeframe):
+    def __init__(self, file, sims, trains, timeframe):
         self.file = file
         self.sims = sims
         self.trains = trains
@@ -20,41 +23,45 @@ class Vergelijking:
 
     def run(self):
         """ Runs the algorithms and creates boxplot """
-        stations, cdict, clist, clist2 = Read(self.file).readConnections()
         plt.close('all')
         
         scoreslist = {}
+        rand = Randomize(self.file, self.trains, self.timeframe)
         for i in range(self.sims):
-            trajecten, p, score = oldrandomize(self.file)
+            score = rand.run()[2]
             scoreslist[i] = score
-        df = pd.DataFrame(scoreslist.values(), columns = ['random'],index = scoreslist.keys())
+        df = pd.DataFrame(scoreslist.values(), columns = ['random'],
+        index = scoreslist.keys())
         print('Random klaar')
 
+        greed = Greedy(self.file, self.trains, self.timeframe)
         for i in range(self.sims):
-            trajecten, p, total_minutes, score = fastestOption(stations, cdict, clist, clist2, self.trains, self.timeframe)
+            score = Greedy.run()[3]
             scoreslist[i] = score
         df['greedy']  = scoreslist.values()
-        print('greedy klaar')
+        print('Greedy klaar')
 
+        krusk = Kruskal(self.file, self.trains, self.timeframe)
         for i in range(self.sims):
-            score = kruskal(self.file, self.trains, self.timeframe)
+            score = krusk.run()[2]
             scoreslist[i] = score
         df['kruskal'] = scoreslist.values()
         print('Kruskal klaar')
 
+        count = Count(self.file, self.trains, self.timeframe)
         for i in range(self.sims):
-            trajecten, p, score, train_used = connectionCount(self.file, self.timeframe, stations, cdict, self.trains)
+            score = count.run()[2]
             scoreslist[i] = score
         df['least connections'] = scoreslist.values()
-        print('least connections klaar')
+        print('count klaar')
 
+        look = Lookahead(self.file, self.trains, self.timeframe, 50)
         for i in range(self.sims):
-            trajecten,score,p,trains_used = lookaheadClimber(cdict, clist, self.trains, self.timeframe)
+            score = look.lookaheadClimber()[2]
             scoreslist[i] = score
-        df['Greedy lookahead'] = scoreslist.values()
-        print('Greedy lookahead klaar')
+        df['iterative deepening'] = scoreslist.values()
+        print('iterative deepening klaar')
         plt.figure()
         boxplot = df.boxplot()
         fig = boxplot.get_figure()
         plt.show()
-

@@ -1,5 +1,5 @@
 '''
-connectioncount.py
+leastconnections.py
 
 This script is focused on where a train should start his track.
 It chooses a station with the least connections and that isn't used in another track yet.
@@ -8,15 +8,17 @@ Author: 0505 + Wouter
 
 '''
 
-from code.algorithms.helpers import fastestConnection,changeDirection, formula
+from code.algorithms.helpers import fastestConnection, changeDirection, formula
 from code.classes.traject import Traject
 from code.algorithms.readconnections import Read
 import operator
 
 
 class Count:
-    def __init__(self,file,trains,timeframe):
-        """Initializes the values needed for the algorithm"""
+    """A class using a leastconnection alogrithm to solve a train planning problem"""
+
+    def __init__(self, file, trains, timeframe):
+        """Initializes the objects needed for the algorithm"""
         self.timeframe = timeframe
         self.trains = trains
         read = Read(file)
@@ -48,11 +50,11 @@ class Count:
             stationsvalues[station].append(con_values)     
         
         # sorts the stationvalues dictionary in ascending order
-        sort_con = sorted(stationsvalues.items(),key = lambda kv:(kv[1], kv[0]))
+        sort_con = sorted(stationsvalues.items(), key=lambda kv: (kv[1], kv[0]))
 
         scorelist = {}
         
-        for i in range(1,self.trains):
+        for i in range(1, self.trains):
             traject = Traject()
 
             # searches for a station with the least connections and not used yet
@@ -74,7 +76,7 @@ class Count:
             # add the connection to the track
             origin = sort_con[0][0]
             destination = self.stations[origin][0][0]
-            traject.addConnection(self.connections[f"{origin}-{destination}"],self.stations[origin][0][1],self.timeframe)
+            traject.addConnection(self.connections[f"{origin}-{destination}"], self.stations[origin][0][1], self.timeframe)
             
             # append track of the used connections, so it won't be used a second time
             connections_used.append(f"{origin}-{destination}")
@@ -93,7 +95,7 @@ class Count:
                         break   
 
                     # otherwise add the connection to the current track      
-                    traject.addConnection(self.connections[new_connection],self.connections[new_connection].time,self.timeframe)    
+                    traject.addConnection(self.connections[new_connection], self.connections[new_connection].time, self.timeframe)    
                     if new_connection not in connections_used:
                         connections_used.append(new_connection)
 
@@ -122,7 +124,7 @@ class Count:
             p = (len(connections_used)-i)/total_connections
 
             # score after track is added
-            score_i = formula(p,train_used,total_minutes)
+            score_i = formula(p, train_used, total_minutes)
             if i not in scorelist:
                 scorelist[i] = []
             scorelist[i].append(score_i)

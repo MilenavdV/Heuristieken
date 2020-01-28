@@ -1,3 +1,14 @@
+'''
+hillclimb.py
+
+The HillClimmber takes one of the trains out of the schedule and tries to replan it.
+Hoping to find a better score than befor,
+
+Author: 0505 + Wouter
+
+'''
+
+
 import copy
 import random
 import fnmatch
@@ -8,10 +19,10 @@ from code.classes.traject import Traject
 from code.classes.connection import Connection
 
 class HillClimber:
-    """
-    The HillClimber class that takes one of the trains out of the schedule and tries to replan it
-    """
+    """A class using a hillclimber algorithm to solve a train planning problem."""
+
     def __init__(self, file, p, traject):
+        """Initializes the objects needed for the algorithm"""
         self.trains = copy.deepcopy(traject)
         read = Read(file)
         self.stations, self.cdict, self.clist, self.clist2 = read.readConnections()

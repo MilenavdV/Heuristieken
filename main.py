@@ -3,9 +3,9 @@ from results.csvwriter import csvWriter
 from code.algorithms.kruskal import Kruskal
 from code.algorithms.iterativedeepening import Lookahead
 from code.algorithms.randomize import Randomize
-from code.algorithms.connectioncount import Count
+from code.algorithms.leastconnections import Count
 from code.algorithms.hillclimb import HillClimber
-from code.algorithms.connectioncount import Count
+from code.algorithms.leastconnections import Count
 from code.visualisation.visualise import Visualise
 from code.algorithms.readconnections import Read
 
@@ -54,7 +54,7 @@ if __name__ == "__main__":
             break
 
     while True:            
-        options = ['Random', 'Greedy', 'Kruskal', 'ConnectionCount', 'Lookahead']
+        options = ['Random', 'Greedy', 'Kruskal', 'LeastConnections', 'Iterativedeepening']
         print('possible algorithms:')
         i = 0
         for option in options:
@@ -113,7 +113,7 @@ if __name__ == "__main__":
 
         if algorithm == 4:
             sims = int(input('How many simulations do you want?'))
-            alg = Lookahead(file,trains,timeframe)
+            alg = Lookahead(file,trains,timeframe,sims)
             for i in range(0,sims):
                 trajecten, p, score, train_used= alg.lookaheadClimber()
                 print('Using the lookahead algorithm the following score is found:',score)
