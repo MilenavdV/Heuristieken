@@ -24,6 +24,7 @@ def fastestConnection(connections, origin, previous_station):
 
             # save the travel time of the option
             time_of_options.append(connections[i].time)
+    
     # find the fastest option if there are options
     try:
         # find minimum travel time of the options 
@@ -41,8 +42,11 @@ def fastestConnection(connections, origin, previous_station):
     
 def changeDirection(connection):
     """ Reverses the direction of a connection """
+    # origin of connection
     newB = str(connection)[:str(connection).find("-")]
+    # destination of connection
     newA = str(connection)[str(connection).find("-") + 1:]
+    # reverses connection
     bToA = newA + "-" + newB
     return bToA
 
@@ -52,7 +56,9 @@ def formula(p, t, min):
     return score
 
 def findConnections(origin, previous_station, connections):
+    """ Finds all connnections that aren't an immediate reversal from a station """
     options = []
+    # loops through connections
     for i in connections:
         if origin == connections[i].origin and connections[i].destination != previous_station:
             options.append(i)
