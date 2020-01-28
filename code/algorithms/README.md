@@ -6,7 +6,7 @@ In this file you can find descriptions of the algorithms used in the project.
 - Greedy: greedy.py
 - Kruskal: kruskal.py
 - Least Connections Method: leastconnenctions.py
-- HillClimber: hillclimber.py
+- HillClimber: hillclimb.py
 - Iterative deepening search: iterativedeepening.py
 
 The algorithms all have a similar set up, yet different methods and approaches have been used to determine which connection to use next. 
@@ -57,6 +57,11 @@ Necessary arguments: connections file, maximum trains allowed, timeframe
 - Continues the trajectory by adding the fastest *unused* option out of the possibilities: unused means it has not been used in any other trajectories before
 - This keeps on going until it runs out of possibilities or whenever the fastest unused option is already used in the current track
 
+**Hillclimber**
+
+The HillClimber algorithm takes one of the trains out of the schedule and tries to replan it.
+Hoping to find a better score than before. At least, this was the idea we had. While making this we realised that the algorithm was just kind of going to be a greedy algorithm that we had already with only the addition of checking the new score before permanently accepting the solution. This would just come down to greedy if the program would be ran a lot of times. And since we already knew that greedy was by far not going to give us a score that would even come close to the highest possible score we decided to focus our attention elsewhere. 
+
 **Iterative deepening search**
 
 *Creates a solution by using a three step down iterative deepening method combined with a hillclimber*
@@ -69,6 +74,8 @@ Necessary arguments: connections file, maximum trains allowed, timeframe, failed
 - While doing the previous explained step the algorithm keeps track of the added score for every combination of the three step follow-up 
 - It then chooses out of the first follow up the one that allows to find our highest found added score in the previous step
 - The algorithm keeps on doing this until it cannot find any follow up options (since the trajectory reached its timeframe) or whenever all possible added scores found are all negative: meaning it would bring the score down
-- Whenever a trajectory is finished the new total score is calculated, if this new score is higher than the previous total score (before this trajectory was created) it gets accepted, otherwise the trajectory will be deleted/ignored and the variable "failed_attemps" increases
+- Whenever a trajectory is finished the new total score is calculated, if this new score is higher than the previous total score (before this trajectory was created) it gets accepted, otherwise the trajectory will be deleted/ignored and the variable "failed_attemps" increases: so we ended up including a hillcimber feature into this algorithm
 
-This process runs until a given treshold of failed attempts is reached
+- This process runs until a given treshold of failed attempts is reached
+
+
