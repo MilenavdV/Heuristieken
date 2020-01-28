@@ -1,7 +1,11 @@
 """
 kruskal.py
 
-Kruskal algorithm first tries to find 
+Kruskal algorithm tries to find the shortest connections and build an allowed track.
+This happens untill all trains are used.
+
+Author: 0505 + Wouter
+
 """
 
 

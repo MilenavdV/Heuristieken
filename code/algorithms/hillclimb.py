@@ -8,7 +8,6 @@ Author: 0505 + Wouter
 
 '''
 
-
 import copy
 import random
 import fnmatch

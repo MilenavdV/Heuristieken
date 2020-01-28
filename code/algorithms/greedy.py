@@ -86,6 +86,7 @@ class Greedy:
             
             # calculate p
             p = len(connections_used) / total
+            train_used = i + 1
             score = formula(p,self.trains,total_minutes)
 
-        return trajecten, p,total_minutes,score
+        return trajecten, p,total_minutes,score,train_used

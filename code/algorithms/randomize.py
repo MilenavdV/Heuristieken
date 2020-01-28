@@ -10,7 +10,7 @@ Author: 0505 + Wouter
 
 
 from code.algorithms.readconnections import Read
-from code.algorithms.helpers import findConnections,changeDirection,formula
+from code.algorithms.helpers import optionsTime,changeDirection,formula
 from code.classes.connection import Connection
 from code.classes.traject import Traject
 
@@ -57,17 +57,25 @@ class Randomize:
                 # add the connection to the current track
                 traject.addConnection(self.connections[start], self.connections[start].time, self.timeframe)
 
-                # new beginning point
-                new_origin = traject.connections[-1].destination
-                previous_station = traject.connections[-1].origin
+                while True:
+                    # new beginning point
+                    new_origin = traject.connections[-1].destination
 
-                # possible connections from the current origin
-                options = findConnections(new_origin, previous_station, self.connections)
+                    time_left = self.timeframe - traject.time 
 
-                # choos a random connection and add this to the track, if there are any options available
-                if len(options) != 0:
+                    # possible connections from the current origin
+                    options = optionsTime(new_origin, time_left, self.connections)
+                    
+                    # add the possibility of not adding a connection 
+
+                    options.append(None)
                     new_connection = random.choice(options)
-                    traject.addConnection(self.connections[new_connection], self.connections[new_connection].time, self.timeframe)
+
+                    # choos a random connection and add this to the track, if there are any options available
+                    if new_connection != None:
+                        traject.addConnection(self.connections[new_connection], self.connections[new_connection].time, self.timeframe)
+                    else:
+                        break
                 
                 # save the track
                 trajecten[i] = traject

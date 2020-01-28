@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     
     print(summary,"\n")
-
+    output_file = 'results/dienstregeling.csv'
     station_files = ['data/stationsHolland.csv','data/stationsNationaal.csv']
     i = 0
     print('Which file do you want to use for all the stations:')
@@ -70,6 +70,11 @@ if __name__ == "__main__":
                 trajecten,p,score,train_used = alg.randomize()
                 print('Using the Random algorithm the following score is found:',score)
                 print('With a p of: ',p,f'and {train_used} trains are used')
+            if visualise.lower() =='yes':
+                print(train_used)
+                csvWriter(station_file,output_file,trajecten)
+                vis = Visualise(train_used)
+                vis.map()
             again = input('Do you want to try a different algorithm?')
             if again.lower() == 'yes':
                 pass
@@ -80,10 +85,15 @@ if __name__ == "__main__":
             sims = int(input('How many simulations do you want?'))
             alg = Greedy(file,trains,timeframe)
             for i in range(0,sims):
-                trajecten, p,total_minutes,score= alg.run()
+                trajecten, p,total_minutes,score,train_used= alg.run()
                 print('Using the Greedy algorithm the following score is found:',score)
                 print('With a p of: ',p)
             again = input('Do you want to try a different algorithm?')
+            if visualise.lower() =='yes':
+                csvWriter(station_file,output_file,trajecten)
+                print(train_used)
+                vis = Visualise(train_used)
+                vis.map()
             if again.lower() == 'yes':
                 pass
             else:
@@ -94,6 +104,10 @@ if __name__ == "__main__":
             trajecten, p, score, trains_used= alg.kruskal()
             print('Using the Kruskal algorithm the following score is found:',score)
             print('With a p of: ',p)
+            if visualise.lower() =='yes':
+                csvWriter(station_file,output_file,trajecten)
+                vis = Visualise(trains_used)
+                vis.map()
             again = input('Do you want to try a different algorithm?')
             if again.lower() == 'yes':
                 pass
@@ -105,6 +119,10 @@ if __name__ == "__main__":
             trajecten, p, score, train_used= alg.connectionCount()
             print('Using the connectioncount algorithm the following score is found:',score)
             print('With a p of: ',p, f'and {train_used} are used.')
+            if visualise.lower() =='yes':
+                csvWriter(station_file,file,trajecten)
+                vis = Visualise(train_used)
+                vis.map()
             again = input('Do you want to try a different algorithm?')
             if again.lower() == 'yes':
                 pass
@@ -118,6 +136,18 @@ if __name__ == "__main__":
                 trajecten, p, score, train_used= alg.lookaheadClimber()
                 print('Using the lookahead algorithm the following score is found:',score)
                 print('With a p of: ',p, f'and {train_used} trains are used.')
+            if visualise.lower() =='yes':
+                csvWriter(station_file,file,trajecten)
+                print('Using the lookahead algorithm the following score is found:',score)
+                print('With a p of: ',p, f'and {train_used} trains are used.')
+            if visualise.lower() =='yes':
+                csvWriter(station_file,file,trajecten)
+                print('Using the lookahead algorithm the following score is found:',score)
+                print('With a p of: ',p, f'and {train_used} trains are used.')
+            if visualise.lower() =='yes':
+                csvWriter(station_file,file,trajecten)
+                vis = Visualise(train_used)
+                vis.map()
             again = input('Do you want to try a different algorithm?')
             if again.lower() == 'yes':
                 pass

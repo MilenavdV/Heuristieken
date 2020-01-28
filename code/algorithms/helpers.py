@@ -24,6 +24,7 @@ def fastestConnection(connections, origin, previous_station):
 
             # save the travel time of the option
             time_of_options.append(connections[i].time)
+
     # find the fastest option if there are options
     try:
         # find minimum travel time of the options 
@@ -41,10 +42,10 @@ def fastestConnection(connections, origin, previous_station):
     
 def changeDirection(connection):
     """ Reverses the direction of a connection """
-    newB = str(connection)[:str(connection).find("-")]
-    newA = str(connection)[str(connection).find("-") + 1:]
-    bToA = newA + "-" + newB
-    return bToA
+    new_b = str(connection)[:str(connection).find("-")]
+    new_a = str(connection)[str(connection).find("-") + 1:]
+    mirror = new_a + "-" + new_b
+    return mirror
 
 def formula(p, t, min):
     """ Takes the proportion, amount of trains and minutes and returns score """
@@ -52,6 +53,7 @@ def formula(p, t, min):
     return score
 
 def findConnections(origin, previous_station, connections):
+    """Returns all the possible connections given previous connection"""
     options = []
     for i in connections:
         if origin == connections[i].origin and connections[i].destination != previous_station:
@@ -59,8 +61,10 @@ def findConnections(origin, previous_station, connections):
     return options
 
 def usefulConnections(origin, options, connections_used, traject_time, timeframe, connections):
+    """Returns all the usefull connections, based on previous connections, time left and connections already used"""
     useful_options = []
-    origin = origin
+
+    # check for every option if its used and if it still fits within the timeframe
     for i in options:
         destinations_options = findConnections(connections[i].destination, origin, connections)
         if i not in connections_used and connections[i].time + traject_time < timeframe:
@@ -78,11 +82,8 @@ def usefulConnections(origin, options, connections_used, traject_time, timeframe
                         useful_options.append(i)
     return useful_options
 
-def Options(origin, time_left, connections):
-    """ Finds the possible options given a certain station and the time that is left """
-    origin = origin
-    time_left = time_left
-    connections = connections
+def optionsTime(origin, time_left, connections):
+    """Returns the possible options only based on a certain station and the time that is left"""
 
     # initialize list to save optoins
     options = []
@@ -95,12 +96,7 @@ def Options(origin, time_left, connections):
     return options
 
 def bestConnection(origin, time_left, connections, used_connections, traject_connections):
-    """ Return the connection that could lead to the highest added score 
-        by looking three steps ahead """
-
-    origin = origin
-    time_left = time_left
-    connections = connections
+    """Return the connection that could lead to the highest added score by looking three steps ahead"""
 
     # save connections that have been used in other trajects so far
     used_connections = used_connections
@@ -109,7 +105,7 @@ def bestConnection(origin, time_left, connections, used_connections, traject_con
     traject_connections = traject_connections
 
     # find the possible connections by calling the Options function
-    options = Options(origin, time_left, connections)
+    options = optionsTime(origin, time_left, connections)
     
     # initialize list to keep track of maximum scores per possible connection from the origin
     max_scores = []
@@ -140,7 +136,7 @@ def bestConnection(origin, time_left, connections, used_connections, traject_con
         time_left_i = time_left - connections[i].time
 
         # find the possible connections starting from the first connections destination
-        options_i = Options(connections[i].destination, time_left_i, connections)
+        options_i = optionsTime(connections[i].destination, time_left_i, connections)
 
         # loop over the connections that are possible from the new origin
         for j in options_i:
@@ -166,10 +162,8 @@ def bestConnection(origin, time_left, connections, used_connections, traject_con
             time_left_j = time_left_i - connections[j].time
 
             # find the possible connections starting from the second connections destination
-            options_j = Options(connections[j].destination, time_left_j, connections)
+            options_j = optionsTime(connections[j].destination, time_left_j, connections)
             
-            # print(j, 'j', score_j)
-
             # loop over the connections that are possible from the new origin
             for k in options_j:
 
@@ -215,8 +209,8 @@ def bestConnection(origin, time_left, connections, used_connections, traject_con
 
 def checkScore(file, connections):
     """Calculates the score of a csv file."""
+
     # initialize objects
-    connections = connections
     used_connections = []
     trains = 0
     total_minutes = 0
