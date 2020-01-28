@@ -1,3 +1,12 @@
+"""
+visualise.py
+
+Visualisation of the solution to the train planning problem
+
+Author: 0505 + Wouter
+
+"""
+
 from bokeh.io import output_file, show
 from bokeh.models import GeoJSONDataSource, LabelSet, GMapOptions, ColumnDataSource
 from bokeh.plotting import figure, gmap
@@ -6,12 +15,16 @@ import json
 import csv
 import random
 
+
 class Visualise:
+    """Visualisation of a train planning solution"""
 
     def __init__(self,train_used):
         self.train_used = train_used
 
     def map(self):
+        """Returns a map"""
+
         # the file where we save the map
         output_file("geojson.html")
        
@@ -25,7 +38,7 @@ class Visualise:
 
         geo_source = GeoJSONDataSource(geojson=json.dumps(data))
 
-        # save all the connections between the stations in a list
+        # save all the connections coordinates between the stations in a list
         x1 = []
         y1 = []
         with open("data/trajectcoordinaten.csv", mode='r') as csv_file:
@@ -35,7 +48,8 @@ class Visualise:
                 x1.append([float(row[3]),float(row[5])])
                 
         # figure settings
-        p = figure(background_fill_color="lightgrey", plot_width=800,plot_height=800, tools="save,tap,pan,lasso_select,box_select,box_zoom,reset", active_drag="lasso_select")
+        p = figure(background_fill_color="lightgrey", plot_width=800,plot_height=800, 
+                tools="save,tap,pan,lasso_select,box_select,box_zoom,reset", active_drag="lasso_select")
         
         # the lines for all the connections are given the same color, white
         p.multi_line(x1,y1,line_width=5,color='white')
@@ -63,8 +77,10 @@ class Visualise:
                 trajecten_x[i].append(row[3])
                 trajecten_x[i].append(row[5])
 
+        # all the lines for the tracks that are actually made get different colors
         color = ['blue','red', 'cyan','peru', 'olive', 'black', 'lime', 'pink','orchid','goldenrod','grey', 'lightcoral', 'yellow', 
                     'darkviolet', 'darkgreen', 'mediumblue', 'magenta', 'silver','cadetblue', 'yellow']
+
         for i in range(self.train_used):
             p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2.5,color= color[i])
 

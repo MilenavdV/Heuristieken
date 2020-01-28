@@ -24,11 +24,7 @@ def fastestConnection(connections, origin, previous_station):
 
             # save the travel time of the option
             time_of_options.append(connections[i].time)
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 7a1d016f312f31435b2c59a417d80347cb574e8e
+            
     # find the fastest option if there are options
     try:
         # find minimum travel time of the options 
@@ -86,9 +82,8 @@ def usefulConnections(origin, options, connections_used, traject_time, timeframe
                 connections[j].time + traject_time < timeframe):
                 useful_options.append(i)
             for k in destinations_destinations_options:
-                destinations_destinations_destinations_options = 
-                    findConnections(connections[k].destination, 
-                    connections[k].origin, connections)
+                destinations_destinations_destinations_options = findConnections(
+                    connections[k].destination, connections[k].origin, connections)
                 if (k not in connections_used and connections[i].time + 
                     connections[j].time + connections[k].time + 
                     traject_time < timeframe):

@@ -1,89 +1,111 @@
-Alkmaar,Hoorn,24
-Alkmaar,Den Helder,36
-Almelo,Hengelo,10
-Almere Centrum,Lelystad Centrum,14
-Amsterdam Amstel,Almere Centrum,27
-Amsterdam Amstel,Amsterdam Centraal,8
-Amsterdam Amstel,Amsterdam Zuid,10
-Amsterdam Amstel,Hilversum,28
-Amsterdam Centraal,Almere Centrum,20
-Amsterdam Centraal,Amsterdam Sloterdijk,6
-Amsterdam Sloterdijk,Haarlem,11
-Amsterdam Sloterdijk,Zaandam,6
-Amsterdam Zuid,Schiphol Airport,6
-Amsterdam Zuid,Amsterdam Sloterdijk,16
-Apeldoorn,Amersfoort,24
-Apeldoorn,Zutphen,20
-Arnhem Centraal,Ede Wageningen,10
-Arnhem Centraal,Dieren,12
-Assen,Zwolle,40
-Beverwijk,Castricum,13
-Breda,Etten Leur,7
-Breda,Dordrecht,18
-Castricum,Alkmaar,9
-Delft,Den Haag Laan v NOI,12
-Delft,Den Haag Centraal,13
-Delft,Den Haag HS,8
-Den Haag Centraal,Gouda,18
-Den Haag Centraal,Leiden Centraal,12
-Den Haag HS,Gouda,21
-Den Haag HS,Leiden Centraal,12
-Den Haag Laan v NOI,Leiden Centraal,9
-Den Haag Laan v NOI,Gouda,28
-Deventer,Apeldoorn,10
-Deventer,Almelo,24
-Deventer,Zutphen,12
-Dordrecht,Rotterdam Centraal,17
-Dordrecht,Rotterdam Blaak,14
-Eindhoven,Helmond,9
-Eindhoven,s Hertogenbosch,18
-Eindhoven,Tilburg,21
-Etten Leur,Roosendaal,11
-Gouda,Alphen a/d Rijn,19
-Groningen,Assen,17
-Haarlem,Beverwijk,16
-Heemstede Aerdenhout,Haarlem,6
-Heerenveen,Steenwijk,14
-Helmond,Venlo,30
-Hengelo,Enschede,7
-Hilversum,Almere Centrum,26
-Leeuwarden,Heerenveen,16
-Leeuwarden,Groningen,35
-Leiden Centraal,Schiphol Airport,15
-Leiden Centraal,Alphen a/d Rijn,14
-Leiden Centraal,Heemstede Aerdenhout,13
-Maastricht,Sittard,15
-Nijmegen,Arnhem Centraal,12
-Oss,Nijmegen,16
-Roermond,Weert,14
-Roosendaal,Vlissingen,63
-Roosendaal,Dordrecht,22
-Rotterdam Alexander,Gouda,10
-Rotterdam Blaak,Rotterdam Alexander,9
-Rotterdam Blaak,Schiedam Centrum,11
-Rotterdam Centraal,Rotterdam Alexander,8
-Rotterdam Centraal,Schiedam Centrum,5
-Schiedam Centrum,Delft,7
-Sittard,Heerlen,15
-Sittard,Roermond,15
-Steenwijk,Zwolle,24
-Tilburg,Breda,13
-Utrecht Centraal,Amsterdam Centraal,27
-Utrecht Centraal,Amsterdam Amstel,19
-Utrecht Centraal,Hilversum,15
-Utrecht Centraal,Ede Wageningen,24
-Utrecht Centraal,Amersfoort,14
-Utrecht Centraal,Gouda,18
-Utrecht Centraal,Alphen a/d Rijn,28
-Utrecht Centraal,Schiphol Airport,33
-Utrecht Centraal,s Hertogenbosch,27
-Weert,Eindhoven,17
-Zaandam,Hoorn,26
-Zaandam,Castricum,12
-Zaandam,Beverwijk,25
-Zutphen,Dieren,8
-Zwolle,Amersfoort,35
-Zwolle,Deventer,24
-Zwolle,Almelo,42
-s Hertogenbosch,Oss,11
-s Hertogenbosch,Tilburg,15
+Traject 1
+Leiden Centraal,Den Haag HS,52.16611099,4.481666565,52.06972122,4.322500229,12
+Den Haag HS,Delft,52.06972122,4.322500229,52.00666809,4.356389046,8
+Delft,Schiedam Centrum,52.00666809,4.356389046,51.92124381,4.408993721,7
+Schiedam Centrum,Rotterdam Centraal,51.92124381,4.408993721,51.92499924,4.46888876,5
+Rotterdam Centraal,Rotterdam Alexander,51.92499924,4.46888876,51.95194626,4.553611279,8
+Rotterdam Alexander,Gouda,51.95194626,4.553611279,52.01750183,4.704444408,10
+Gouda,Den Haag Centraal,52.01750183,4.704444408,52.08027649,4.324999809,18
+Den Haag Centraal,Leiden Centraal,52.08027649,4.324999809,52.16611099,4.481666565,12
+Leiden Centraal,Heemstede Aerdenhout,52.16611099,4.481666565,52.35916519,4.606666565,13
+Heemstede Aerdenhout,Haarlem,52.35916519,4.606666565,52.38777924,4.638333321,6
+Haarlem,Amsterdam Sloterdijk,52.38777924,4.638333321,52.38888931,4.837777615,11
+Amsterdam Sloterdijk,Amsterdam Centraal,52.38888931,4.837777615,52.37888718,4.900277615,6
+Amsterdam Centraal,Amsterdam Amstel,52.37888718,4.900277615,52.34666824,4.917778015,8
+Amsterdam Amstel,Amsterdam Zuid,52.34666824,4.917778015,52.338889,4.872356,10
+Amsterdam Zuid,Schiphol Airport,52.338889,4.872356,52.30944443,4.761944294,6
+Schiphol Airport,Leiden Centraal,52.30944443,4.761944294,52.16611099,4.481666565,15
+Leiden Centraal,Den Haag Laan v NOI,52.16611099,4.481666565,52.07860947,4.342777729,9
+Den Haag Laan v NOI,Delft,52.07860947,4.342777729,52.00666809,4.356389046,12
+Total time of 176 minutes.
+Traject 2
+Almere Centrum,Hilversum,52.37503,5.21764,52.22583389,5.18194437,26
+Hilversum,Utrecht Centraal,52.22583389,5.18194437,52.08889008,5.110277653,15
+Utrecht Centraal,Ede Wageningen,52.08889008,5.110277653,52.02777863,5.673055649,24
+Ede Wageningen,Arnhem Centraal,52.02777863,5.673055649,51.98500061,5.899166584,10
+Arnhem Centraal,Dieren,51.98500061,5.899166584,52.04499817,6.103055477,12
+Dieren,Zutphen,52.04499817,6.103055477,52.14527893,6.19416666,8
+Zutphen,Apeldoorn,52.14527893,6.19416666,52.20916748,5.970277786,20
+Apeldoorn,Deventer,52.20916748,5.970277786,52.25749969,6.160555363,10
+Deventer,Almelo,52.25749969,6.160555363,52.35805511,6.653888702,24
+Almelo,Hengelo,52.35805511,6.653888702,52.26166534,6.793889046,10
+Hengelo,Enschede,52.26166534,6.793889046,52.22249985,6.889999866,7
+Total time of 166 minutes.
+Traject 3
+Almelo,Zwolle,52.35805511,6.653888702,52.5047226,6.091944218,42
+Zwolle,Steenwijk,52.5047226,6.091944218,52.79151099,6.114555763,24
+Steenwijk,Heerenveen,52.79151099,6.114555763,52.96138763,5.914166451,14
+Heerenveen,Leeuwarden,52.96138763,5.914166451,53.19583511,5.792222023,16
+Leeuwarden,Groningen,53.19583511,5.792222023,53.21055603,6.564722061,35
+Groningen,Assen,53.21055603,6.564722061,52.99166489,6.570833206,17
+Total time of 148 minutes.
+Traject 4
+s Hertogenbosch,Tilburg,51.69048,5.29362,51.5605545,5.083611012,15
+Tilburg,Breda,51.5605545,5.083611012,51.59555435,4.78000021,13
+Breda,Etten Leur,51.59555435,4.78000021,51.57500076,4.635833263,7
+Etten Leur,Roosendaal,51.57500076,4.635833263,51.54027939,4.458333492,11
+Roosendaal,Dordrecht,51.54027939,4.458333492,51.80722046,4.66833353,22
+Dordrecht,Rotterdam Blaak,51.80722046,4.66833353,51.92027664,4.488888741,14
+Rotterdam Blaak,Rotterdam Alexander,51.92027664,4.488888741,51.95194626,4.553611279,9
+Rotterdam Alexander,Gouda,51.95194626,4.553611279,52.01750183,4.704444408,10
+Gouda,Utrecht Centraal,52.01750183,4.704444408,52.08889008,5.110277653,18
+Utrecht Centraal,s Hertogenbosch,52.08889008,5.110277653,51.69048,5.29362,27
+s Hertogenbosch,Eindhoven,51.69048,5.29362,51.44333267,5.481389046,18
+Eindhoven,Helmond,51.44333267,5.481389046,51.47555542,5.661944389,9
+Total time of 173 minutes.
+Traject 5
+Nijmegen,Arnhem Centraal,51.84361267,5.852222443,51.98500061,5.899166584,12
+Arnhem Centraal,Nijmegen,51.98500061,5.899166584,51.84361267,5.852222443,12
+Nijmegen,Oss,51.84361267,5.852222443,51.76555634,5.532222271,16
+Oss,s Hertogenbosch,51.76555634,5.532222271,51.69048,5.29362,11
+s Hertogenbosch,Eindhoven,51.69048,5.29362,51.44333267,5.481389046,18
+Eindhoven,Weert,51.44333267,5.481389046,51.24861145,5.703610897,17
+Weert,Roermond,51.24861145,5.703610897,51.1930542,5.994166851,14
+Roermond,Sittard,51.1930542,5.994166851,51.00166702,5.858611107,15
+Sittard,Maastricht,51.00166702,5.858611107,50.85027695,5.705555439,15
+Maastricht,Sittard,50.85027695,5.705555439,51.00166702,5.858611107,15
+Sittard,Heerlen,51.00166702,5.858611107,50.89083481,5.974999905,15
+Total time of 160 minutes.
+Traject 6
+Amsterdam Sloterdijk,Zaandam,52.38888931,4.837777615,52.43888855,4.813611031,6
+Zaandam,Castricum,52.43888855,4.813611031,52.54583359,4.658611298,12
+Castricum,Alkmaar,52.54583359,4.658611298,52.63777924,4.739722252,9
+Alkmaar,Hoorn,52.63777924,4.739722252,52.64472198,5.055555344,24
+Hoorn,Zaandam,52.64472198,5.055555344,52.43888855,4.813611031,26
+Zaandam,Beverwijk,52.43888855,4.813611031,52.47833252,4.656666756,25
+Beverwijk,Castricum,52.47833252,4.656666756,52.54583359,4.658611298,13
+Castricum,Beverwijk,52.54583359,4.658611298,52.47833252,4.656666756,13
+Beverwijk,Haarlem,52.47833252,4.656666756,52.38777924,4.638333321,16
+Haarlem,Amsterdam Sloterdijk,52.38777924,4.638333321,52.38888931,4.837777615,11
+Amsterdam Sloterdijk,Amsterdam Zuid,52.38888931,4.837777615,52.338889,4.872356,16
+Total time of 171 minutes.
+Traject 7
+Apeldoorn,Amersfoort,52.20916748,5.970277786,52.1538887,5.370555401,24
+Amersfoort,Utrecht Centraal,52.1538887,5.370555401,52.08889008,5.110277653,14
+Utrecht Centraal,Amsterdam Amstel,52.08889008,5.110277653,52.34666824,4.917778015,19
+Amsterdam Amstel,Almere Centrum,52.34666824,4.917778015,52.37503,5.21764,27
+Almere Centrum,Amsterdam Centraal,52.37503,5.21764,52.37888718,4.900277615,20
+Amsterdam Centraal,Utrecht Centraal,52.37888718,4.900277615,52.08889008,5.110277653,27
+Utrecht Centraal,Alphen a/d Rijn,52.08889008,5.110277653,52.12444305,4.657777786,28
+Alphen a/d Rijn,Leiden Centraal,52.12444305,4.657777786,52.16611099,4.481666565,14
+Total time of 173 minutes.
+Traject 8
+Zwolle,Amersfoort,52.5047226,6.091944218,52.1538887,5.370555401,35
+Amersfoort,Zwolle,52.1538887,5.370555401,52.5047226,6.091944218,35
+Zwolle,Deventer,52.5047226,6.091944218,52.25749969,6.160555363,24
+Deventer,Zutphen,52.25749969,6.160555363,52.14527893,6.19416666,12
+Total time of 106 minutes.
+Traject 9
+Gouda,Den Haag Laan v NOI,52.01750183,4.704444408,52.07860947,4.342777729,28
+Den Haag Laan v NOI,Delft,52.07860947,4.342777729,52.00666809,4.356389046,12
+Delft,Den Haag HS,52.00666809,4.356389046,52.06972122,4.322500229,8
+Den Haag HS,Gouda,52.06972122,4.322500229,52.01750183,4.704444408,21
+Gouda,Alphen a/d Rijn,52.01750183,4.704444408,52.12444305,4.657777786,19
+Alphen a/d Rijn,Leiden Centraal,52.12444305,4.657777786,52.16611099,4.481666565,14
+Leiden Centraal,Den Haag Centraal,52.16611099,4.481666565,52.08027649,4.324999809,12
+Den Haag Centraal,Delft,52.08027649,4.324999809,52.00666809,4.356389046,13
+Delft,Schiedam Centrum,52.00666809,4.356389046,51.92124381,4.408993721,7
+Schiedam Centrum,Rotterdam Centraal,51.92124381,4.408993721,51.92499924,4.46888876,5
+Rotterdam Centraal,Dordrecht,51.92499924,4.46888876,51.80722046,4.66833353,17
+Dordrecht,Breda,51.80722046,4.66833353,51.59555435,4.78000021,18
+Total time of 174 minutes.

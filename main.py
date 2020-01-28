@@ -1,3 +1,11 @@
+"""
+main.py
+
+Userinterface for the train planning problem from the case RailNL
+
+Author: 0505 + Wouter
+
+"""
 from code.algorithms.greedy import Greedy
 from results.csvwriter import csvWriter
 from code.algorithms.kruskal import Kruskal
@@ -71,7 +79,6 @@ if __name__ == "__main__":
                 print('Using the Random algorithm the following score is found:',score)
                 print('With a p of: ',p,f'and {train_used} trains are used')
             if visualise.lower() =='yes':
-                print(train_used)
                 csvWriter(station_file,output_file,trajecten)
                 vis = Visualise(train_used)
                 vis.map()
@@ -91,7 +98,6 @@ if __name__ == "__main__":
             again = input('Do you want to try a different algorithm?')
             if visualise.lower() =='yes':
                 csvWriter(station_file,output_file,trajecten)
-                print(train_used)
                 vis = Visualise(train_used)
                 vis.map()
             if again.lower() == 'yes':
@@ -120,7 +126,7 @@ if __name__ == "__main__":
             print('Using the connectioncount algorithm the following score is found:',score)
             print('With a p of: ',p, f'and {train_used} are used.')
             if visualise.lower() =='yes':
-                csvWriter(station_file,file,trajecten)
+                csvWriter(station_file,output_file,trajecten)
                 vis = Visualise(train_used)
                 vis.map()
             again = input('Do you want to try a different algorithm?')
@@ -131,22 +137,15 @@ if __name__ == "__main__":
 
         if algorithm == 4:
             sims = int(input('How many simulations do you want?'))
-            alg = Lookahead(file,trains,timeframe,sims)
+            alg = Lookahead(file, trains, timeframe, sims)
             for i in range(0,sims):
-                trajecten, p, score, train_used= alg.run()
-                print('Using the lookahead algorithm the following score is found:',score)
-                print('With a p of: ',p, f'and {train_used} trains are used.')
+                trajecten, p, score, trains_used  = alg.run()
+                print('Using the iterativedeepening algorithm the following score is found:',score)
+                print('With a p of: ',p, f'and {trains_used} trains are used.')
+            
             if visualise.lower() =='yes':
                 csvWriter(station_file,file,trajecten)
-                print('Using the lookahead algorithm the following score is found:',score)
-                print('With a p of: ',p, f'and {train_used} trains are used.')
-            if visualise.lower() =='yes':
-                csvWriter(station_file,file,trajecten)
-                print('Using the lookahead algorithm the following score is found:',score)
-                print('With a p of: ',p, f'and {train_used} trains are used.')
-            if visualise.lower() =='yes':
-                csvWriter(station_file,file,trajecten)
-                vis = Visualise(train_used)
+                vis = Visualise(trains_used)
                 vis.map()
             again = input('Do you want to try a different algorithm?')
             if again.lower() == 'yes':
