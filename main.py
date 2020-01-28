@@ -1,7 +1,7 @@
 from code.algorithms.greedy import Greedy
-from code.algorithms.csvwriter import csvWriter
+from results.csvwriter import csvWriter
 from code.algorithms.kruskal import Kruskal
-from code.algorithms.lookahead_climber import Lookahead
+from code.algorithms.iterativedeepening import Lookahead
 from code.algorithms.randomize import Randomize
 from code.algorithms.connectioncount import Count
 from code.algorithms.hillclimb import HillClimber
@@ -54,7 +54,7 @@ if __name__ == "__main__":
             break
 
     while True:            
-        options = ['Random', 'Greedy', 'Kruskal', 'ConnectionCount', 'hillClimber', 'Lookahead']
+        options = ['Random', 'Greedy', 'Kruskal', 'ConnectionCount', 'Lookahead']
         print('possible algorithms:')
         i = 0
         for option in options:
@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
         if algorithm == 2:
             alg = Kruskal(file,trains,timeframe)
-            trajecten, p,total_minutes,score= alg.kruskal()
+            trajecten, p, score, trains_used= alg.kruskal()
             print('Using the Kruskal algorithm the following score is found:',score)
             print('With a p of: ',p)
             again = input('Do you want to try a different algorithm?')
@@ -111,18 +111,7 @@ if __name__ == "__main__":
             else:
                 break
 
-        # if algorithm == 4:
-        #     sims = int(input('How many simulations do you want?'))
-        #     alg = HillClimber(file,trains,timeframe)
-        #     for i in range(0,sims):
-        #         score = alg.hillclimb()
-        #     again = input('Do you want to try a different algorithm?')
-        #     if again.lower() == 'yes':
-        #         pass
-        #     else:
-        #         break
-
-        if algorithm == 5:
+        if algorithm == 4:
             sims = int(input('How many simulations do you want?'))
             alg = Lookahead(file,trains,timeframe)
             for i in range(0,sims):

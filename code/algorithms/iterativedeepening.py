@@ -10,9 +10,8 @@ Author: 0505 + Wouter
 """
 
 from code.algorithms.readconnections import Read
-from code.algorithms.csvwriter import csvWriter
 from code.classes.connection import Connection
-from code.algorithms.functions import *
+from code.algorithms.helpers import formula, changeDirection, bestConnection
 from code.classes.traject import Traject
 import random
 import csv
@@ -88,7 +87,7 @@ class Lookahead:
                         traject_connections.append(changeDirection(each.text()))
 
                     # check which connection is the best to be made
-                    best_option = best(new_origin, time_left, self.connections, connections_used, traject_connections)
+                    best_option = bestConnection(new_origin, time_left, self.connections, connections_used, traject_connections)
 
                     # if connection is found, add to track
                     if best_option != None:

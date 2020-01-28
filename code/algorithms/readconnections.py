@@ -8,7 +8,7 @@ Author: 0505 + Wouter
 """
 
 import csv
-from ..classes.connection import Connection
+from code.classes.connection import Connection
 
 
 class Read:

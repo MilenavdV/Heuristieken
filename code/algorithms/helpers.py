@@ -92,7 +92,7 @@ def Options(origin, time_left, connections):
     
     return options
 
-def best(origin, time_left, connections, used_connections, traject_connections):
+def bestConnection(origin, time_left, connections, used_connections, traject_connections):
     """ Return the connection that could lead to the highest added score 
         by looking three steps ahead """
 

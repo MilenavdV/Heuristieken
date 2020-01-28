@@ -3,7 +3,7 @@ import random
 import fnmatch
 
 from code.algorithms.readconnections import Read
-from code.algorithms.functions import findConnections, fastestConnection, changeDirection, formula
+from code.algorithms.helpers import findConnections, fastestConnection, changeDirection, formula
 from code.classes.traject import Traject
 from code.classes.connection import Connection
 

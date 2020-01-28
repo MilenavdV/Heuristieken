@@ -10,7 +10,7 @@ Author: 0505 + Wouter
 
 
 from code.algorithms.readconnections import Read
-from code.algorithms.functions import *
+from code.algorithms.helpers import findConnections,changeDirection,formula
 from code.classes.connection import Connection
 from code.classes.traject import Traject
 

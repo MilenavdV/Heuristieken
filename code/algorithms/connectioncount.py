@@ -8,7 +8,7 @@ Author: 0505 + Wouter
 
 '''
 
-from code.algorithms.functions import *
+from code.algorithms.helpers import fastestConnection,changeDirection, formula
 from code.classes.traject import Traject
 from code.algorithms.readconnections import Read
 import operator
@@ -85,7 +85,7 @@ class Count:
             # after the first connection is found, finish the track
             while True:   
                 # we pick the fastest connection
-                new_connection = fastestConnection(self.connections,destination,origin)          
+                new_connection = fastestConnection(self.connections, destination, origin)
                 if new_connection != None:
 
                     # if the connection is already in the current track, stop the train

@@ -12,7 +12,7 @@ Author: 05050 + Wouter
 from code.algorithms.readconnections import Read
 from code.classes.traject import Traject
 from code.classes.connection import Connection
-from code.algorithms.functions import *
+from code.algorithms.helpers import fastestConnection, changeDirection, formula
 import random
 
 class Greedy:
