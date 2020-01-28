@@ -1,7 +1,7 @@
 '''
 hillclimb.py
 
-The HillClimmber takes one of the trains out of the schedule and tries to replan it.
+The HillClimber takes one of the trains out of the schedule and tries to replan it.
 Hoping to find a better score than before
 
 Author: 0505 + Wouter
