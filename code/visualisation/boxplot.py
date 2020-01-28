@@ -2,9 +2,8 @@ from code.algorithms.greedy import Greedy
 from code.algorithms.kruskal import Kruskal
 from code.algorithms.iterativedeepening import Lookahead
 from code.algorithms.randomize import Randomize
-from code.algorithms.connectioncount import Count
+from code.algorithms.leastconnections import Count
 from code.algorithms.hillclimb import HillClimber
-from code.algorithms.connectioncount import Count
 from code.visualisation.visualise import Visualise
 from code.algorithms.readconnections import Read
 
@@ -36,7 +35,7 @@ class Vergelijking:
 
         greed = Greedy(self.file, self.trains, self.timeframe)
         for i in range(self.sims):
-            score = Greedy.run()[3]
+            score = greed.run()[3]
             scoreslist[i] = score
         df['greedy']  = scoreslist.values()
         print('Greedy klaar')
@@ -57,7 +56,8 @@ class Vergelijking:
 
         look = Lookahead(self.file, self.trains, self.timeframe, 50)
         for i in range(self.sims):
-            score = look.lookaheadClimber()[2]
+            score = look.run()[2]
+            print(i, score)
             scoreslist[i] = score
         df['iterative deepening'] = scoreslist.values()
         print('iterative deepening klaar')

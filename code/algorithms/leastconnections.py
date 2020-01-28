@@ -24,7 +24,7 @@ class Count:
         read = Read(file)
         self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
 
-    def connectionCount(self):
+    def run(self):
         """Returns the tracks that are covered, p, score and amount of trais used"""
 
         # a list which will be filled with the connections that are used

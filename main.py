@@ -67,7 +67,7 @@ if __name__ == "__main__":
             sims = int(input('How many simulations do you want?'))
             alg = Randomize(file,trains,timeframe)
             for i in range(0,sims):
-                trajecten,p,score,train_used = alg.randomize()
+                trajecten,p,score,train_used = alg.run()
                 print('Using the Random algorithm the following score is found:',score)
                 print('With a p of: ',p,f'and {train_used} trains are used')
             again = input('Do you want to try a different algorithm?')
@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
         if algorithm == 2:
             alg = Kruskal(file,trains,timeframe)
-            trajecten, p, score, trains_used= alg.kruskal()
+            trajecten, p, score, trains_used= alg.run()
             print('Using the Kruskal algorithm the following score is found:',score)
             print('With a p of: ',p)
             again = input('Do you want to try a different algorithm?')
@@ -102,7 +102,7 @@ if __name__ == "__main__":
 
         if algorithm == 3:
             alg = Count(file,trains,timeframe)
-            trajecten, p, score, train_used= alg.connectionCount()
+            trajecten, p, score, train_used= alg.run()
             print('Using the connectioncount algorithm the following score is found:',score)
             print('With a p of: ',p, f'and {train_used} are used.')
             again = input('Do you want to try a different algorithm?')
@@ -115,7 +115,7 @@ if __name__ == "__main__":
             sims = int(input('How many simulations do you want?'))
             alg = Lookahead(file,trains,timeframe,sims)
             for i in range(0,sims):
-                trajecten, p, score, train_used= alg.lookaheadClimber()
+                trajecten, p, score, train_used= alg.run()
                 print('Using the lookahead algorithm the following score is found:',score)
                 print('With a p of: ',p, f'and {train_used} trains are used.')
             again = input('Do you want to try a different algorithm?')

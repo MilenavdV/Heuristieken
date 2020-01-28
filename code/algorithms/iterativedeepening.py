@@ -29,7 +29,7 @@ class Lookahead:
         self.failed_attemps = failed_attemps
 
 
-    def lookaheadClimber(self):
+    def run(self):
         """Returns an efficient solution"""
         
         # keep track of how many trains will be used
