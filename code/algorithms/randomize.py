@@ -18,7 +18,7 @@ import random
 
 
 class Randomize:
-    
+    """A class using a random alogrithm to solve a train planning problem"""    
     
     def __init__(self,file,trains,timeframe):
         """Initializes the objects needed for the algorithm"""

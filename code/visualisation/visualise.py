@@ -79,7 +79,7 @@ class Visualise:
 
         # all the lines for the tracks that are actually made get different colors
         color = ['blue','red', 'cyan','peru', 'olive', 'black', 'lime', 'pink','orchid','goldenrod','grey', 'lightcoral', 'yellow', 
-                    'darkviolet', 'darkgreen', 'mediumblue', 'magenta', 'silver','cadetblue', 'yellow']
+                    'darkviolet', 'darkgreen', 'mediumblue', 'magenta', 'silver','cadetblue', 'purple']
 
         for i in range(self.train_used):
             p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2.5,color= color[i])

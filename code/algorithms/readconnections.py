@@ -12,6 +12,7 @@ from code.classes.connection import Connection
 
 
 class Read:
+    """A class that reads the csv files containing connections between stations"""
 
     def __init__(self,file):
         self.file = file
