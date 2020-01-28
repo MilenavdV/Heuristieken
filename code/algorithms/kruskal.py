@@ -50,7 +50,7 @@ class Kruskal:
         except:
             return None
 
-    def kruskal(self):
+    def run(self):
         """Returns the tracks, p, score and trains that are used, found with the help of Kruskal"""
 
         # dictionary that will be filled with the tracks that are made

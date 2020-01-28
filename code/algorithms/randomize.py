@@ -28,7 +28,7 @@ class Randomize:
         self.stations, self.connections, self.clist, self.clist2 = read.readConnections()
     
     
-    def randomize(self):
+    def run(self):
         """Returns a random solution for the problem"""
 
         # how many connections are there in total
