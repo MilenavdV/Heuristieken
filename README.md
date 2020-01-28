@@ -12,7 +12,8 @@ Het treinverkeer in Nederland kan op vele manieren ingevuld worden. Het probleem
 De kwaliteit van de lijnvoering wordt bepaald aan de hand van een scorefunctie. Het doel wordt dus het maximaliseren van de volgende functie: ```K = 10.000*p - (T*100 - MIN)``` 
 - p = proportie bereden connecties
 - T = aantal treining ingezet 
-- MIN = totaal aantal minuten van de treinen samen
+- MIN = totaal aantal minuten van de treinen samen  
+
 Daarnaast zal er rekening moetenworden gehouden met het maximaal aantal treinen wat er in mag worden gezet. Tevens mag een trein niet langer dan een gegeven timeframe onderweg zijn. In de RAILNL case wordt er gekeken naar niveau Holland en Nationaal. Waarbij Holland de restricitie heeft van 7 treinen, met een maximum tijd van 120 min dat een trein onderweg mag zijn, en bij Nationaal is dit 20 treinen en 180 min.
  
 ### Proces
