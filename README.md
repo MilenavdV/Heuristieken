@@ -6,11 +6,11 @@ Milena van der Velde
 Philip Lankhorst  
 Wouter de Boer  
 
-## Samenvatting
+## Probleem
 
 De dienstregeling van de NS voor het treinverkeer in Nederland kan op vele manieren ingevuld worden. Het probleem dat hierbij komt kijken is het vinden van de meest efficiente invulling. De NS heeft een bepaalde scorefunctie die gemaximaliseerd moet worden terwijl alle stations in Nederland met elkaar verbonden moeten zijn binnen een bepaalde tijdsframe. 
 
-## Uitgebreide informatie 
+### Uitgebreide informatie 
 
 - De lijnvoering: Wat zijn de trajecten waarover de treinen gedurende de dag heen en weer rijden?
 - De dienstregeling: hoe laat vertrekken de treinen van de stations over de trajecten?
@@ -22,7 +22,7 @@ Deze case gaat over het eerste deel, het maken van de lijnvoering. Meer specifie
 Voorbeeld: Het traject [Castricum , Zaandam , Hoorn , Alkmaar] is een traject met een duur van 59 minuten, en zou dus binnen het tijdsframe van een uur passen.
 
   
-## Proces
+### Proces
 
 Als eerste stap hebben we een random algoritme, [randomize.py](code/algorithms/randomize.py), geschreven, dit gaf geen geweldige resultaten. In het geval van Holland kregen we nog redelijke scores door het te laten lopen tot we een _p_ van 1 gevonden hadden, dit was bij heel Nederland niet het geval. Het random algoritme kiest steeds een willekeurig station en blijft dan willekeurige aansluitende connecties toevoegen tot de maximumtijd van een trein bereikt is.  
 Na random probeerden we een [greedy](code/algorithms/greedy.py) algoritme; de code koos de kortste connectie en zocht steeds de kortste nog ongebruikte connectie vanaf het volgende station.  
@@ -31,3 +31,34 @@ Om te zorgen dat de stations in de uithoeken (Den Helder, Vlissingen, Enschede) 
 
 ![Vergelijking van vijf methodes.](doc/vergelijking.png)
 
+## Reproduceren
+
+### Vereisten (Prerequisites)
+
+Deze codebase is volledig geschreven in [Python3.7.5](https://www.python.org/downloads/). Alle gebruikte packages staan in requirements.txt, run daarom eerst de volgende regel om de code te reproduceren:
+
+```
+pip install -r requirements.txt
+```
+
+### Structuur (Structure)
+
+In de map Code staat de python code die we gebruikt hebben om de case op te lossen. In de map Data staan de bestanden die we gebruikt hebben. In Results staat een aantal resultaten en een code om de resultaten in een csv op te slaan. In doc staan afbeeldingen die in dit bestand en onze presentatie gebruikt worden.
+
+### Test (Testing)
+
+Om de code te draaien (na installeren van de requirements) run:
+
+```
+python main.py
+```
+
+## Auteurs (Authors)
+
+* Milena van der Velde
+* Wouter de Boer
+* Philip Lankhorst
+
+## Dankwoord (Acknowledgments)
+
+* De docenten en assistenten van de minor programmeren van de UvA
