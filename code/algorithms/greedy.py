@@ -89,4 +89,4 @@ class Greedy:
             train_used = i + 1
             score = formula(p,self.trains,total_minutes)
 
-        return trajecten, p,total_minutes,score,train_used
+        return trajecten, p, total_minutes, score, train_used

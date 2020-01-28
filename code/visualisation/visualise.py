@@ -63,7 +63,8 @@ class Visualise:
                 trajecten_x[i].append(row[3])
                 trajecten_x[i].append(row[5])
 
-        color = ['blue','red', 'cyan','peru', 'olive', 'black', 'lime', 'pink','orchid','goldenrod']
+        color = ['blue','red', 'cyan','peru', 'olive', 'black', 'lime', 'pink','orchid','goldenrod','grey', 'lightcoral', 'yellow', 
+                    'darkviolet', 'darkgreen', 'mediumblue', 'magenta', 'silver','cadetblue', 'yellow']
         for i in range(self.train_used):
             p.line(trajecten_x[i+1],trajecten_y[i+1],line_width=2.5,color= color[i])
 
