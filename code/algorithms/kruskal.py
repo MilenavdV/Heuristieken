@@ -135,7 +135,7 @@ class Kruskal:
             
             # update the situation
             graph = sorted(graph, key=lambda item: item[2])
-            trajecten[i + 1] = traject
+            trajecten[i] = traject
             total_minutes += traject.time
             trains_used = i
         

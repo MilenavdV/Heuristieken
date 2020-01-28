@@ -116,7 +116,7 @@ class Count:
             total_minutes += traject.time
 
             # save track
-            trajecten[i + 1] = traject
+            trajecten[i -1] = traject
 
             # save amount of trains used
             train_used = i + 1

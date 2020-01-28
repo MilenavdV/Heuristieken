@@ -31,7 +31,7 @@ if __name__ == "__main__":
     
     print(summary,"\n")
     output_file = 'results/dienstregeling.csv'
-    station_files = ['data/stationsHolland.csv','data/stationsNationaal.csv']
+    station_files = ['data/StationsHolland.csv','data/StationsNationaal.csv']
     i = 0
     print('Which file do you want to use for all the stations:')
     for option in station_files:
@@ -41,13 +41,14 @@ if __name__ == "__main__":
 
     station_file = station_files[file_options]
 
-    connection_files = ['data/connectiesHolland.csv','data/connectiesNationaal.csv']
+    connection_files = ['data/ConnectiesHolland.csv','data/ConnectiesNationaal.csv']
     print('Which file do you want to use for all the connections:')
     i = 0
     for option in connection_files:
         print(i,':',option)
         i += 1
     connection_file = int(input('Choose the number\n'))
+
     file = connection_files[connection_file]
 
 
@@ -82,7 +83,7 @@ if __name__ == "__main__":
                 csvWriter(station_file,output_file,trajecten)
                 vis = Visualise(train_used)
                 vis.map()
-            again = input('Do you want to try a different algorithm?')
+            again = input('Do you want to try a different algorithm?\n')
             if again.lower() == 'yes':
                 pass
             else:
@@ -95,7 +96,7 @@ if __name__ == "__main__":
                 trajecten, p,total_minutes,score,train_used= alg.run()
                 print('Using the Greedy algorithm the following score is found:',score)
                 print('With a p of: ',p)
-            again = input('Do you want to try a different algorithm?')
+            again = input('Do you want to try a different algorithm?\n')
             if visualise.lower() =='yes':
                 csvWriter(station_file,output_file,trajecten)
                 vis = Visualise(train_used)
@@ -114,7 +115,7 @@ if __name__ == "__main__":
                 csvWriter(station_file,output_file,trajecten)
                 vis = Visualise(trains_used)
                 vis.map()
-            again = input('Do you want to try a different algorithm?')
+            again = input('Do you want to try a different algorithm?\n')
             if again.lower() == 'yes':
                 pass
             else:
@@ -129,7 +130,7 @@ if __name__ == "__main__":
                 csvWriter(station_file,output_file,trajecten)
                 vis = Visualise(train_used)
                 vis.map()
-            again = input('Do you want to try a different algorithm?')
+            again = input('Do you want to try a different algorithm?\n')
             if again.lower() == 'yes':
                 pass
             else:
@@ -144,10 +145,10 @@ if __name__ == "__main__":
                 print('With a p of: ',p, f'and {trains_used} trains are used.')
             
             if visualise.lower() =='yes':
-                csvWriter(station_file,file,trajecten)
+                csvWriter(station_file,output_file,trajecten)
                 vis = Visualise(trains_used)
                 vis.map()
-            again = input('Do you want to try a different algorithm?')
+            again = input('Do you want to try a different algorithm?\n')
             if again.lower() == 'yes':
                 pass
             else:
