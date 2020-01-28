@@ -8,7 +8,7 @@ Wouter de Boer
 
 ## Probleem
 
-Het treinverkeer in Nederland kan op vele manieren ingevuld worden. Het probleem dat hierbij komt kijken is het vinden van de meest efficiente invulling. De kwaliteit van de lijnvoering wordt bepaald aan de hand van een scorefunctie. Het doel wordt dus het maximaliseren van deze functie: ```K = 10.000*p - (T*100 - MIN)``` Waarbij er rekening wordt gehouden met het maximaal aantal treinen wat mag worden ingezet en tevens mag een trein niet langer dan een gegeven timeframe onderweg zijn.
+Het treinverkeer in Nederland kan op vele manieren ingevuld worden. Het probleem dat hierbij komt kijken is het vinden van de meest efficiente invulling. De kwaliteit van de lijnvoering wordt bepaald aan de hand van een scorefunctie. Het doel wordt dus het maximaliseren van deze functie: ```K = 10.000*p - (T*100 - MIN)``` p = proportie bereden connecties, T= aantal treining ingezet en MIN = totaal aantal minuten van de trajecten samen. Waarbij er rekening wordt gehouden met het maximaal aantal treinen wat mag worden ingezet en tevens mag een trein niet langer dan een gegeven timeframe onderweg zijn. 
  
 ### Proces
 
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ### Structuur (Structure)
 
-In de map Code staat de python code die we gebruikt hebben om de case op te lossen. In de map Data staan de bestanden die we gebruikt hebben. In Results staat een aantal resultaten en een code om de resultaten in een csv op te slaan. In doc staan afbeeldingen die in dit bestand en onze presentatie gebruikt worden.
+In de map Code staat de python code die we gebruikt hebben om de case op te lossen. In het submapje, algorithms, van de map Code is een README.md die de algoritmes verder uitlegt. In de map Data staan de bestanden die we gebruikt hebben. In Results staat een aantal resultaten en een code om de resultaten in een csv op te slaan. In doc staan afbeeldingen die in dit bestand en onze presentatie gebruikt worden.
 
 ### Test (Testing)
 
