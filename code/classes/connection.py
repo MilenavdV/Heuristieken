@@ -5,7 +5,9 @@ class Connection:
         self.time = time
 
     def text(self):
+        # text description of connection, used in code
         return f"{self.origin}-{self.destination}"
 
     def __str__(self):
+        # string method
         return f"Trein van {self.origin} naar {self.destination} van {self.time} minuten"

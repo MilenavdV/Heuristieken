@@ -24,7 +24,7 @@ def fastestConnection(connections, origin, previous_station):
 
             # save the travel time of the option
             time_of_options.append(connections[i].time)
-            
+ 
     # find the fastest option if there are options
     try:
         # find minimum travel time of the options 

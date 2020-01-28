@@ -46,7 +46,8 @@ class Lookahead:
         # keep track of the total time of all the track object
         total_minutes = 0
 
-        # when current score is lower then previous score, it will be considered as failed attemp
+        # when current score is lower then previous score, it will be 
+        # considered a failed attempt
         failed_attemps = 0
 
         while True:
@@ -56,7 +57,8 @@ class Lookahead:
             # current score
             current_score = formula(current_p, trains_used , total_minutes)
 
-            # how many connections, that are not used before, will the new track have
+            # how many connections, that are not used before, will the 
+            # new track have
             count_new_connections = 0
             
             traject = Traject()
@@ -65,11 +67,13 @@ class Lookahead:
                 start = random.choice(self.clist)
 
                 # however, make sure that this connenction is not used before
-                if start not in connections_used and changeDirection(start) not in connections_used:
+                if (start not in connections_used and changeDirection(start) 
+                    not in connections_used):
                     break
 
             # add starting connection to the traject
-            traject.addConnection(self.connections[start], self.connections[start].time, self.timeframe)
+            traject.addConnection(self.connections[start], 
+                self.connections[start].time, self.timeframe)
 
             while True:
                 # find the current station of the traject
@@ -85,11 +89,14 @@ class Lookahead:
                     traject_connections.append(changeDirection(each.text()))
 
                 # check which connection is the best to be made
-                best_option = bestConnection(new_origin, time_left, self.connections, connections_used, traject_connections)
+                best_option = bestConnection(new_origin, time_left, 
+                                self.connections, connections_used, 
+                                traject_connections)
 
                 # if connection is found, add to track
                 if best_option != None:
-                    traject.addConnection(self.connections[best_option], self.connections[best_option].time, self.timeframe)
+                    traject.addConnection(self.connections[best_option], 
+                        self.connections[best_option].time, self.timeframe)
                 else:
                     break
             
@@ -99,10 +106,12 @@ class Lookahead:
                     count_new_connections += 1
                     
             # with new connections found, the new p:
-            possible_p = (len(connections_used) + count_new_connections) / total
+            possible_p = ((len(connections_used) + count_new_connections) 
+                            / total)
             
             # calculate the possible score
-            score = formula(possible_p, trains_used + 1, total_minutes + traject.time)
+            score = formula(possible_p, trains_used + 1, total_minutes + 
+                    traject.time)
             
             # when the score is indeed higher than before, add the track
             if score > current_score and trains_used != self.trains:
@@ -114,11 +123,13 @@ class Lookahead:
                         connections_used.append(k.text())
                         connections_used.append(changeDirection(k.text()))
 
-            # otherwise the track won't be added and a the programs tries to find a better one  
+            # otherwise the track won't be added and a the programs tries to 
+            # find a better one  
             else:
                 failed_attemps +=1
             
-            # if, after 10 failed attemps, no track is found that improves the score we stop
+            # if, after 10 failed attemps, no track is found that improves 
+            # the score we stop
             if failed_attemps == self.failed_attemps:
                 break
         
